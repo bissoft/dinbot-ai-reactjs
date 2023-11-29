@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 function Header() {
   return (
     <div className="header">
-      <div className="container-fluid py-2">
+      <div className="container-fluid py-2 ">
         <div className=" d-flex justify-content-between">
             <div className=" d-flex search">
               <div className="search-icon">

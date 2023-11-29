@@ -63,8 +63,9 @@
     padding: 12px 30px;
     border-bottom: 2px solid #E5EAEF;
     margin-bottom: 10px;
+
     &.closed {
-      padding: 15px 10px;
+      padding: 12px 10px;
     }
   }
 
@@ -154,6 +155,8 @@
 
   // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-bottom: 2px solid #E5E5E5;
+
+  // padding: 10px 20px;
   .search {
     border: 2px solid #E5E5E5;
     border-radius: 25px;
@@ -195,11 +198,12 @@
     font-weight: 400;
     letter-spacing: 0.0125rem;
   }
+
   form input:focus {
     outline-color: none !important;
     border-color: none !important;
   }
-  
+
   .bell {
     width: 40px;
     /* Adjust the width to your desired size */
@@ -230,6 +234,355 @@
   }
 }
 
+.dashboard {
+  .dashboard-card {
+    border-radius: 14px;
+    border: 1px solid #EDF2F7;
+    background: #FFF;
+    display: flex;
+    // width: 237px;
+    // height: 173px;
+    // gap: 10px;
+  }
+
+  .order {
+    color: #898989;
+
+    font-feature-settings: 'salt' on, 'liga' off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .num {
+    color: #3A3F51;
+
+    /* Body Text/Inter/Semi Bold/18 */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .percent {
+    color: #4AD991;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .previous {
+    color: #606060;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .order-main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .table>:not(caption)>*>* {
+    background-color: white !important;
+
+  }
+
+  .table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-bg-type: none !important
+  }
+
+  .food-title {
+    display: flex;
+    flex-direction: column;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: #3A3F51;
+  }
+
+  .serving {
+    display: flex;
+    font-family: Inter;
+    color: #9CA4AB;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .mainfood-table {
+    th {
+      font-family: Inter;
+      color: #9CA4AB;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
+
+  .see {
+    border: none !important;
+    color: #38B5F3;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+
+  .apexcharts-toolbar {
+    display: none !important;
+  }
+
+  .toolbar {
+    background-color: #F2F4F6 !important;
+    border-radius: 25px;
+    padding: 2px 10px;
+
+    button {
+      background-color: transparent;
+      border: none !important;
+      padding: 5px 10px;
+      margin: 5px 1px;
+
+      &:hover {
+        background-color: #069AF3;
+        border-radius: 15px;
+      }
+
+    }
+  }
+
+
+}
+
+.food-table {
+  .d-none {
+    display: none;
+  }
+
+  .table>:not(caption)>*>* {
+    background-color: white !important;
+
+  }
+
+  .table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-bg-type: none !important
+  }
+
+  .food-title {
+    display: flex;
+    flex-direction: column;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: #3A3F51;
+  }
+
+  .serving {
+    display: flex;
+    font-family: Inter;
+    color: #9CA4AB;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .mainfood-table {
+    th {
+      font-family: Inter;
+      color: #9CA4AB;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+  }
+
+}
+
+.favouritemenu {
+  .favourite {
+    color: #3A3F51;
+    /* Body Text/Inter/Medium/Xtra-Large */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+
+  }
+
+  th {
+    color: #121212;
+
+    /* Body Text/Inter/Medium/Large */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .table>:not(caption)>*>* {
+    background-color: white !important;
+
+  }
+
+  .table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-bg-type: none !important
+  }
+
+  .food-title {
+    display: flex;
+    flex-direction: column;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: #3A3F51;
+  }
+
+  .serving {
+    display: flex;
+    font-family: Inter;
+    color: #9CA4AB;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .see {
+    border: none !important;
+    color: #38B5F3;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+}
+
+.pos {
+  .nav-tabs {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    --bs-nav-tabs-link-hover-border-color: transparent !important;
+    --bs-nav-link-color: #A3A3A3 !important;
+    --bs-nav-link-hover-color: #A3A3A3 !important;
+    /* Body Text/Inter/Regular/Medium */
+    font-family: Inter !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    border-bottom: 2px solid #E5E5E5 !important;
+
+    .active {
+      color: #3A3F51;
+      border: none;
+      /* Body Text/Inter/Semi Bold/Medium */
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      border-bottom: 4px solid #069AF3 !important;
+    }
+  }
+}
+
+.dinemenu {
+  .nav-tabs {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    --bs-nav-tabs-link-hover-border-color: transparent !important;
+    --bs-nav-link-color: #A3A3A3 !important;
+    --bs-nav-link-hover-color: #A3A3A3 !important;
+    /* Body Text/Inter/Regular/Medium */
+    font-family: Inter !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    border-bottom: 2px solid #E5E5E5 !important;
+
+    .active {
+      color: #3A3F51;
+      border: none;
+      /* Body Text/Inter/Semi Bold/Medium */
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      border-bottom: 4px solid #069AF3 !important;
+    }
+  }
+}
+.foodmenucard{
+  .card-img{
+    position: absolute;
+    margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+  margin-left:10px;
+  //  border-radius: ;
+  }
+  .card{
+    // width:20%;
+    height: 300px;
+    overflow: hidden; /* half circle - top is not visible */
+    position: relative;
+    border: none !important;
+  }
+  .card::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    border: 1px solid orange;
+    border-radius:20px;
+    
+  }
+  .card::after{
+    content: "";
+    position: absolute;
+  
+    /* size */
+    width: 150px;
+    height: 170px;
+    
+    /* center horizontaly */
+    left: 35%;
+    margin-left: -80px;
+    /* place verticaly */
+    top: -80px;
+    border-radius: 50%; /* circle magic */
+    border: 1px solid orange;
+    background-color: white;
+    
+  }
+}
 
 .social-media{
   .add_post-btn{
