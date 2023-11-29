@@ -12,28 +12,20 @@ const Scheduled = () => {
           <div className="row ">
             {cardData.map((card) => (
               <div className="col-md-4">
-                <Card key={card.id} className="social-media-card p-2">
-                  <Card.Body className="card-container">
+                <div key={card.id} className="card p-3 dashboard-card">
+                  <div className="mb-2">
+                    <img src={card.imgSrc1} alt="card-pic" />
+                  </div>
+                  <div className=" order-main">
+                    <div className="order-div">
+                      <span className="order"> {card.title}</span>
+                      <h4 className="num">{card.text}</h4>
+                    </div>
                     <div>
-                      <Card.Img
-                        variant="top"
-                        src={card.imgSrc1}
-                        className="icon"
-                      />
-                      <Card.Title className="h6 card_title mt-2">
-                        {card.title}
-                      </Card.Title>
-                      <Card.Text className="card_text">{card.text}</Card.Text>
+                      <img className="" src={card.imgSrc2} alt="grafik" />
                     </div>
-                    <div className="d-flex justify-content-center align-items-center">
-                      <Card.Img
-                        variant="top"
-                        src={card.imgSrc2}
-                        className="icon"
-                      />
-                    </div>
-                  </Card.Body>
-                </Card>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
