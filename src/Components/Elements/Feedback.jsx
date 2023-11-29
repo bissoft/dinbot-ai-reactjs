@@ -4,7 +4,6 @@ import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
 import listData from "../Utils/FeedbackTopList.json";
 import Reviews from "./Reviews";
 import GoodReviews from "./GoodReviews";
@@ -24,7 +23,7 @@ function Feedback() {
             <div className="row">
               <div className="col-md-12">
                 <Tabs
-                  defaultActiveKey="Stats"
+                  defaultActiveKey="Reviews"
                   id="uncontrolled-tab-example"
                   className="mb-3 mt-4"
                 >
