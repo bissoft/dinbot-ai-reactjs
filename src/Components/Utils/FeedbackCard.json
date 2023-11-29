@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "/Assets/post-img.png",
+        "order":"order No. ",
+        "title": "feedback:",
+        "rating": 4.6,
+        "text": "View Comment"
+    },
+    {
+        "id": 2,
+        "imageUrl": "/Assets/post-img.png",
+        "order":"order No. ",
+        "title": "feedback:",
+        "rating": 4.6,
+        "text": "View Comment"
+    },
+    {
+        "id": 3,
+        "imageUrl": "/Assets/post-img.png",
+        "order":"order No. ",
+        "title": "feedback:",
+        "rating": 4.6,
+        "text": "View Comment"
+    }
+]

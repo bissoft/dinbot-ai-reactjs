@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "title": "Likes",
+      "text": "9% vs. last Post",
+      "imgSrc1": "/Assets/card-icon.png",
+      "imgSrc2": "/Assets/sgraph.png"
+    },
+    {
+      "id": 2,
+      "title": "Engagment",
+      "text": "10% vs. last Post",
+      "imgSrc1": "/Assets/card-icon.png",
+      "imgSrc2": "/Assets/sgraph.png"
+    },
+    {
+      "id": 3,
+      "title": "Reach",
+      "text": "3.5% vs. last Post",
+      "imgSrc1": "/Assets/card-icon.png",
+      "imgSrc2": "/Assets/dgraph.png"
+    }
+  ]
