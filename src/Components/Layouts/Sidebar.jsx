@@ -22,16 +22,18 @@ function Sidebar() {
   return (
     <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
       <div className="container-fluid ">
-        <div className="logo   text-start " style={{ padding: isSidebarOpen?'12px 20px' :'12px 25px',cursor:"pointer" }}>
-          <div className=" d-flex" style={{ display: isSidebarOpen ? 'block' : 'none' }}>
+        <div className="logo text-start mx-3" style={{ padding: isSidebarOpen?'10px 1px' :'18px 2px',cursor:"pointer" }}>
+          <div className=" d-flex gap-2 " style={{ display: isSidebarOpen ? 'block' : 'none' }}>
           <div style={{ display: isSidebarOpen ? 'block' : 'none' }}>
            <img  src="/Assets/dinebotlogo.svg" alt="logo" /> 
           </div>
-          <div className="d-flex align-items-center" style={{ display: isSidebarOpen ? 'block' : 'none' }}>
-           <h2> <span className="dine">Dine</span> <span className="bot">Bot</span> </h2>
+          <div className="d-flex pt-1">
+           <h2 style={{ display: isSidebarOpen ? 'block' : 'none' }}> <span className="dine">Dine</span><span className="bot">Bot</span> </h2>
           </div>
           </div>
-          <FaBars className="icon" color="#069AF3" onClick={toggleSidebar} size={25}  />
+          
+          <FaBars className="icon" color="#069AF3" onClick={toggleSidebar} size={28}  />
+        
         </div>
         <div className="side-btn ">
         { (
