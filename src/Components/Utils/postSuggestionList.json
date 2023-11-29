@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "title": "American",
+      "subTitle": "Caesar Salad",
+      "imageUrl": "/Assets/listIcon.png"
+    },
+    {
+      "id": 2,
+      "title": "Salted Egg",
+      "subTitle": "Fried Rice",
+      "imageUrl": "/Assets/listIcon.png"
+    },
+    {
+      "id": 3,
+      "title": "Salted Egg",
+      "subTitle": "Fried Rice",
+      "imageUrl": "/Assets/listIcon.png"
+    },
+    {
+      "id": 4,
+      "title": "Salted Egg",
+      "subTitle": "Fried Rice",
+      "imageUrl": "/Assets/listIcon.png"
+    }
+    
+]

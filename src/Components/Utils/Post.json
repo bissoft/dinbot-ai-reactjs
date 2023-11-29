@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    },
+    {
+        "id": 2,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    },
+    {
+        "id": 3,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    },
+    {
+        "id": 4,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    },
+    {
+        "id": 5,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    },
+    {
+        "id": 6,
+        "imageUrl": "/Assets/post-img.png",
+        "title": "Salted Egg Fried Rice",
+        "rating": 4.6,
+        "comment": "View Comment"
+    }
+]
