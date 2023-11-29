@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
@@ -8,17 +8,41 @@ import Button from "react-bootstrap/Button";
 import Stats from "./Stats";
 import Scheduled from "./Scheduled";
 import listData from "../Utils/postSuggestionList.json";
+import ModalComponent from "./ModalComponent";
 
 function Socialmedia() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
+  const handleSaveChanges = () => {
+    handleCloseModal(); // Close the modal after saving changes
+  };
+
   return (
     <>
       <div className="social-media">
         <div className="container">
           <div className="d-flex justify-content-between mt-3 mb-5">
             <h3>Social Media</h3>
-            <Button variant="outline-light" className="add_post-btn">
+            {/* <Button variant="outline-light" className="add_post-btn" onClick={onClick}>
+              Add Post +
+            </Button> */}
+            <Button
+              variant="outline-light"
+              className="add_post-btn"
+              onClick={handleShowModal}
+            >
               Add Post +
             </Button>
+
+            {/* Modal component */}
+            <ModalComponent
+              show={showModal}
+              handleClose={handleCloseModal}
+              handleSaveChanges={handleSaveChanges}
+            />
           </div>
 
           <div className="row">

@@ -233,8 +233,8 @@
 
 .social-media{
   .add_post-btn{
-    color: #A2D9FB;
-    border: 1px solid #A2D9FB;
+    color: #069AF3;
+    border: 1px solid #069AF3;
     padding: 10px, 24px, 10px, 24px;
     border-radius: 20;
     margin-right: 10px;
@@ -300,13 +300,98 @@
   }
 }
 
-
-$breakpoint-tablet: 426px;
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: 600px) {
   .social-media-cards{
     flex-direction:column;
+    margin-bottom: 20px;
   }
-  // .social-media-card{
-  //   margin: 5px auto;
-  // }
+}
+
+.reviews{
+  .card{
+    width:100%;
+    height: 300px;
+    
+    overflow: hidden; /* half circle - top is not visible */
+    position: relative;
+    border: none;
+  }
+  .card::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    border: 1px solid #D2D2D2;
+    border-top-left-radius: 5% 0% 0% 0% / 5% 10% 10% 10% ;
+  }
+  .card::after{
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 191px;
+    left: 37%;
+    margin-left: -105px;
+    top: -144px;
+    // border-radius: 50%;
+    border-radius: 46%;
+    border: 1px solid #D2D2D2;
+    border-top-left-radius: 5% 0% 0% 0% / 5% 10% 10% 10% ;
+    background-color: white;
+  }
+}
+
+
+.modal-component{
+  label {
+    color: #171938 !important;
+    font-family: Roboto !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+  }
+
+  .pic {
+    color: #4C535F;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .upload-cta {
+    display: inline-table;
+    height: 200px;
+    width: 100%;
+    cursor: pointer;
+    padding-top: 90px;
+    line-height: 17px;
+    border: 2px dashed #E6E5E9;
+    margin-left: 15px;
+    margin-top: 10px;
+    background: #ffff;
+    font-size: .9em;
+    border-radius: 10px;
+
+
+
+
+    // line-height: ;
+    &.upload-preview {
+      background-size: cover !important;
+      text-indent: -9000px;
+      border-style: solid;
+    }
+  }
+
+  .updatebtn {
+    border-radius: 4px;
+    background: #4F4FB9;
+    color: white;
+    font-family: 'Roboto';
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+  }
 }

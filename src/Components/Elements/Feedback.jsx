@@ -49,7 +49,7 @@ function Feedback() {
             <Card>
               <Card.Body>
                 <Card.Title>Top Rated This Week</Card.Title>
-                <div className="d-flex justify-content-between fw-bold">
+                <div className="d-flex justify-content-between fw-bold px-5 py-2">
                   <div>Food Name</div>
                   <div>Sold</div>
                 </div>
