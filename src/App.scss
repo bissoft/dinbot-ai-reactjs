@@ -538,10 +538,47 @@
 }
 .foodmenucard{
   .card-img{
-    // position: absolute;
+    position: absolute;
     margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 100;
+  margin-left:10px;
+  //  border-radius: ;
   }
-  .card{
-    margin-bottom: 20px;
-  }
+    .card{
+      width:70%;
+      height: 300px;      
+      overflow: hidden; /* half circle - top is not visible */
+      position: relative;
+    }
+    .card::before{
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+      border: 1px solid orange;
+      -webkit-transform: rotate(3deg);
+transform: rotate(3deg);
+-webkit-transform-origin: -3% 0;
+transform-origin: -3% 0;
+    }
+    .card::after{
+      content: "";
+      position: absolute;
+      /* size */
+      width: 120px;
+      height: 160px;
+      /* center horizontaly */
+      left: 42%;
+      margin-left: -100px;
+      /* place verticaly */
+      top: -100px;
+      border-radius: 50%; /* circle magic */
+      border: 1px solid orange;
+      background-color: white;
+      
+    }
 }

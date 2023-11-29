@@ -5,9 +5,9 @@ function Foodmenucard() {
         <div className='foodmenucard'>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-8">
                         <div className='card-img'>
-                            <img src="/Assets/Image 1.png" alt="card-image" />
+                            {/* <img src="/Assets/Image 1.png" alt="card-image" /> */}
                         </div>
                         <div className="card">
                             <div>
