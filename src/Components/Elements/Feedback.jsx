@@ -9,6 +9,7 @@ import Reviews from "./Reviews";
 import GoodReviews from "./GoodReviews";
 import BadReviews from "./BadReviews";
 import Suggestions from "./Suggestions";
+import Favouritemenu from "./Favouritemenu";
 
 function Feedback() {
   return (
@@ -44,8 +45,8 @@ function Feedback() {
             </div>
           </div>
 
-          <div className="col-lg-4">
-            <Card>
+          <div className="col-md-4">
+            {/* <Card>
               <Card.Body>
                 <Card.Title>Top Rated This Week</Card.Title>
                 <div className="d-flex justify-content-between fw-bold px-5 py-2">
@@ -78,7 +79,8 @@ function Feedback() {
                   </ListGroup>
                 </div>
               </Card.Body>
-            </Card>
+            </Card> */}
+            <Favouritemenu />
           </div>
         </div>
       </div>

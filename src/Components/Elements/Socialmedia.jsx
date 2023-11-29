@@ -59,7 +59,7 @@ function Socialmedia() {
               </div>
             </div>
             <div className="col-lg-4">
-              <Card>
+              {/* <Card>
                 <Card.Body>
                   <Card.Title>Suggestions</Card.Title>
                   <Card.Text>Add these post to gain Engagement</Card.Text>
@@ -91,7 +91,7 @@ function Socialmedia() {
                     </ListGroup>
                   </div>
                 </Card.Body>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </div>
