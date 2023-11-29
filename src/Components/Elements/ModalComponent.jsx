@@ -18,9 +18,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
       <Modal
         show={show}
         onHide={handleClose}
-        // size="lg"
-        // dialogClassName="modal-190w"
-        className="modal-component"
+        className="modal-component modal-lg"
       >
         <Modal.Header closeButton>
           <Modal.Title>Add Post</Modal.Title>
@@ -38,9 +36,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                     <Form.Control type="email" placeholder="name@example.com" />
                   </FloatingLabel>
                   <FloatingLabel controlId="floatingTextarea2" label="Date">
-                    <Form.Control
-                      as="date"
-                    />
+                    <Form.Control type="date" className="mb-3" />
                   </FloatingLabel>
                   <Form.Check
                     className="mb-3"
@@ -57,7 +53,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                   </FloatingLabel>
                 </Form>
               </div>
-              <div className="col-md-5 justify-content-center d-flex align-items-center">
+              <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
                 <input
                   type="file"
                   className="form-control"
@@ -73,10 +69,13 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                   onClick={uploadFile}
                   style={previewStyle}
                 >
-                  {/* <img src="/Assets/upload.svg" alt="" className="mb-2" /> */}
-                  {previewStyle.background ? "" : `Add Image Upload`}
-                  <br />
-                  <FiUpload />
+                  {previewStyle.background ? (
+                    ""
+                  ) : (
+                    <span>
+                      Add Image Upload <br /> <FiUpload />
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
