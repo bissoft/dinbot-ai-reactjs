@@ -535,7 +535,19 @@
       border-bottom: 4px solid #069AF3 !important;
     }
   }
+  .add_menu-btn{
+    color: #069AF3;
+    border: 1px solid #069AF3;
+    margin-right: 10px;
+    // width: 147px;
+    // height: 48px;
+    padding: 10px, 24px, 10px, 24px;
+    border-radius: 25px !important;
+  font-weight: 500;
+    gap: 10px;
+  }
 }
+
 .foodmenucard{
   .card-img{
     position: absolute;
@@ -637,8 +649,9 @@
     color: #069AF3;
     border: 1px solid #069AF3;
     padding: 10px, 24px, 10px, 24px;
-    border-radius: 20;
+    border-radius: 25px !important;
     margin-right: 10px;
+    font-weight: 500;
   }
   .list-items{
     display: flex;
@@ -659,10 +672,33 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    border-left: 0;
+    border-right: 0;
   }
   .suggest-btn{
     background-color: #069af3;
+    padding: 2px, 12px, 2px, 12px;
+    border-radius: 10px;
+    gap: 10px;
   } 
+  .card-heading{
+    //styleName: Body Text/Inter/Medium/Xtra-Large;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .card-text{
+    //styleName: Body Text/Inter/Medium/Large;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
 }
 
 .social-media-cards {
@@ -677,7 +713,6 @@
   }
   .order {
     color: #898989;
-
     font-feature-settings: 'salt' on, 'liga' off;
     font-family: Inter;
     font-size: 14px;
@@ -708,6 +743,34 @@
   }
   .post_card {
     margin: 0;
+    gap: 16px;
+  }
+  .card-title{
+    //styleName: Body Text/Inter/Semi Bold/Large;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .card-rating{
+    //styleName: Body Text/Inter/Medium/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .card-comment{
+    //styleName: Body Text/Inter/Regular/Large;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 }
 
@@ -755,47 +818,77 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+   
+  }
+}
+
+@media (max-width: 600px) {
+  .social-media-cards{
+    flex-direction:column;
+    margin-bottom: 20px;
   }
 }
 
 
-.reviews{
-  
-}
-
-
 .modal-component{
+  .modal-heading{
+    //styleName: Heading Text/Inter/Semi Bold/H4;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
   label {
     color: #171938 !important;
     font-size: 16px !important;
     font-style: normal !important;
   }
-
+  .post-btn{
+    width: 79px;
+    height: 48px;
+    padding: 10px, 24px, 10px, 24px;
+    border-radius: 20px;
+    gap: 10px;
+    background-color: #2882EE;
+  }
+  .cancel-btn{
+    width: 95px;
+    height: 48px;
+    padding: 10px, 24px, 10px, 24px;
+    border-radius: 20px;
+    border: 1px;
+    gap: 10px;
+    border: 1px solid #069AF3;
+    color:#069AF3;
+    background-color: #FFF;
+  }   
   .pic {
     color: #4C535F;
     font-size: 16px;
     font-style: normal;
   }
   .img-upload{
-    border: 2px dashed #E5E8Eb;
+    border: 1px dashed #0D062D1F;
+    box-shadow: 6px 6px 54px 0px #0000000D;
   }
   
   .upload-cta {
-    display: inline-table;
-    height: 200px;
-    width: 100%;
-    cursor: pointer;
-    padding-top: 90px;
-    line-height: 17px;
-    border: 2px dashed #E6E5E9;
-    margin-left: 15px;
-    margin-top: 10px;
-    background: #ffff;
-    font-size: .9em;
-    border-radius: 10px;
-
-
-
+      /* display: inline-table; */
+      height: 265px;
+      width: 100%;
+      cursor: pointer;
+      /* padding-top: 70px; */
+      line-height: 17px;
+      margin-left: 15px;
+      margin-top: 10px;
+      background: white;
+      font-size: 0.9em;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
     // line-height: ;
     &.upload-preview {
@@ -804,14 +897,105 @@
       // border-style: solid;
     }
   }
+  .title-label{
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: right;
+    padding: 6px, 12px, 6px, 12px;
+    border-radius: 10px;
+    border: 1px;
+    gap: 6px;
+    box-shadow: 6px 6px 54px 0px #0000000D;
+    border: 1px solid #0D062D1F
+  }
+  .date-label{
+    padding: 6px, 12px, 6px, 12px;
+    border-radius: 10px;
+    border: 1px;
+    gap: 6px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: right;
+    box-shadow: 6px 6px 54px 0px #0000000D;
+    border: 1px solid #0D062D1F
+  }
+  .checkbox-label{
+    .form-check-input{
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .description-label{
+    padding: 6px, 12px, 6px, 12px;
+    border-radius: 10px;
+    border: 1px;
+    gap: 6px;
+    border: 1px solid #0D062D1F
+  }
+  .form-check-label{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
 
-  .updatebtn {
-    border-radius: 4px;
-    background: #4F4FB9;
-    color: white;
-    font-family: 'Roboto';
-    font-size: 17px;
+.menu-modal-component{
+  border-radius: 20px;
+  gap: 10px;
+
+  .modal-heading{
+    //styleName: Heading Text/Inter/Semi Bold/H4;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  label {
+    color: #171938 !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+  }
+  .pic {
+    color: #4C535F;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+  }
+  .img-upload{
+    border: 1px dashed #0D062D1F;
+    box-shadow: 6px 6px 54px 0px #0000000D;
+  }
+  .upload-cta {
+      /* display: inline-table; */
+      height: 265px;
+      width: 100%;
+      cursor: pointer;
+      /* padding-top: 70px; */
+      line-height: 17px;
+      // margin-left: 15px;
+      margin-top: 10px;
+      background: white;
+      font-size: 0.9em;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    // line-height: ;
+    &.upload-preview {
+      background-size: cover !important;
+      text-indent: -9000px;
+      // border-style: solid;
+    }
   }
 }

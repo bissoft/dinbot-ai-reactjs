@@ -21,7 +21,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
         className="modal-component modal-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add Post</Modal.Title>
+          <Modal.Title className="modal-heading">Add Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="container-fluid">
@@ -30,21 +30,21 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                 <Form>
                   <FloatingLabel
                     controlId="floatingInput"
-                    label="Email address"
-                    className="mb-3"
+                    label="Title"
+                    className="mb-3 title-label"
                   >
-                    <Form.Control type="email" placeholder="name@example.com" />
-                  </FloatingLabel>
-                  <FloatingLabel controlId="floatingTextarea2" label="Date">
-                    <Form.Control type="date" className="mb-3" />
+                    <Form.Control type="text" placeholder="American Caesar Salad" />
                   </FloatingLabel>
                   <Form.Check
-                    className="mb-3"
+                    className="mb-3 checkbox-label"
                     type={"checkbox"}
                     id={`default-checkbox`}
                     label={`Schedule`}
                   ></Form.Check>
-                  <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                  <FloatingLabel controlId="floatingTextarea2" label="Date" className="date-label mb-3">
+                    <Form.Control type="date" />
+                  </FloatingLabel>
+                  <FloatingLabel controlId="floatingTextarea2" label="Description" className="description-label">
                     <Form.Control
                       as="textarea"
                       placeholder="Leave a comment here"
@@ -73,7 +73,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                     ""
                   ) : (
                     <span>
-                      Add Image Upload <br /> <FiUpload />
+                      Add Image <br/> Upload <br /> <FiUpload />
                     </span>
                   )}
                 </div>
@@ -82,10 +82,10 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-start">
-          <Button variant="outline-secondary" onClick={handleClose}>
+          <Button onClick={handleClose} className="cancel-btn">
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSaveChanges}>
+          <Button onClick={handleSaveChanges} className="post-btn">
             Post
           </Button>
         </Modal.Footer>

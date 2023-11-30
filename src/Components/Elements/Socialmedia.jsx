@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Image from "react-bootstrap/Image";
+import { FaPlus } from "react-icons/fa6";
+
 import Button from "react-bootstrap/Button";
 import Stats from "./Stats";
 import Scheduled from "./Scheduled";
-import listData from "../Utils/postSuggestionList.json";
 import ModalComponent from "./ModalComponent";
+import SuggestiosMenu from "./SuggestiosMenu";
 
 function Socialmedia() {
   const [showModal, setShowModal] = useState(false);
@@ -23,15 +23,15 @@ function Socialmedia() {
   return (
     <>
       <div className="social-media">
-        <div className="container-fluid py-3">
-          <div className=" d-flex justify-content-between pb-2">
-            <h3>Social Media</h3>
+        <div className="container">
+          <div className="d-flex justify-content-between mt-3 ">
+            <h2>Social Media</h2>
             <Button
               variant="outline-light"
               className="add_post-btn"
               onClick={handleShowModal}
             >
-              Add Post +
+              Add Post <FaPlus size={20} className="pb-1"/>
             </Button>
             <ModalComponent
               show={showModal}
@@ -40,7 +40,7 @@ function Socialmedia() {
             />
           </div>
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col-md-8">
               <div className="row">
                 <div className="col-md-12">
                   <Tabs
@@ -58,43 +58,8 @@ function Socialmedia() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              {/* <Card>
-
             <div className="col-lg-4 pt-4">
-              <Card>
-                <Card.Body>
-                  <Card.Title>Suggestions</Card.Title>
-                  <Card.Text>Add these post to gain Engagement</Card.Text>
-                  <div className="lists">
-                    <ListGroup>
-                      {listData.map((item) => (
-                        <ListGroup.Item key={item.id}>
-                          <div className="list-items">
-                            <div className="listIcon_bgcolor">
-                              <Image
-                                src={item.imageUrl}
-                                className="img-fluid"
-                                style={{ width: "20px" }}
-                                roundedCircle
-                              />{" "}
-                            </div>
-                            <div>
-                              <p className="p-0 m-0">{item.title}</p>
-                              <p className="p-0 m-0">{item.subTitle}</p>
-                            </div>
-                          </div>
-                          <div>
-                            <Button variant="primary" className="suggest-btn">
-                              Post
-                            </Button>
-                          </div>
-                        </ListGroup.Item>
-                      ))}
-                    </ListGroup>
-                  </div>
-                </Card.Body>
-              </Card> */}
+             <SuggestiosMenu/>
             </div>
           </div>
         </div>
