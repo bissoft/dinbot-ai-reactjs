@@ -4,12 +4,12 @@ import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
 import listData from "../Utils/FeedbackTopList.json";
 import Reviews from "./Reviews";
 import GoodReviews from "./GoodReviews";
 import BadReviews from "./BadReviews";
 import Suggestions from "./Suggestions";
+import Favouritemenu from "./Favouritemenu";
 
 function Feedback() {
   return (
@@ -24,6 +24,7 @@ function Feedback() {
             <div className="row">
               <div className="col-md-12">
                 <Tabs
+                  // defaultActiveKey="Reviews"
                   defaultActiveKey="Reviews"
                   id="uncontrolled-tab-example"
                   className="mb-3 mt-4"
@@ -45,6 +46,8 @@ function Feedback() {
             </div>
           </div>
 
+          <div className="col-md-4">
+            {/* <Card>
           <div className="col-lg-4 py-5">
             <Card>
               <Card.Body>
@@ -79,7 +82,8 @@ function Feedback() {
                   </ListGroup>
                 </div>
               </Card.Body>
-            </Card>
+            </Card> */}
+            <Favouritemenu />
           </div>
         </div>
       </div>

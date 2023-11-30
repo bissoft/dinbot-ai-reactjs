@@ -26,9 +26,6 @@ function Socialmedia() {
         <div className="container-fluid py-3">
           <div className=" d-flex justify-content-between pb-2">
             <h3>Social Media</h3>
-            {/* <Button variant="outline-light" className="add_post-btn" onClick={onClick}>
-              Add Post +
-            </Button> */}
             <Button
               variant="outline-light"
               className="add_post-btn"
@@ -36,15 +33,12 @@ function Socialmedia() {
             >
               Add Post +
             </Button>
-
-            {/* Modal component */}
             <ModalComponent
               show={showModal}
               handleClose={handleCloseModal}
               handleSaveChanges={handleSaveChanges}
             />
           </div>
-
           <div className="row">
             <div className="col-lg-8">
               <div className="row">
@@ -64,6 +58,8 @@ function Socialmedia() {
                 </div>
               </div>
             </div>
+            <div className="col-lg-4">
+              {/* <Card>
 
             <div className="col-lg-4 pt-4">
               <Card>
@@ -98,7 +94,7 @@ function Socialmedia() {
                     </ListGroup>
                   </div>
                 </Card.Body>
-              </Card>
+              </Card> */}
             </div>
           </div>
         </div>
