@@ -2,7 +2,6 @@ import React from 'react'
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Favouritemenu from './Favouritemenu';
-import Foodmenucard from './Foodmenucard';
 
 function Dinemenu() {
   return (
@@ -24,7 +23,7 @@ function Dinemenu() {
         className="mb-3 mx-4"
       >
         <Tab className="tabs" eventKey="Appetizer" title="Appetizer">
-          <Foodmenucard/>
+          
         </Tab>
         <Tab className="tabs" eventKey="Snack" title="Snack">
         </Tab>

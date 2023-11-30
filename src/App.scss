@@ -585,6 +585,30 @@
 }
 
 .social-media{
+  .nav-tabs {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    --bs-nav-tabs-link-hover-border-color: transparent !important;
+    --bs-nav-link-color: #A3A3A3 !important;
+    --bs-nav-link-hover-color: #A3A3A3 !important;
+    /* Body Text/Inter/Regular/Medium */
+    font-family: Inter !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    border-bottom: 2px solid #E5E5E5 !important;
+
+    .active {
+      color: #3A3F51;
+      border: none;
+      /* Body Text/Inter/Semi Bold/Medium */
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      border-bottom: 4px solid #069AF3 !important;
+    }
+  }
   .add_post-btn{
     color: #069AF3;
     border: 1px solid #069AF3;
@@ -631,6 +655,30 @@
 }
 
 .feedback{
+  .nav-tabs {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    --bs-nav-tabs-link-hover-border-color: transparent !important;
+    --bs-nav-link-color: #A3A3A3 !important;
+    --bs-nav-link-hover-color: #A3A3A3 !important;
+    /* Body Text/Inter/Regular/Medium */
+    font-family: Inter !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    border-bottom: 2px solid #E5E5E5 !important;
+
+    .active {
+      color: #3A3F51;
+      border: none;
+      /* Body Text/Inter/Semi Bold/Medium */
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      border-bottom: 4px solid #069AF3 !important;
+    }
+  }
   .list-items{
     display: flex;
     justify-content: center;
@@ -653,12 +701,6 @@
   }
 }
 
-@media (max-width: 600px) {
-  .social-media-cards{
-    flex-direction:column;
-    margin-bottom: 20px;
-  }
-}
 
 .reviews{
   .card{
@@ -712,7 +754,7 @@
     font-style: normal;
     font-weight: 500;
   }
-
+  
   .upload-cta {
     display: inline-table;
     height: 200px;
@@ -726,10 +768,10 @@
     background: #ffff;
     font-size: .9em;
     border-radius: 10px;
-
-
-
-
+    
+    
+    
+    
     // line-height: ;
     &.upload-preview {
       background-size: cover !important;
@@ -737,7 +779,7 @@
       border-style: solid;
     }
   }
-
+  
   .updatebtn {
     border-radius: 4px;
     background: #4F4FB9;
@@ -746,5 +788,13 @@
     font-size: 17px;
     font-style: normal;
     font-weight: 500;
+  }
+
+
+  @media (max-width: 600px) {
+    .social-media-cards{
+      flex-direction:column;
+      margin-bottom: 20px;
+    }
   }
 }

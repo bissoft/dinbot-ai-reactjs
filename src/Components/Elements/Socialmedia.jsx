@@ -23,8 +23,8 @@ function Socialmedia() {
   return (
     <>
       <div className="social-media">
-        <div className="container">
-          <div className="d-flex justify-content-between mt-3 mb-5">
+        <div className="container-fluid py-3">
+          <div className=" d-flex justify-content-between pb-2">
             <h3>Social Media</h3>
             {/* <Button variant="outline-light" className="add_post-btn" onClick={onClick}>
               Add Post +
@@ -65,7 +65,7 @@ function Socialmedia() {
               </div>
             </div>
 
-            <div className="col-lg-4">
+            <div className="col-lg-4 pt-4">
               <Card>
                 <Card.Body>
                   <Card.Title>Suggestions</Card.Title>
