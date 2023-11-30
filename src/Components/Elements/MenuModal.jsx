@@ -55,7 +55,7 @@ const MenuModal = ({
       <Modal
         show={showFirstModal}
         onHide={handleCloseFirstModal}
-        className="menu-modal-component modal-lg"
+        className="menu-modal-component modal-md"
       >
         <Modal.Header closeButton>
           <Modal.Title className="modal-heading">
@@ -67,12 +67,12 @@ const MenuModal = ({
         <Modal.Body>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-7">
+              <div className="col-md-7 ps-0">
                 <Form>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Name"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label"
                   >
                     <Form.Control
                       type="text"
@@ -82,7 +82,7 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Name"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label"
                   >
                     <Form.Control
                       type="text"
@@ -91,19 +91,19 @@ const MenuModal = ({
                   </FloatingLabel>
                   <div className="d-flex">
                     <Form.Check
-                      className="mb-3 checkbox-label me-3"
+                      className="mb-2 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Small`}
                     ></Form.Check>
                     <Form.Check
-                      className="mb-3 checkbox-label me-3"
+                      className="mb-2 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Medium`}
                     ></Form.Check>
                     <Form.Check
-                      className="mb-3 checkbox-label me-3"
+                      className="mb-2 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Large`}
@@ -112,21 +112,21 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Price for Small"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label"
                   >
                     <Form.Control type="text" placeholder="$10" />
                   </FloatingLabel>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Price for Medium"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label"
                   >
                     <Form.Control type="text" placeholder="$20" />
                   </FloatingLabel>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Pirce for Large"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label pe-0"
                   >
                     <Form.Control type="text" placeholder="$30" />
                   </FloatingLabel>
@@ -159,7 +159,7 @@ const MenuModal = ({
               </div>
             </div>
             <div className="row">
-              <div className="col-md-12 mt-3">
+              <div className="col-md-12 mt-3 pe-0 ps-0">
                 <FloatingLabel
                   controlId="floatingTextarea2"
                   label="Description"

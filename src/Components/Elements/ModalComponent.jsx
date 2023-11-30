@@ -18,7 +18,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
       <Modal
         show={show}
         onHide={handleClose}
-        className="modal-component modal-lg"
+        className="modal-component modal-md"
       >
         <Modal.Header closeButton>
           <Modal.Title className="modal-heading">Add Post</Modal.Title>

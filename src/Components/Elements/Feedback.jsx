@@ -15,7 +15,7 @@ function Feedback() {
   return (
     <div className="feedback">
       <div className="container">
-        <div className="d-flex justify-content-between mt-3 mb-5">
+        <div className="d-flex justify-content-between mt-3">
           <h3>Feedback</h3>
         </div>
 
