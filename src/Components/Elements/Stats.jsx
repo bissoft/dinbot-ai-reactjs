@@ -38,15 +38,15 @@ const Stats = () => {
               <div className="row">
                 {postData.map((post) => (
                   <div className="col-md-4">
-                    <Card key={post.id} className="post_card p-3 mb-3">
+                    <Card key={post.id} className="post_card py-3 px-3 mb-3">
                       <Card.Img variant="top" src={post.imageUrl} />
                       <Card.Body>
-                        <Card.Title>{post.title}</Card.Title>
-                        <Card.Text className="d-flex align-items-center mx-0 my-3">
+                        <Card.Title className="card-title">{post.title}</Card.Title>
+                        <Card.Text className="d-flex align-items-center mx-0 my-3 card-rating">
                           <IoMdStar style={{ color: "#F7D540" }} />
                           {post.rating}
                         </Card.Text>
-                        <Card.Text>{post.comment}</Card.Text>
+                        <Card.Text className="card-comment">{post.comment}</Card.Text>
                       </Card.Body>
                     </Card>
                   </div>
