@@ -14,11 +14,23 @@ const MenuModal = ({
   handleNextButtonClick,
 }) => {
   const [previewStyle, setPreviewStyle] = useState({});
-  const loadFile = (event) => {
-    setPreviewStyle({
-      background: `url(${URL.createObjectURL(event.target.files[0])}) center`,
-    });
+  // const loadFile = (event) => {
+  //   setPreviewStyle({
+  //     background: `url(${URL.createObjectURL(event.target.files[0])}) center`,
+  //   });
+  // };
+  const loadFile = (e) => {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      setPreviewStyle({
+        background: `url(${event.target.result})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      });
+    };
+    reader.readAsDataURL(e.target.files[0]);
   };
+
   const uploadFile = () => {
     document.getElementById("avatar-upload").click();
   };
@@ -142,9 +154,9 @@ const MenuModal = ({
                   style={{ display: "none" }}
                 />
                 <div
-                  className={`upload-cta pic ${
-                    previewStyle.background ? "upload-preview" : ""
-                  } text-center`}
+                 className={`upload-cta pic ${
+                  previewStyle.background ? 'upload-preview' : ''
+                } text-center`}
                   onClick={uploadFile}
                   style={previewStyle}
                 >
@@ -159,7 +171,7 @@ const MenuModal = ({
               </div>
             </div>
             <div className="row">
-              <div className="col-md-12 mt-3 pe-0 ps-0">
+              <div className="col-md-12 mt-3 px-0">
                 <FloatingLabel
                   controlId="floatingTextarea2"
                   label="Description"

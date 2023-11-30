@@ -547,50 +547,81 @@
 
 .foodmenucard{
   .card-img{
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
     position: absolute;
-    margin-top: 20px;
-  width: 100px;
-  height: 100px;
-  z-index: 100;
-  margin-left:10px;
-  //  border-radius: ;
+    top: -53px;
+    left: 25px;  
+  //   position: absolute;
+  //   margin-top: 20px;
+  // width: 100px;
+  // height: 100px;
+  // z-index: 100;
+  // margin-left:10px;
   }
-  .card{
-    // width:20%;
-    height: 300px;
-    overflow: hidden; /* half circle - top is not visible */
+  .food{
     position: relative;
-    border: none !important;
+    margin-top: 58px;
+    border-radius: 30px;
   }
-  .card::before{
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    border: 1px solid orange;
-    border-radius:20px;
+  .card-title{
+       //styleName: Body Text/Inter/Semi Bold/Large;
+       font-family: Inter;
+       font-size: 16px;
+       font-weight: 600;
+       line-height: 24px;
+       letter-spacing: 0em;
+       text-align: left;
+       padding-bottom: 0;
+       margin-bottom: 0;
+  }
+  .card-content{
+    margin: 0;
+    font-weight:400 !important;
+  }
+  .card-text{
+    font-weight: 600;
+  }
+  .card-body{
+    margin-top: 30px;
+  }
+  // .card{
+  //   // width:20%;
+  //   height: 300px;
+  //   overflow: hidden; /* half circle - top is not visible */
+  //   position: relative;
+  //   border: none !important;
+  // }
+  // .card::before{
+  //   content: "";
+  //   position: absolute;
+  //   top: 0px;
+  //   left: 0px;
+  //   bottom: 0px;
+  //   right: 0px;
+  //   border: 1px solid orange;
+  //   border-radius:20px;
     
-  }
-  .card::after{
-    content: "";
-    position: absolute;
+  // }
+  // .card::after{
+  //   content: "";
+  //   position: absolute;
   
-    /* size */
-    width: 150px;
-    height: 170px;
+  //   /* size */
+  //   width: 150px;
+  //   height: 170px;
     
-    /* center horizontaly */
-    left: 35%;
-    margin-left: -80px;
-    /* place verticaly */
-    top: -80px;
-    border-radius: 50%; /* circle magic */
-    border: 1px solid orange;
-    background-color: white;
+  //   /* center horizontaly */
+  //   left: 35%;
+  //   margin-left: -80px;
+  //   /* place verticaly */
+  //   top: -80px;
+  //   border-radius: 50%; /* circle magic */
+  //   border: 1px solid orange;
+  //   background-color: white;
     
-  }
+  // }
 }
 
 .social-media{
@@ -1026,23 +1057,23 @@
   .img-upload{
     border: 1px dashed #0D062D1F;
     box-shadow: 6px 6px 54px 0px #0000000D;
+    height: 354px;
+    padding: 0 !important;
   }
   .upload-cta {
       /* display: inline-table; */
-      height: 256px;
+      // height: 256px;
+      height: 100%;
       width: 100%;
       cursor: pointer;
-      /* padding-top: 70px; */
       line-height: 17px;
-      // margin-left: 15px;
-      margin-top: 10px;
+      // margin-top: 10px;
       background: white;
       font-size: 0.9em;
       border-radius: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-
     // line-height: ;
     &.upload-preview {
       background-size: cover !important;
@@ -1079,5 +1110,4 @@
   .bin-icon{
     color: red;
   }
-
 }
