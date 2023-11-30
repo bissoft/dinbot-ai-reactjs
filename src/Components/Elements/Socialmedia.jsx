@@ -24,7 +24,7 @@ function Socialmedia() {
     <>
       <div className="social-media">
         <div className="container">
-          <div className="d-flex justify-content-between mt-3 mb-5">
+          <div className="d-flex justify-content-between mt-3">
             <h2>Social Media</h2>
             <Button
               variant="outline-light"
@@ -58,7 +58,7 @@ function Socialmedia() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-4 pt-4">
               <SuggestiosMenu />
             </div>
           </div>

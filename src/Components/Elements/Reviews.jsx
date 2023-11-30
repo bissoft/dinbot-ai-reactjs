@@ -13,7 +13,7 @@ const Reviews = () => {
               {feedbackData.map((post) => (
                 <div className="col-md-12">
                   <Card key={post.id} className="post_card card p-3 mb-3">
-                    {/* <Card.Img variant="top" src={post.imageUrl} /> */}
+                    <Card.Img variant="top" src={post.imageUrl} className="card-img"/>
                     <Card.Body>
                     <Card.Title className="text-end">{post.order}</Card.Title>
                       <div className="d-flex justify-content-between align-items-center">
@@ -24,7 +24,6 @@ const Reviews = () => {
                         </Card.Text>
                       </div>
                       <Card.Text>{post.text}</Card.Text>
-                      <Card.Text>{post.comment}</Card.Text>
                     </Card.Body>
                   </Card>
                 </div>
