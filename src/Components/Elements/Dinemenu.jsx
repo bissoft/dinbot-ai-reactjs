@@ -75,15 +75,21 @@ function Dinemenu() {
               <Tab className="tabs" eventKey="Appetizer" title="Appetizer">
                 <Foodmenucard />
               </Tab>
-              <Tab className="tabs" eventKey="Snack" title="Snack"></Tab>
-              <Tab className="tabs" eventKey="Grill" title="Grill"></Tab>
-              <Tab className="tabs" eventKey="Coffee" title="Coffee"></Tab>
-              <Tab
-                className="tabs"
-                eventKey="Cold Drinks"
-                title="Cold Drinks"
-              ></Tab>
-              <Tab className="tabs" eventKey="Dessert" title="Dessert"></Tab>
+              <Tab className="tabs" eventKey="Snack" title="Snack">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Grill" title="Grill">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Coffee" title="Coffee">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Cold Drinks" title="Cold Drinks">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Dessert" title="Dessert">
+                <Foodmenucard />
+              </Tab>
             </Tabs>
           </div>
           <div className="col-md-4">
