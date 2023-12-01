@@ -14,16 +14,17 @@ import Favouritemenu from "./Favouritemenu";
 function Feedback() {
   return (
     <div className="feedback">
-      <div className="container">
+      <div className="container-fluid">
         <div className="d-flex justify-content-between mt-3">
           <h3>Feedback</h3>
         </div>
 
-        <div className="row">
+        <div className="row ">
           <div className="col-lg-8">
             <div className="row">
               <div className="col-md-12">
                 <Tabs
+                  // defaultActiveKey="Reviews"
                   defaultActiveKey="Reviews"
                   id="uncontrolled-tab-example"
                   className="mb-3 mt-4"
@@ -47,6 +48,8 @@ function Feedback() {
 
           <div className="col-md-4">
             {/* <Card>
+          <div className="col-lg-4 py-5">
+            <Card>
               <Card.Body>
                 <Card.Title>Top Rated This Week</Card.Title>
                 <div className="d-flex justify-content-between fw-bold px-5 py-2">

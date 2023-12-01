@@ -5,7 +5,7 @@ import { IoMdStar } from "react-icons/io";
 function Foodmenucard() {
   return (
     <div className="foodmenucard">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-4">
             <Card className="food card p-2 mb-3">

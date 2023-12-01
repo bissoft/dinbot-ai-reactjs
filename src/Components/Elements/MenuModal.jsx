@@ -84,7 +84,7 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Name"
-                    className="mb-2 title-label"
+                    className="mb-3 title-label"
                   >
                     <Form.Control
                       type="text"
@@ -94,7 +94,7 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Name"
-                    className="mb-2 title-label"
+                    className="mb-3 title-label"
                   >
                     <Form.Control
                       type="text"
@@ -103,19 +103,19 @@ const MenuModal = ({
                   </FloatingLabel>
                   <div className="d-flex">
                     <Form.Check
-                      className="mb-2 checkbox-label me-3"
+                      className="mb-3 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Small`}
                     ></Form.Check>
                     <Form.Check
-                      className="mb-2 checkbox-label me-3"
+                      className="mb-3 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Medium`}
                     ></Form.Check>
                     <Form.Check
-                      className="mb-2 checkbox-label me-3"
+                      className="mb-3 checkbox-label me-3"
                       type={"checkbox"}
                       id={`default-checkbox`}
                       label={`Large`}
@@ -124,26 +124,27 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Price for Small"
-                    className="mb-2 title-label"
+                    className="mb-3 title-label"
                   >
                     <Form.Control type="text" placeholder="$10" />
                   </FloatingLabel>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Price for Medium"
-                    className="mb-2 title-label"
+                    className="mb-3 title-label"
                   >
                     <Form.Control type="text" placeholder="$20" />
                   </FloatingLabel>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Pirce for Large"
-                    className="mb-2 title-label pe-0"
+                    className="mb-3 title-label"
                   >
                     <Form.Control type="text" placeholder="$30" />
                   </FloatingLabel>
                 </Form>
-              </div>
+              {/* </div> */}
+            </div>
               <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
                 <input
                   type="file"
@@ -169,7 +170,7 @@ const MenuModal = ({
                   )}
                 </div>
               </div>
-            </div>
+              </div>
             <div className="row">
               <div className="col-md-12 mt-3 px-0">
                 <FloatingLabel
@@ -179,12 +180,14 @@ const MenuModal = ({
                 >
                   <Form.Control
                     as="textarea"
+                    // rows={5}
                     placeholder="Leave a comment here"
                     style={{ height: "100px" }}
                   />
                 </FloatingLabel>
               </div>
             </div>
+         
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-start">
