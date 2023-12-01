@@ -7,12 +7,6 @@ import { BsBoxSeam } from "react-icons/bs";
 import { LuCalendarDays } from "react-icons/lu";
 import { MdInsertChartOutlined } from "react-icons/md";
 
-
-
-
-
-// import { IoSettingsOutline } from 'react-icons/io5'
-
 function Sidebar() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const toggleSidebar = () => {
@@ -37,7 +31,7 @@ function Sidebar() {
         </div>
         <div className="side-btn ">
         { (
-            <NavLink className="nav-link" activeClassName="active" to="/" activeStyle={{ color: "#069AF3" }}>
+            <NavLink className="nav-link" activeClassName="active" to="/dashboard" activeStyle={{ color: "#069AF3" }}>
               <button style={{ padding: isSidebarOpen?'15px 30px' :'15px 20px' }}>
                 <AiOutlineCalendar
                   className=" icons"
