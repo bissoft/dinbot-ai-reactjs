@@ -5,6 +5,7 @@ import Favouritemenu from "./Favouritemenu";
 import Button from "react-bootstrap/Button";
 import MenuModal from "./MenuModal";
 import { FaPlus } from "react-icons/fa6";
+import Foodmenucard from "./Foodmenucard";
 
 function Dinemenu() {
   const [showFirstModal, setShowFirstModal] = useState(false);
@@ -73,16 +74,22 @@ function Dinemenu() {
         className="mb-3 mx-4"
       >
         <Tab className="tabs" eventKey="Appetizer" title="Appetizer">
+          <Foodmenucard/>
         </Tab>
         <Tab className="tabs" eventKey="Snack" title="Snack">
+        <Foodmenucard/>
         </Tab>
         <Tab className="tabs" eventKey="Grill" title="Grill">
+        <Foodmenucard/>
         </Tab>
         <Tab className="tabs" eventKey="Coffee" title="Coffee">
+        <Foodmenucard/>
         </Tab>
         <Tab className="tabs" eventKey="Cold Drinks" title="Cold Drinks">
+        <Foodmenucard/>
         </Tab>
         <Tab className="tabs" eventKey="Dessert" title="Dessert">
+        <Foodmenucard/>
         </Tab>
       </Tabs>
         </div>
