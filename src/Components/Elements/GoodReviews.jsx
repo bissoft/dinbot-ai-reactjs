@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 import feedbackData from "../Utils/FeedbackCard.json";
 import Card from "react-bootstrap/Card";
 import { IoMdStar } from "react-icons/io";
 
 const GoodReviews = () => {
   return (
-    <div className='goodreviews'>
+    <div className="goodreviews">
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -13,9 +13,13 @@ const GoodReviews = () => {
               {feedbackData.map((post) => (
                 <div className="col-md-12">
                   <Card key={post.id} className="post_card card p-3 mb-3">
-                    {/* <Card.Img variant="top" src={post.imageUrl} /> */}
+                    <Card.Img
+                      variant="top"
+                      src={post.imageUrl}
+                      className="card-img"
+                    />
                     <Card.Body>
-                    <Card.Title className="text-end">{post.order}</Card.Title>
+                      <Card.Title className="text-end">{post.order}</Card.Title>
                       <div className="d-flex justify-content-between align-items-center">
                         <Card.Title>{post.title}</Card.Title>
                         <Card.Text className="d-flex align-items-center mx-0 my-3">
@@ -24,7 +28,6 @@ const GoodReviews = () => {
                         </Card.Text>
                       </div>
                       <Card.Text>{post.text}</Card.Text>
-                      <Card.Text>{post.comment}</Card.Text>
                     </Card.Body>
                   </Card>
                 </div>
@@ -34,7 +37,7 @@ const GoodReviews = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default GoodReviews
+export default GoodReviews;

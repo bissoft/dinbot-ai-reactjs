@@ -55,7 +55,7 @@ const MenuModal = ({
       <Modal
         show={showFirstModal}
         onHide={handleCloseFirstModal}
-        className="menu-modal-component modal-lg"
+        className="menu-modal-component modal-md"
       >
         <Modal.Header closeButton>
           <Modal.Title className="modal-heading">
@@ -67,7 +67,7 @@ const MenuModal = ({
         <Modal.Body>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-7 ps-0">
                 <Form>
                   <FloatingLabel
                     controlId="floatingInput"
@@ -131,8 +131,9 @@ const MenuModal = ({
                     <Form.Control type="text" placeholder="$30" />
                   </FloatingLabel>
                 </Form>
-              </div>
-              <div className="col-md-4 justify-content-center d-flex align-items-center img-upload">
+              {/* </div> */}
+            </div>
+              <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
                 <input
                   type="file"
                   className="form-control"
@@ -157,9 +158,9 @@ const MenuModal = ({
                   )}
                 </div>
               </div>
-            </div>
+              </div>
             <div className="row">
-              <div className="col-md-12 mt-3">
+              <div className="col-md-12 mt-3 px-0">
                 <FloatingLabel
                   controlId="floatingTextarea2"
                   label="Description"
@@ -167,12 +168,14 @@ const MenuModal = ({
                 >
                   <Form.Control
                     as="textarea"
+                    // rows={5}
                     placeholder="Leave a comment here"
                     style={{ height: "100px" }}
                   />
                 </FloatingLabel>
               </div>
             </div>
+         
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-start">

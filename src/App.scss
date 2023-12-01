@@ -539,8 +539,6 @@
     color: #069AF3;
     border: 1px solid #069AF3;
     margin-right: 10px;
-    // width: 147px;
-    // height: 48px;
     padding: 10px, 24px, 10px, 24px;
     border-radius: 25px !important;
   font-weight: 500;
@@ -649,9 +647,8 @@
     color: #069AF3;
     border: 1px solid #069AF3;
     padding: 10px, 24px, 10px, 24px;
-    border-radius: 25px !important;
+    border-radius: 20;
     margin-right: 10px;
-    font-weight: 500;
   }
   .list-items{
     display: flex;
@@ -820,17 +817,88 @@
     justify-content: space-between;
    
   }
+  .reviews{
+    .post_card{
+      position: relative;
+      margin-top: 58px;
+      border-radius: 30px;
+    }
+    .card-img{
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      position: absolute;
+      top: -53px;
+      left: 25px;  
+    }
+  }
+  .goodreviews{
+    .post_card{
+      position: relative;
+      margin-top: 58px;
+      border-radius: 30px;
+    }
+    .card-img{
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      position: absolute;
+      top: -53px;
+      left: 25px;  
+    }
+  }
+  .badreviews{
+    .post_card{
+      position: relative;
+      margin-top: 58px;
+      border-radius: 30px;
+    }
+    .card-img{
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      position: absolute;
+      top: -53px;
+      left: 25px;  
+    }
+  }
+  .suggestions{
+    .post_card{
+      position: relative;
+      margin-top: 58px;
+      border-radius: 30px;
+    }
+    .card-img{
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      position: absolute;
+      top: -53px;
+      left: 25px;  
+    }
+  }
 }
+
 
 @media (max-width: 600px) {
   .social-media-cards{
     flex-direction:column;
-    margin-bottom: 20px;
+    .card{
+      margin-bottom: 10px;
+    }
+  }
+  .menu-modal-component{
+    .modal-content{
+      margin: auto !important;
+      width: auto !important;
+    }
   }
 }
 
 
 .modal-component{
+  border-radius: 20px;
+  gap: 10px;
   .modal-heading{
     //styleName: Heading Text/Inter/Semi Bold/H4;
     font-family: Inter;
@@ -839,6 +907,10 @@
     line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
+  }
+  .modal-content{
+    width: 593px;
+    margin-left: -45px;
   }
   label {
     color: #171938 !important;
@@ -961,6 +1033,10 @@
     letter-spacing: 0em;
     text-align: left;
   }
+  .modal-content{
+    width: 593px;
+    margin-left: -45px;
+  }
   label {
     color: #171938 !important;
     font-size: 16px !important;
@@ -974,10 +1050,12 @@
   .img-upload{
     border: 1px dashed #0D062D1F;
     box-shadow: 6px 6px 54px 0px #0000000D;
+    height: 395px;
+    // object-fit: contain;
   }
   .upload-cta {
       /* display: inline-table; */
-      height: 265px;
+      height: 256px;
       width: 100%;
       cursor: pointer;
       /* padding-top: 70px; */

@@ -14,8 +14,8 @@ import Favouritemenu from "./Favouritemenu";
 function Feedback() {
   return (
     <div className="feedback">
-      <div className="container-fluid py-3">
-        <div className="row ">
+      <div className="container">
+        <div className="d-flex justify-content-between mt-3">
           <h3>Feedback</h3>
         </div>
 
