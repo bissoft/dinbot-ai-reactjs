@@ -19,7 +19,7 @@ function Sidebar() {
     setSubNavVisible(!isSubNavVisible);
   };
   return (
-    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
+    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`} id="sidebar">
       <div className="container-fluid ">
         <div className="logo text-start mx-3" style={{ padding: isSidebarOpen?'10px 1px' :'18px 2px',cursor:"pointer" }}>
           <div className=" d-flex gap-2 " style={{ display: isSidebarOpen ? 'block' : 'none' }}>
