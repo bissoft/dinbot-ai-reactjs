@@ -26,7 +26,7 @@ function Users() {
                             <h6>Users Management</h6>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Create Users
                             </button>
                         </div>

@@ -983,6 +983,15 @@
   }
 }
 .users{
+  .modal-btn{
+    color: #069AF3;
+    border: 1px solid #069AF3;
+    margin-right: 10px;
+    padding: 10px, 24px, 10px, 24px;
+    border-radius: 25px !important;
+  font-weight: 500;
+    gap: 10px;
+  }
   .main-management{
     padding-right: 15px;
     padding-left: 10px;
