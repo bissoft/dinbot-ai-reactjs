@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
-import Image from "react-bootstrap/Image";
+import { FaPlus } from "react-icons/fa6";
+
 import Button from "react-bootstrap/Button";
 import Stats from "./Stats";
 import Scheduled from "./Scheduled";
@@ -31,7 +31,7 @@ function Socialmedia() {
               className="add_post-btn"
               onClick={handleShowModal}
             >
-              Add Post +
+              Add Post <FaPlus size={20} className="pb-1" />
             </Button>
             <ModalComponent
               show={showModal}
@@ -40,7 +40,7 @@ function Socialmedia() {
             />
           </div>
           <div className="row">
-            <div className="col-lg-8">
+            <div className="col-md-8">
               <div className="row">
                 <div className="col-md-12">
                   <Tabs
@@ -58,7 +58,7 @@ function Socialmedia() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 pt-4">
+            <div className="col-md-4 pt-4">
               <SuggestiosMenu />
             </div>
           </div>

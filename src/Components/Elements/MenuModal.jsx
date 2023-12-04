@@ -138,12 +138,13 @@ const MenuModal = ({
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Pirce for Large"
-                    className="mb-2 title-label pe-0"
+                    className="mb-2 title-label"
                   >
                     <Form.Control type="text" placeholder="$30" />
                   </FloatingLabel>
                 </Form>
-              </div>
+              {/* </div> */}
+            </div>
               <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
                 <input
                   type="file"
@@ -169,9 +170,9 @@ const MenuModal = ({
                   )}
                 </div>
               </div>
-            </div>
+              </div>
             <div className="row">
-              <div className="col-md-12 mt-3 px-0">
+              <div className="col-md-12 mt-2 px-0">
                 <FloatingLabel
                   controlId="floatingTextarea2"
                   label="Description"
@@ -179,12 +180,14 @@ const MenuModal = ({
                 >
                   <Form.Control
                     as="textarea"
+                    rows={5}
                     placeholder="Leave a comment here"
-                    style={{ height: "100px" }}
+                   className="description-text"
                   />
                 </FloatingLabel>
               </div>
             </div>
+         
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-start">

@@ -7,12 +7,6 @@ import { BsBoxSeam } from "react-icons/bs";
 import { LuCalendarDays } from "react-icons/lu";
 import { MdInsertChartOutlined } from "react-icons/md";
 
-
-
-
-
-// import { IoSettingsOutline } from 'react-icons/io5'
-
 function Sidebar() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const toggleSidebar = () => {
@@ -20,7 +14,7 @@ function Sidebar() {
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
+    <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`} id="sidebar">
       <div className="container-fluid ">
         <div className="logo text-start mx-3" style={{ padding: isSidebarOpen?'10px 1px' :'18px 2px',cursor:"pointer" }}>
           <div className=" d-flex gap-2 " style={{ display: isSidebarOpen ? 'block' : 'none' }}>
