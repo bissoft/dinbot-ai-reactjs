@@ -15,6 +15,9 @@ import { ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
 import PrivateRoute from "./Components/Elements/PrivateRoute";
 import Profile from "./Components/Elements/Profile";
+import Users from "./Components/Elements/Users";
+import Roles from "./Components/Elements/Roles";
+import Permissions from "./Components/Elements/Permissions";
 function App() {
   const navigate = useNavigate()
   const [isSignedIn, setIsSignedIn] = useState(() => {
@@ -53,6 +56,10 @@ function App() {
           <Route path="/feedback" element={ <PrivateRoute isSignedIn={isSignedIn}> <Feedback onLogout={signout} /></PrivateRoute>} />
           <Route path="/analysis" element={ <PrivateRoute isSignedIn={isSignedIn}> <Analysis onLogout={signout} /></PrivateRoute>} />
           <Route path="/profile" element={ <PrivateRoute isSignedIn={isSignedIn}> <Profile onLogout={signout} /></PrivateRoute>} />
+          <Route path="/usermanagement/users" element={ <PrivateRoute isSignedIn={isSignedIn}> <Users onLogout={signout} /></PrivateRoute>} />
+          <Route path="/usermanagement/roles" element={ <PrivateRoute isSignedIn={isSignedIn}> <Roles onLogout={signout} /></PrivateRoute>} />
+          <Route path="/usermanagement/permission" element={ <PrivateRoute isSignedIn={isSignedIn}> <Permissions onLogout={signout} /></PrivateRoute>} />
+
           </Route>
         </Routes>
 
