@@ -192,7 +192,30 @@ html {
     border-color: white;
     margin: 10px;
   }
+  .dropdown-menu.show{
+    margin-left: 25px;
+    margin-top :-13px ;
+    border: none !important;
+    padding-left:20px ;
+  }
+  .dropdown-item.active, .dropdown-item:active{
+      border-left: 5px solid rgba(0, 140, 255, 1);
+      background: linear-gradient(270deg, rgba(6, 154, 243, 0)26.99%, rgba(6, 154, 243, 1) 450.83%);
+      .icons {
+        color: #069AF3 !important;
+      }
+      span {
+        color: #069AF3 !important;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        // opacity: 1;
+        // z-index: 1000;
+      }
+    
 
+  }
 }
 
 .header {
@@ -957,7 +980,7 @@ html {
     margin-right: 10px;
     padding: 10px, 24px, 10px, 24px;
     border-radius: 25px !important;
-  font-weight: 500;
+    font-weight: 500;
     gap: 10px;
   }
   .main-management{
