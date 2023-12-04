@@ -10,11 +10,51 @@ html {
 
   .main-content {
     width: 100%;
+    // margin-left: 50px;
   }
 }
-
-// ##########################
+.login{
+ 
+  .loginbtn{
+    background-color: #069AF3;
+    color: white;
+    font-weight: 500;
+    font-family: Inter;
+    font-size: 16px;
+  }
+  .card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none !important;
+    margin-top: 25vh;
+  }
+  .eye{
+    &:hover{
+      background-color: transparent !important;
+    }
+  }
+}
+.signup{
+ 
+  .loginbtn{
+    background-color: #069AF3;
+    color: white;
+    font-weight: 500;
+    font-family: Inter;
+    font-size: 16px;
+  }
+  .card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none !important;
+    margin-top: 15vh;
+  }
+  .eye{
+    &:hover{
+      background-color: transparent !important;
+    }
+  }
+}
 .sidebar {
+  // position: fixed;
   width: 240px;
   height: 150vh;
   background-color: white;
@@ -24,6 +64,7 @@ html {
 
   &.closed {
     width: 70px;
+    // position: fixed;
   }
 
   .container-fluid {
@@ -151,6 +192,7 @@ html {
     border-color: white;
     margin: 10px;
   }
+
 }
 
 .header {
@@ -236,7 +278,6 @@ html {
     background-color: transparent;
   }
 }
-
 .dashboard {
   .dashboard-card {
     border-radius: 14px;
@@ -371,7 +412,6 @@ html {
     }
   }
 }
-
 .food-table {
   .d-none {
     display: none;
@@ -415,7 +455,6 @@ html {
     }
   }
 }
-
 .favouritemenu {
   .favourite {
     color: #3a3f51;
@@ -477,7 +516,6 @@ html {
     cursor: pointer;
   }
 }
-
 .pos {
   .nav-tabs {
     margin-left: 0rem !important;
@@ -504,7 +542,6 @@ html {
     }
   }
 }
-
 .dinemenu {
   .nav-tabs {
     margin-left: 0rem !important;
@@ -860,91 +897,11 @@ html {
       border-radius: 50%;
       position: absolute;
       top: -53px;
-      left: 25px;
-      //   position: absolute;
-      //   margin-top: 20px;
-      // width: 100px;
-      // height: 100px;
-      // z-index: 100;
-      // margin-left:10px;
+      left: 25px;  
     }
-    .food {
-      position: relative;
-      margin-top: 58px;
-      border-radius: 30px;
-    }
-    .card-title {
-      //styleName: Body Text/Inter/Semi Bold/Large;
-      font-family: Inter;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 24px;
-      letter-spacing: 0em;
-      text-align: left;
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-    .card-content {
-      margin: 0;
-      font-weight: 400 !important;
-    }
-    .card-text {
-      font-weight: 600;
-    }
-    .card-body {
-      margin-top: 30px;
-    }
-    .react-multi-carousel-item {
-      // width: auto !important;
-    }
-    .react-multiple-carousel__arrow {
-      position: absolute;
-      outline: 0;
-      transition: all 0.5s;
-      border-radius: 35px;
-      z-index: 1000;
-      border: 0;
-      background: white;
-      min-width: 34px;
-      min-height: 34px;
-      opacity: 1;
-      cursor: pointer;
-      border: 1px solid black;
-    }
-    .react-multiple-carousel__arrow::before {
-      font-size: 15px;
-      color: black;
-      display: block;
-      font-family: revicons;
-      text-align: center;
-      z-index: 2;
-      position: relative;
-    }
-  }
-
-  .slider {
-    margin: 0 5px;
-    overflow: "hidden";
-    // padding:2rem 0;
-  }
-
-  .slider img {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .react-multi-carousel-list {
-    padding: 0rem 0 2rem 0;
-  }
-
-  .custom-dot-list-style button {
-    border: none;
-    background: rgb(255, 68, 68);
-  }
-  .react-multi-carousel-dot.react-multi-carousel-dot--active button {
-    background: rgb(255, 68, 68) !important;
   }
 }
+
 
 @media (max-width: 600px) {
   .social-media-cards {
@@ -959,38 +916,13 @@ html {
       width: auto !important;
     }
   }
-}
-
-.profile {
-  label {
-    color: #171938 !important;
-    font-size: 16px !important;
-    font-style: normal !important;
-  }
-  .title-label {
-    font-family: Inter;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 22px;
-    letter-spacing: 0em;
-    text-align: right;
-    padding: 6px, 12px, 6px, 12px;
-    border-radius: 10px;
-    border: 1px;
-    gap: 6px;
-    box-shadow: 6px 6px 54px 0px #0000000d;
-    border: 1px solid #0d062d1f;
-  }
-}
-
-@media (max-width: 1025px) {
-  .profile {
-    label {
-      font-size: 12px !important;
+  .users{
+    .modal-content{
+      width: auto !important;
     }
-  }
-}
-.modal-component {
+  }}
+
+.modal-component{
   border-radius: 20px;
   gap: 10px;
 
@@ -1120,7 +1052,7 @@ html {
     z-index: 2;
     height: 100%;
     // padding: 1rem 0.75rem;
-    padding: 10px;
+    padding: 10px 10px;
     overflow: hidden;
     text-align: start;
     text-overflow: ellipsis;
@@ -1142,11 +1074,11 @@ html {
   }
 }
 
-.menu-modal-component {
+.menu-modal-component{
   border-radius: 20px;
   gap: 10px;
 
-  .modal-heading {
+  .modal-heading{
     //styleName: Heading Text/Inter/Semi Bold/H4;
     font-family: Inter;
     font-size: 24px;

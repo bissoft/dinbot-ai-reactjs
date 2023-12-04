@@ -1,144 +1,135 @@
-import React from "react";
-import { FloatingLabel, Form } from "react-bootstrap";
+import React, { useRef, useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import { AiOutlineUser } from "react-icons/ai";
 
-const Profile = () => {
+function Profile() {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const fileInputRef = useRef(null);
+  const [imagePreview, setImagePreview] = useState("");
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setImagePreview(e.target.result);
+
+    };
+
+    reader.readAsDataURL(file);
+
+    // setFormData({
+    //   ...formData,
+    //   picture: file,
+    // });
+  };
+
+  const handleHover = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
   return (
     <div className="profile">
-      <div className="container">
-        <h2 className="pt-3">Profile</h2>
-        <div className="profile-container mt-4">
-          <h2>Restaurant</h2>
-          <div className="profile-img d-flex align-items-center my-2">
-            <img src="/Assets/Image 1.png" alt="avatar" />
-            <div className="profile-name mx-4">
-              <h3>Restaurant</h3>
-              <p>Restaurant@gmail.com</p>
+      <div className="container-fluid py-5">
+            <div className="row pt-5 d-flex justify-content-center">
+            <div className="col-md-3 d-flex  justify-content-center img-upload">
+            <div className="image-uploader">
+              <div
+                className={`image-preview ${isHovered ? "hovered" : ""}`}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleMouseLeave}
+                onClick={handleButtonClick}
+              >
+              
+                {imagePreview ? (
+                  <img src={imagePreview} alt="Uploaded" />
+                ) : (
+                  <>
+                    <div className="avatar">
+                      <AiOutlineUser size={200} color="grey" />
+                    </div>
+                    {isHovered && !isEditing && (
+                      <div className="upload-text">Click to Upload</div>
+                    )}
+                  </>
+                )}
+                {isHovered && !isEditing && (
+                  <div className="upload-text">Click to Upload</div>
+                )}
+              </div>
+              <input
+                type="file"
+                // value={formData.picture}
+                accept="image/*"
+                onChange={handleImageUpload}
+                ref={fileInputRef}
+                style={{ display: "none" }}
+              />
             </div>
-          </div>
-        </div>
-
-        <div className="owner-details-container">
-          <div className="row">
-            <div className="col-md-7">
-              <h5>Owner's Detail</h5>
-              <div className="row">
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="owner-name"
-                      label="Owner's Name"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="Owner's Name" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="owner-contact"
-                      label="Owner's Contact Number"
-                      className="mb-3"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="Owner's Contact Number"
-                      />
-                    </FloatingLabel>
-                  </Form>
-                </div>
               </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="owner-email"
-                      label="Owner's Email"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="Owner's Email" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-              </div>
+              <div className="col-md-4 mt-1 pt-3 ">
+                <Form>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="First Name"
+                    className="mb-3 title-label"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="American Caesar Salad"
+                    />
+                  </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Last Name"
+                    className="mb-3 title-label"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="American Caesar Salad"
+                    />
+                  </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Phone Number"
+                    className="mb-3 title-label"
+                  >
+                    <Form.Control type="text" placeholder="" />
+                  </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Email"
+                    className="mb-3 title-label"
+                  >
+                    <Form.Control type="email" placeholder="" />
+                  </FloatingLabel>
+                  <FloatingLabel
+                    controlId="floatingInput"
+                    label="Password"
+                    className="mb-3 title-label"
+                  >
+                    <Form.Control type="password" placeholder="" />
+                  </FloatingLabel>
+                </Form>
+              {/* </div> */}
             </div>
+             
+              </div>
+           
+         
           </div>
-        </div>
-
-        <div className="restaurant-details-container">
-          <div className="row">
-            <div className="col-md-7">
-              <h5>Restaurant's Detail</h5>
-              <div className="row">
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="restaurant-name"
-                      label="Restaurant's Name"
-                      className="mb-3"
-                    >
-                      <Form.Control
-                        type="text"
-                        placeholder="Restaurant's Name"
-                      />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="state"
-                      label="State"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="State" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="city"
-                      label="City"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="City" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-                <div className="col-md-6">
-                  <Form>
-                    <FloatingLabel
-                      controlId="zip-code"
-                      label="Zip Code"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="Zip Code" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <Form>
-                    <FloatingLabel
-                      controlId="address"
-                      label="Address"
-                      className="mb-3"
-                    >
-                      <Form.Control type="text" placeholder="Address" />
-                    </FloatingLabel>
-                  </Form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
