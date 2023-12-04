@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 function Signup() {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible1, setPasswordVisible1] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -22,10 +24,11 @@ function Signup() {
       }
     console.log("i am clicked")
   };
-
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+  const togglePasswordVisibility1 = () => {
+    setPasswordVisible1(!passwordVisible1);
   };
   return (
     <div className="signup">
@@ -91,7 +94,7 @@ function Signup() {
                         className="mb-3 title-label position-relative"
                       >
                         <Form.Control
-                          type={passwordVisible ? 'text' : 'password'}
+                          type={passwordVisible1 ? 'text' : 'password'}
                           placeholder="Enter password"
                           value={confirmPassword}
                           onChange={(e) => setConfirmPassword(e.target.value)}
@@ -99,10 +102,10 @@ function Signup() {
                       </FloatingLabel>
                       <Button
                         variant="outline-secondary"
-                        onClick={togglePasswordVisibility}
+                        onClick={togglePasswordVisibility1}
                         className="password-toggle-btn position-absolute eye" style={{ right: 50, top: 430, border: 'none' }}
                       >
-                        {passwordVisible ? <FaEyeSlash color="#069AF3" /> : <FaEye color="#069AF3" />}
+                        {passwordVisible1 ? <FaEyeSlash color="#069AF3" /> : <FaEye color="#069AF3" />}
                       </Button>
                     </div>
                   </Form>
