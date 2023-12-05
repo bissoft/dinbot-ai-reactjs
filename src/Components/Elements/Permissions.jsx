@@ -1,8 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FloatingLabel, Form, Row, Col } from 'react-bootstrap'
 import Permission from './Permission'
+import axios from 'axios'
+import Userstable from './Userstable'
+import { API_BASE_URL } from '../../Apicongfig'
 
 function Permissions() {
+    const [permission,setPermission] = useState([])
+    useEffect(()=>{
+        const getAllPermission = async () => {
+        try {
+          const token = sessionStorage.getItem("token");
+          const response = await axios.get(
+            `${API_BASE_URL}/permission`,
+          
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+    
+          if (response) {
+            console.log(response.data.data);
+            setPermission(response.data.data)
+            // sessionStorage.clear();
+            // navigate("/");
+          } else {
+            const errorData = response.data;
+            console.error("Logout failed:", errorData.error);
+          }
+        } catch (error) {
+          console.error("Error during logout:", error);
+        }
+      };
+    
+    getAllPermission()
+    },[])
     return (
         <div className='users'>
             <div className="container-fluid py-3 ">
@@ -44,7 +79,7 @@ function Permissions() {
                 </div>
                 <div className="row py-3">
                     <div className="col-md-12">
-                        <Permission tableId='salesTable' initialMaxRow={10} />
+                        <Userstable tableId='permissionTable' tableData={permission} initialMaxRow={8} />
                     </div>
                 </div>
             </div>
