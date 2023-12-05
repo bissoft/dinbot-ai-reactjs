@@ -61,10 +61,8 @@ function App() {
           <Route path="/usermanagement/users" element={ <PrivateRoute isSignedIn={isSignedIn}> <Users onLogout={signout} /></PrivateRoute>} />
           <Route path="/usermanagement/roles" element={ <PrivateRoute isSignedIn={isSignedIn}> <Roles onLogout={signout} /></PrivateRoute>} />
           <Route path="/usermanagement/permission" element={ <PrivateRoute isSignedIn={isSignedIn}> <Permissions onLogout={signout} /></PrivateRoute>} />
-
           </Route>
         </Routes>
-
     </>
   );
 }

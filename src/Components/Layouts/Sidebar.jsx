@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BsCardChecklist } from "react-icons/bs";
@@ -10,16 +10,48 @@ import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
 
-function Sidebar({isSidebarOpen, toggleSidebar }) {
+function Sidebar({ isSidebarOpen, toggleSidebar }) {
+  const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
   // const toggleSidebar = () => {
   //   setSidebarOpen(!isSidebarOpen);
   // };
- 
+
   const toggleSubNav = () => {
     setSubNavVisible(!isSubNavVisible);
+  };
+
+  const logoutUser = async (userId) => {
+    // try {
+    //   const response = await fetch('http://localhost:5000/logout', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ userId }),
+    //   });
+    //   if (response.ok) {
+    //     console.log('User logged out successfully');
+    //   } else {
+    //     const errorData = await response.json();
+    //     console.error('Logout failed:', errorData.error);
+    //   }
+    // } catch (error) {
+    //   console.error('Error during logout:', error);
+    // }
+  };
+
+  //Logout API
+  const handleLogout = async () => {
+    try {
+      // const response
+
+      if (Response.ok) navigate("/");
+    } catch (error) {
+      console.error("Logout failed: ", error);
+    }
   };
   return (
     <div
@@ -68,10 +100,15 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <AiOutlineCalendar
+                {/* <AiOutlineCalendar
                   className=" icons"
                   color="#A3A3A3"
                   size={isSidebarOpen ? "22px" : "25px"}
+                /> */}
+                <img
+                  src="/Assets/dashboard-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -95,10 +132,15 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <BsCardChecklist
+                {/* <BsCardChecklist
                   className=" icons"
                   color="#A3A3A3"
                   size={isSidebarOpen ? "22px" : "25px"}
+                /> */}
+                <img
+                  src="/Assets/menu-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -122,10 +164,15 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <BsBoxSeam
+                {/* <BsBoxSeam
                   className=" icons"
                   color="#A3A3A3"
                   size={isSidebarOpen ? "22px" : "25px"}
+                /> */}
+                <img
+                  src="/Assets/pos-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -150,10 +197,10 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <LuCalendarDays
-                  className=" icons"
-                  color="#A3A3A3"
-                  size={isSidebarOpen ? "22px" : "25px"}
+                <img
+                  src="/Assets/sm-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -177,10 +224,10 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <AiOutlineCalendar
-                  className=" icons"
-                  color="#A3A3A3"
-                  size={isSidebarOpen ? "22px" : "25px"}
+                <img
+                  src="/Assets/feedback-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -204,11 +251,12 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <MdInsertChartOutlined
-                  className=" icons"
-                  color="#A3A3A3"
-                  size={isSidebarOpen ? "22px" : "25px"}
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
+
                 <span
                   style={{
                     display: isSidebarOpen ? "block" : "none",
@@ -344,15 +392,15 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
               activeClassName="active"
               to="/settings"
               activeStyle={{ color: "#069AF3" }}
-              style={{marginTop:'8rem'}}
+              style={{ marginTop: "8rem" }}
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
-                <CiSettings 
-                  className=" icons"
-                  color="#A3A3A3"
-                  size={isSidebarOpen ? "22px" : "25px"}
+                <img
+                  src="/Assets/setting-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
@@ -370,16 +418,16 @@ function Sidebar({isSidebarOpen, toggleSidebar }) {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to="/"
               activeStyle={{ color: "#069AF3" }}
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                onClick={handleLogout}
               >
-                <CiLogout 
-                  className=" icons"
-                  color="#A3A3A3"
-                  size={isSidebarOpen ? "22px" : "25px"}
+                <img
+                  src="/Assets/logout-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
                 />
 
                 <span
