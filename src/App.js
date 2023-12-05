@@ -1,5 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import 'react-multi-carousel/lib/styles.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./App.scss";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Base from "./Components/Layouts/Base";
@@ -9,15 +11,15 @@ import Socialmedia from "./Components/Elements/Socialmedia";
 import Feedback from "./Components/Elements/Feedback";
 import Analysis from "./Components/Elements/Analysis";
 import Dinemenu from "./Components/Elements/Dinemenu";
+import Profile from "./Components/Elements/Profile";
 import Login from "./Components/Elements/Login";
 import Signup from "./Components/Elements/Signup";
-import { ToastContainer } from "react-toastify";
-import { useEffect, useState } from "react";
-import PrivateRoute from "./Components/Elements/PrivateRoute";
-import Profile from "./Components/Elements/Profile";
 import Users from "./Components/Elements/Users";
 import Roles from "./Components/Elements/Roles";
 import Permissions from "./Components/Elements/Permissions";
+import PrivateRoute from './Components/Elements/PrivateRoute'
+import { useEffect, useState } from "react";
+import {ToastContainer} from 'react-toastify'
 function App() {
   const navigate = useNavigate()
   const [isSignedIn, setIsSignedIn] = useState(() => {
@@ -35,7 +37,7 @@ function App() {
     setIsSignedIn(false);
     setRemoveLogo(false)
     localStorage.removeItem("isSignedIn");
-    navigate("/");
+    // navigate("/");
   };
 
   useEffect(() => {
@@ -58,10 +60,8 @@ function App() {
           <Route path="/usermanagement/users" element={ <PrivateRoute isSignedIn={isSignedIn}> <Users onLogout={signout} /></PrivateRoute>} />
           <Route path="/usermanagement/roles" element={ <PrivateRoute isSignedIn={isSignedIn}> <Roles onLogout={signout} /></PrivateRoute>} />
           <Route path="/usermanagement/permission" element={ <PrivateRoute isSignedIn={isSignedIn}> <Permissions onLogout={signout} /></PrivateRoute>} />
-
           </Route>
         </Routes>
-
     </>
   );
 }

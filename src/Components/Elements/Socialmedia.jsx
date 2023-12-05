@@ -31,7 +31,7 @@ function Socialmedia() {
               className="add_post-btn"
               onClick={handleShowModal}
             >
-              Add Post <FaPlus size={20} className="pb-1"/>
+              Add Post <FaPlus size={20} className="pb-1" />
             </Button>
             <ModalComponent
               show={showModal}
@@ -58,7 +58,7 @@ function Socialmedia() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 pt-4">
+            <div className="col-md-4 pt-4">
               <SuggestiosMenu />
             </div>
           </div>

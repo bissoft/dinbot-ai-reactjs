@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-
 import Favouritemenu from "../Elements/Favouritemenu";
 import FoodTable from "./FoodTable";
 
@@ -47,7 +46,7 @@ function Dashboard() {
       yaxis: {
         min: 0,
         max: 500,
-        tickAmount: 10, // Adjust the number of ticks based on your preference
+        tickAmount: 10,
       },
       tooltip: {
         x: {
@@ -55,39 +54,69 @@ function Dashboard() {
         },
       },
     },
+    selection: "",
   });
 
   const updateData = (timeline) => {
-    setChartData((prevChartData) => ({
-      ...prevChartData,
+    setChartData((prevData) => ({
+      ...prevData,
       selection: timeline,
     }));
 
-    const now = new Date().getTime();
     let startDate, endDate;
 
     switch (timeline) {
       case "one_day":
-        startDate = now - 24 * 60 * 60 * 1000;
-        endDate = now;
+        startDate = new Date();
+        startDate.setDate(startDate.getDate() - 1);
+        endDate = new Date();
         break;
       case "one_week":
-        startDate = now - 7 * 24 * 60 * 60 * 1000;
-        endDate = now;
+        startDate = new Date();
+        startDate.setDate(startDate.getDate() - 7);
+        endDate = new Date();
         break;
       case "one_month":
-        startDate = now - 30 * 24 * 60 * 60 * 1000;
-        endDate = now;
+        startDate = new Date();
+        startDate.setMonth(startDate.getMonth() - 1);
+        endDate = new Date();
         break;
       case "one_year":
-        startDate = now - 365 * 24 * 60 * 60 * 1000;
-        endDate = now;
+        startDate = new Date();
+        startDate.setFullYear(startDate.getFullYear() - 1);
+        endDate = new Date();
         break;
       default:
-        break;
+        return;
     }
+
+    const updatedSeries = generateDataForTimeRange(startDate, endDate);
+
+    setChartData((prevData) => ({
+      ...prevData,
+      series: updatedSeries,
+    }));
   };
-  const isButtonActive = (timeline) => chartData.selection === timeline;
+  const generateDataForTimeRange = (startDate, endDate) => {
+    const ordersData = [];
+    const revenueData = [];
+
+    let currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+      const randomOrders = Math.floor(Math.random() * 500); 
+      const randomRevenue = Math.floor(Math.random() * 1000);
+
+      ordersData.push(randomOrders);
+      revenueData.push(randomRevenue);
+
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return [
+      { name: "Orders", data: ordersData },
+      { name: "Revenue", data: revenueData },
+    ];
+  };
 
   return (
     <div className="dashboard">
@@ -164,39 +193,51 @@ function Dashboard() {
                       <div>
                         <h4>Income Statistics</h4>
                       </div>
+
                       <div className="toolbar">
                         <button
                           id="one_day"
                           onClick={() => updateData("one_day")}
-                          className={isButtonActive("one_day") ? "active" : ""}
+                          className={
+                            chartData.selection === "one_day" ? "active" : ""
+                          }
                         >
                           1D
                         </button>
+                        &nbsp;
                         <button
                           id="one_week"
                           onClick={() => updateData("one_week")}
-                          className={isButtonActive("one_week") ? "active" : ""}
+                          className={
+                            chartData.selection === "one_week" ? "active" : ""
+                          }
                         >
                           1W
                         </button>
+                        &nbsp;
                         <button
                           id="one_month"
                           onClick={() => updateData("one_month")}
                           className={
-                            isButtonActive("one_month") ? "active" : ""
+                            chartData.selection === "one_month" ? "active" : ""
                           }
                         >
                           1M
                         </button>
+                        &nbsp;
                         <button
                           id="one_year"
                           onClick={() => updateData("one_year")}
-                          className={isButtonActive("one_year") ? "active" : ""}
+                          className={
+                            chartData.selection === "one_year" ? "active" : ""
+                          }
                         >
                           1Y
                         </button>
+                        &nbsp;
                       </div>
                     </div>
+
                     <div id="chart-timeline">
                       <ReactApexChart
                         options={chartData.options}

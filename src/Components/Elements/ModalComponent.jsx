@@ -26,29 +26,42 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
         <Modal.Body>
           <div className="container-fluid">
             <div className="row">
-              <div className="col-md-7">
+              <div className="col-md-7 ps-0">
                 <Form>
                   <FloatingLabel
                     controlId="floatingInput"
                     label="Title"
-                    className="mb-3 title-label"
+                    className="mb-2 title-label"
                   >
-                    <Form.Control type="text" placeholder="American Caesar Salad" />
+                    <Form.Control
+                      type="text"
+                      placeholder="American Caesar Salad"
+                    />
                   </FloatingLabel>
+                
                   <Form.Check
-                    className="mb-3 checkbox-label"
+                    className="mb-2 checkbox-label"
                     type={"checkbox"}
                     id={`default-checkbox`}
                     label={`Schedule`}
                   ></Form.Check>
-                  <FloatingLabel controlId="floatingTextarea2" label="Date" className="date-label mb-3">
+                  <FloatingLabel
+                    controlId="floatingTextarea2"
+                    label="Date"
+                    className="date-label mb-2"
+                    style={{fontSize:'12px'}}
+                  >
                     <Form.Control type="date" />
                   </FloatingLabel>
-                  <FloatingLabel controlId="floatingTextarea2" label="Description" className="description-label">
+                  <FloatingLabel
+                    controlId="floatingTextarea2"
+                    label="Description"
+                    className="description-label"
+                  >
                     <Form.Control
                       as="textarea"
                       placeholder="Leave a comment here"
-                      style={{ height: "100px" }}
+                      className="description-text"
                     />
                   </FloatingLabel>
                 </Form>
@@ -73,7 +86,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                     ""
                   ) : (
                     <span>
-                      Add Image <br/> Upload <br /> <FiUpload />
+                      Add Image <br /> Upload <br /> <FiUpload />
                     </span>
                   )}
                 </div>
