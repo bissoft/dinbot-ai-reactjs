@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Dashboarddata from '../Utils/Users.json'
-function Userstable({initialMaxRows = 5, initialMaxRow , tableId}) {
+function Userstable({initialMaxRows = 5, initialMaxRow , tableId , tableData}) {
     const [maxRows, setMaxRows] = useState(initialMaxRow || initialMaxRows);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalRows, setTotalRows] = useState(0);
@@ -46,15 +46,15 @@ function Userstable({initialMaxRows = 5, initialMaxRow , tableId}) {
                     <thead>
                       <tr className='mainfood-table'>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Roles</th>
+                        <th>Role</th>
+                        {/* <th>Email</th>
+                        <th>Roles</th> */}
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       {
-                        Dashboarddata.map((table, index) => (
+                        tableData?.map((table, index) => (
                           <tr key={index}>
                             <td >
                                 <div className='food-title '>
@@ -63,13 +63,13 @@ function Userstable({initialMaxRows = 5, initialMaxRow , tableId}) {
                             </td>
                             <td >
                               <div className='food-title'>
-                                {table.Name}
+                                {table.name}
                               </div>
                             </td>
-                            <td><div className='food-title'>
-                              {table.Email}</div></td>
-                            <td><div className='food-title'>
-                              {table.Roles}</div></td>
+                            {/* <td><div className='food-title'>
+                              {table.Email}</div></td> */}
+                            {/* <td><div className='food-title'>
+                              {table.Roles}</div></td> */}
                               <td>
                                 <div className=' d-flex'>
                               <button className='btn btn-secondary mx-1'>Edit</button>
@@ -96,7 +96,7 @@ function Userstable({initialMaxRows = 5, initialMaxRow , tableId}) {
                         id="maxRows"
                         onChange={handleMaxRowsChange}
                       >
-                        <option value={initialMaxRow}>{initialMaxRow}</option>
+                        <option value={initialMaxRow || initialMaxRows }>{initialMaxRow || initialMaxRows}</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>

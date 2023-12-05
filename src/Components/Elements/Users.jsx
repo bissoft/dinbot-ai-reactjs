@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Userstable from './Userstable'
 import { FloatingLabel, Form, Row, Col, Button } from 'react-bootstrap'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import axios from 'axios';
+import { API_BASE_URL } from '../../Apicongfig';
 
 
 function Users() {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [passwordVisible1, setPasswordVisible1] = useState(false);
+
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -16,6 +19,7 @@ function Users() {
     const togglePasswordVisibility1 = () => {
         setPasswordVisible1(!passwordVisible1);
       };
+
 
     return (
         <div className='users'>
@@ -132,7 +136,7 @@ function Users() {
                 </div>
                 <div className="row py-3">
                     <div className="col-md-12">
-                        <Userstable tableId='salesTable' initialMaxRow={10} />
+                        <Userstable tableId='salesTable'  initialMaxRow={10} />
                     </div>
                 </div>
             </div>
