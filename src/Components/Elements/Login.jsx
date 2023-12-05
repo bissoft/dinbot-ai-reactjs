@@ -4,18 +4,67 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { API_BASE_URL } from "../../Apicongfig";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 function Login({ onLogin }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
   
-  const handleLoginSubmit = async (event) => {
-    event.preventDefault();
-    console.log("i am clicked")
-    navigate('/dashboard')
-  };
+// const [formData,setFormData]=useState({
+//   email:'',
+//   password:''
+// })
+
+const handleChange = (e) => {
+  // Use e.target.name as the key to dynamically update the state
+  const { name, value } = e.target;
+  if (name === 'email') {
+    setEmail(value);
+  } else if (name === 'password') {
+    setPassword(value);
+  }
+};
+
+
+const handleLoginSubmit = async (event) => {
+  event.preventDefault();
+  try {
+    const response = await axios.post(`${API_BASE_URL}/login`, {
+      email: email,
+      password: password,
+    }, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // 'Authorization': `Bearer ${token}`
+      },
+    });
+
+    if (response) {
+      console.log(response.data.jwt)
+      // Assuming the JWT is provided in the response as "jwt"
+      const jwtToken = response.data.jwt;
+
+      // Save the token to sessionStorage or localStorage
+      sessionStorage.setItem('token', jwtToken);
+
+      // Perform any other actions you need, such as redirecting to another page
+      // console.log("JWT Token:", jwtToken);
+      onLogin()
+      navigate('/dashboard')
+    } else {
+      // Handle login failure with an error message
+      toast.error("Login failed");
+    }
+  } catch (error) {
+    // Handle other errors (e.g., network issues)
+    toast.error("An error occurred during login");
+  }
+};
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -43,9 +92,9 @@ function Login({ onLogin }) {
                       label="Email"
                       className="mb-3 title-label"
                     >
-                      <Form.Control type="email" placeholder="" />
+                      <Form.Control type="email" name='email' value={email} onChange={handleChange} placeholder="" />
                     </FloatingLabel>
-                    <div >
+                    <div>
                       <FloatingLabel
                         controlId="floatingInput"
                         label="Password"
@@ -54,8 +103,9 @@ function Login({ onLogin }) {
                         <Form.Control
                           type={passwordVisible ? 'text' : 'password'}
                           placeholder="Enter password"
+                          name="password"
                           value={password}
-                          onChange={(e) => setPassword(e.target.value)}
+                          onChange={handleChange}
                         />
                       </FloatingLabel>
                       <Button
@@ -67,13 +117,12 @@ function Login({ onLogin }) {
                       </Button>
                     </div>
                   </Form>
-
                     <Button type="submit" className="btn loginbtn w-100 py-3" style={{border:'none'}}
                     // onKeyDown={(e)=>handleKeyDown(e)}
+                    // onClick={handleLoginSubmit}
                     >
                       Sign In
                     </Button> 
-                 
                   <div className="mt-3 text-center">
                     <span>Don't have an account? <Link to='/signup'>Sign Up</Link> </span>
                   </div>

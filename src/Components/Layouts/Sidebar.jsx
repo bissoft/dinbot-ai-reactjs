@@ -46,11 +46,11 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
   //Logout API
   const handleLogout = async () => {
     try {
-      // const response
+    // const response
 
-      if (Response.ok) navigate("/");
+    if (Response.ok) navigate("/");
     } catch (error) {
-      console.error("Logout failed: ", error);
+    console.error("Logout failed: ", error);
     }
   };
   return (
@@ -417,6 +417,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
           {
             <NavLink
               className="nav-link"
+              to=''
               activeClassName="active"
               activeStyle={{ color: "#069AF3" }}
             >
