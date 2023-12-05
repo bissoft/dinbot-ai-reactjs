@@ -13,14 +13,8 @@ function Login({ onLogin }) {
   const navigate = useNavigate();
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  
-// const [formData,setFormData]=useState({
-//   email:'',
-//   password:''
-// })
 
 const handleChange = (e) => {
-  // Use e.target.name as the key to dynamically update the state
   const { name, value } = e.target;
   if (name === 'email') {
     setEmail(value);
@@ -28,7 +22,6 @@ const handleChange = (e) => {
     setPassword(value);
   }
 };
-
 
 const handleLoginSubmit = async (event) => {
   event.preventDefault();
@@ -43,18 +36,14 @@ const handleLoginSubmit = async (event) => {
         // 'Authorization': `Bearer ${token}`
       },
     });
-
     if (response) {
-      console.log(response.data.jwt)
+      console.log(response.data.token)
       // Assuming the JWT is provided in the response as "jwt"
-      const jwtToken = response.data.jwt;
-
+      const token = response.data.token;
       // Save the token to sessionStorage or localStorage
-      sessionStorage.setItem('token', jwtToken);
-
-      // Perform any other actions you need, such as redirecting to another page
-      // console.log("JWT Token:", jwtToken);
+      sessionStorage.setItem('token', token);
       onLogin()
+      toast.success("Login Successfully");
       navigate('/dashboard')
     } else {
       // Handle login failure with an error message

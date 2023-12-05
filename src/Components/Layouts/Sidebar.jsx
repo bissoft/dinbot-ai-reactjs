@@ -9,8 +9,10 @@ import { MdInsertChartOutlined } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
+import { on } from "events";
+import { toast } from "react-toastify";
 
-function Sidebar({ isSidebarOpen, toggleSidebar }) {
+function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthenticated}) {
   const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
@@ -23,35 +25,12 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
     setSubNavVisible(!isSubNavVisible);
   };
 
-  const logoutUser = async (userId) => {
-    // try {
-    //   const response = await fetch('http://localhost:5000/logout', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ userId }),
-    //   });
-    //   if (response.ok) {
-    //     console.log('User logged out successfully');
-    //   } else {
-    //     const errorData = await response.json();
-    //     console.error('Logout failed:', errorData.error);
-    //   }
-    // } catch (error) {
-    //   console.error('Error during logout:', error);
-    // }
-  };
 
-  //Logout API
   const handleLogout = async () => {
-    try {
-    // const response
-
-    if (Response.ok) navigate("/");
-    } catch (error) {
-    console.error("Logout failed: ", error);
-    }
+    localStorage.removeItem("isSignedIn")
+    sessionStorage.clear()
+    toast.success("Logged out Successfully")
+    window.location.reload(true);
   };
   return (
     <div

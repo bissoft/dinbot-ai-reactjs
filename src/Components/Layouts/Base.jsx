@@ -11,10 +11,10 @@ function Base(props) {
   return (
     <div className="dashboard-container">
       <div className="sidebar-container"> 
-        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} onRemove={props.removeLogo}/>
+        <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} />
       </div>
       <div className={`main-content ${isSidebarOpen ? "" : "closed-sidebar"}`}>
-       <Header isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} onRemove={props.removeLogo}/>
+       <Header isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} />
         <Outlet/>
       </div>
     </div>

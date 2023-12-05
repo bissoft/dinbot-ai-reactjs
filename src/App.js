@@ -25,19 +25,14 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(() => {
     return localStorage.getItem('isSignedIn') === 'true';
   });
-
-  const [removeLogo,setRemoveLogo] = useState(false)
-
   const signin = () => {
     setIsSignedIn(true);
-    setRemoveLogo(true)
   };
 
   const signout = () => {
     setIsSignedIn(false);
-    setRemoveLogo(false)
     localStorage.removeItem("isSignedIn");
-    // navigate("/");
+    sessionStorage.clear()
   };
 
   useEffect(() => {
@@ -49,7 +44,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Login onLogin={signin}/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route element={<Base isAuthenticated={isSignedIn} onLogout={signout} onLogin={signin} onRemove={removeLogo}/>} >
+        <Route element={<Base isAuthenticated={isSignedIn} onLogout={signout} onLogin={signin} />} >
           <Route path="/dashboard" element={ <PrivateRoute isSignedIn={isSignedIn}> <Dashboard onLogout={signout} /></PrivateRoute>} />
           <Route path="/dinemenu" element={ <PrivateRoute isSignedIn={isSignedIn}> <Dinemenu onLogout={signout} /></PrivateRoute>} />
           <Route path="/pos" element={ <PrivateRoute isSignedIn={isSignedIn}> <Pos onLogout={signout} /></PrivateRoute>} />
