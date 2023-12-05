@@ -8,10 +8,10 @@ function Base(props) {
   return (
     <div className="dashboard-container">
       <div className="sidebar-container"> 
-        <Sidebar />
+        <Sidebar isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} onRemove={props.removeLogo}/>
       </div>
       <div className={`main-content`}>
-       <Header/>
+       <Header isAuthenticated={props.isSignedIn} onLogout={props.signout} onLogin={props.signin} onRemove={props.removeLogo}/>
         <Outlet/>
       </div>
     </div>
