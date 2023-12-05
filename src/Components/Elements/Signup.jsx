@@ -29,6 +29,10 @@ function Signup() {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    if(formData.password !== formData.password_confirmation){
+      toast.error("Password does not matched")
+      return;
+    }
     try {
       const response = await axios.post(`${API_BASE_URL}/register`, {
         name:formData.name,
@@ -45,14 +49,11 @@ function Signup() {
   
       if (response) {
         console.log("signup response",response)
-        // console.log(response.data.jwt)
-        // // Assuming the JWT is provided in the response as "jwt"
-        // const jwtToken = response.data.jwt;
-        //   // Save the token to sessionStorage or localStorage
-        // sessionStorage.setItem('token', jwtToken);
-  
-        // Perform any other actions you need, such as redirecting to another page
-        // console.log("JWT Token:", jwtToken);
+        console.log(response.data.token)
+        const token = response.data.token;
+        sessionStorage.setItem('token', token);
+        console.log("JWT Token:", token);
+        toast.success("SignUp Successfully")
         navigate('/')
       } else {
         // Handle login failure with an error message
@@ -60,7 +61,8 @@ function Signup() {
       }
     } catch (error) {
       // Handle other errors (e.g., network issues)
-      toast.error("An error occurred during login");
+      console.log(error.response.data)
+      toast.error(error.response.data.message);
     }
   };
   

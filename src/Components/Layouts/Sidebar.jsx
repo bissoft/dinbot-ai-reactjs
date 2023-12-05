@@ -9,9 +9,10 @@ import { MdInsertChartOutlined } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
-import { API_BASE_URL } from "../../Apicongfig";
-import axios from "axios";
-function Sidebar({ isSidebarOpen, toggleSidebar }) {
+import { on } from "events";
+import { toast } from "react-toastify";
+
+function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthenticated}) {
   const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
@@ -24,33 +25,36 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
     setSubNavVisible(!isSubNavVisible);
   };
 
-  // const logoutUser = async () => {
-  //   try {
-  //     const token = sessionStorage.getItem("token");
-  //     const response = await axios.post(
-  //       `${API_BASE_URL}/logout`,
-      
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
+  const logoutUser = async (userId) => {
+    // try {
+    //   const response = await fetch('http://localhost:5000/logout', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ userId }),
+    //   });
+    //   if (response.ok) {
+    //     console.log('User logged out successfully');
+    //   } else {
+    //     const errorData = await response.json();
+    //     console.error('Logout failed:', errorData.error);
+    //   }
+    // } catch (error) {
+    //   console.error('Error during logout:', error);
+    // }
+  };
 
-  //     if (response) {
-  //       console.log(response);
-  //       // sessionStorage.clear();
-  //       // navigate("/");
-  //     } else {
-  //       const errorData = response.data;
-  //       console.error("Logout failed:", errorData.error);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during logout:", error);
-  //   }
-  // };
+  //Logout API
+  const handleLogout = async () => {
+    try {
+    // const response
 
+    if (Response.ok) navigate("/");
+    } catch (error) {
+    console.error("Logout failed: ", error);
+    }
+  };
   return (
     <div
       className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}
