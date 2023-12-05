@@ -25,12 +25,35 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
     setSubNavVisible(!isSubNavVisible);
   };
 
+  const logoutUser = async (userId) => {
+    // try {
+    //   const response = await fetch('http://localhost:5000/logout', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ userId }),
+    //   });
+    //   if (response.ok) {
+    //     console.log('User logged out successfully');
+    //   } else {
+    //     const errorData = await response.json();
+    //     console.error('Logout failed:', errorData.error);
+    //   }
+    // } catch (error) {
+    //   console.error('Error during logout:', error);
+    // }
+  };
 
+  //Logout API
   const handleLogout = async () => {
-    localStorage.removeItem("isSignedIn")
-    sessionStorage.clear()
-    toast.success("Logged out Successfully")
-    window.location.reload(true);
+    try {
+    // const response
+
+    if (Response.ok) navigate("/");
+    } catch (error) {
+    console.error("Logout failed: ", error);
+    }
   };
   return (
     <div
@@ -402,7 +425,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                onClick={handleLogout}
+                // onClick={logoutUser}
               >
                 <img
                   src="/Assets/logout-icon.svg"
