@@ -7,28 +7,31 @@ const Suggestions = ({ activeTab }) => {
   console.log("suggestions-page,active tab is: ", activeTab);
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 6,
+      partialVisibilityGutter: 50,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
+      partialVisibilityGutter: 40,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
+      partialVisibilityGutter: 30,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
+      partialVisibilityGutter: 30,
     },
   };
 
   return (
     <div className="suggestions">
       <h5>Improve Pricing</h5>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} partialVisbile={true}>
         <div className="slider">
           <Card className="food card p-2 mb-3">
             <Card.Img
@@ -169,7 +172,7 @@ const Suggestions = ({ activeTab }) => {
         </div>
       </Carousel>
       <h5>Improve Spices</h5>
-      <Carousel responsive={responsive}>
+      <Carousel responsive={responsive} partialVisbile={true}>
         <div className="slider">
           <Card className="food card p-2 mb-3">
             <Card.Img

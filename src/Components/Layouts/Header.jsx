@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
+  const handleImg = () => {
+    navigate("/profile");
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
-    <div className="header">
+    <div className={` ${scrolled ? 'scrolled' : 'header'}`}>
       <div className="container-fluid py-2 ">
         <div className=" d-flex justify-content-between">
           <div className=" d-flex search">
@@ -38,10 +59,13 @@ function Header() {
                 aria-expanded="false"
               >
                 &nbsp;
-                <Link to="/profile">
-                  <img src="/Assets/profile.png" alt="not found" width={40} />{" "}
-                </Link>
-                  &nbsp;
+                <img
+                  src="/Assets/profile.png"
+                  alt="not found"
+                  width={40}
+                  onClick={handleImg}
+                />{" "}
+                &nbsp;
               </button>
               <ul
                 className="dropdown-menu"
