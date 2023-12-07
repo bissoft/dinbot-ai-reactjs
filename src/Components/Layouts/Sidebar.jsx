@@ -29,7 +29,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
   //     const token = sessionStorage.getItem("token");
   //     const response = await axios.post(
   //       `${API_BASE_URL}/logout`,
-      
+
   //       {
   //         headers: {
   //           "Content-Type": "application/json",
@@ -384,62 +384,64 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
             </Dropdown.Menu>
           </Dropdown>
 
-          {
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/settings"
-              activeStyle={{ color: "#069AF3" }}
-              style={{ marginTop: "8rem" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+          <div style={{ position: "absolute", bottom: "0" }}>
+            {
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/settings"
+                activeStyle={{ color: "#069AF3" }}
+                // style={{ marginTop: "8rem" }}
               >
-                <img
-                  src="/Assets/setting-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                />
-
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
+                <button
+                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
                 >
-                  Settings
-                </span>
-              </button>
-            </NavLink>
-          }
-          {
-            <NavLink
-              className="nav-link"
-              to=''
-              activeClassName="active"
-              activeStyle={{ color: "#069AF3" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                // onClick={logoutUser}
+                  <img
+                    src="/Assets/setting-icon.svg"
+                    alt="dashboard"
+                    width={isSidebarOpen ? "22px" : "25px"}
+                  />
+
+                  <span
+                    style={{
+                      display: isSidebarOpen ? "block" : "none",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Settings
+                  </span>
+                </button>
+              </NavLink>
+            }
+            {
+              <NavLink
+                className="nav-link"
+                to=""
+                activeClassName="active"
+                activeStyle={{ color: "#069AF3" }}
               >
-                <img
-                  src="/Assets/logout-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                />
-
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
+                <button
+                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                  // onClick={logoutUser}
                 >
-                  Logout
-                </span>
-              </button>
-            </NavLink>
-          }
+                  <img
+                    src="/Assets/logout-icon.svg"
+                    alt="dashboard"
+                    width={isSidebarOpen ? "22px" : "25px"}
+                  />
+
+                  <span
+                    style={{
+                      display: isSidebarOpen ? "block" : "none",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Logout
+                  </span>
+                </button>
+              </NavLink>
+            }
+          </div>
         </div>
       </div>
     </div>
