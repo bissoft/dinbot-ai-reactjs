@@ -3,11 +3,40 @@ import Userstable from "./Userstable";
 import { FloatingLabel, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { API_BASE_URL } from "../../Apicongfig";
+import { toast } from "react-toastify";
 
 function Roles() {
-
     const [roles,setRoles] = useState([])
-    useEffect(()=>{
+    const [permission,setPermission] = useState([])
+    const [isModalOpen,setIsModalOpen] = useState(false)
+    const [checkedPermissions, setCheckedPermissions] = useState({});
+
+    const [formData, setFormData] = useState({
+      name: '',
+     
+    });
+    const handleInputChange = (e) => {
+      const { name, type, checked, value } = e.target;
+      
+      if (type === 'checkbox') {
+        setCheckedPermissions((prevPermissions) => ({
+          ...prevPermissions,
+          [value]: checked,
+        }));
+      } else {
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+      }
+    };
+
+    console.log('Role Form Data',formData)
+    const handleModal=()=>{
+      console.log('i am clicked')
+      setIsModalOpen(!isModalOpen)
+    }
+    
         const getAllRoles = async () => {
         try {
           const token = sessionStorage.getItem("token");
@@ -35,9 +64,80 @@ function Roles() {
           console.error("Error during logout:", error);
         }
       };
-    
+      useEffect(()=>{
     getAllRoles()
     },[])
+    const handleRolesSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        const checkedPermissionIds = Object.entries(checkedPermissions)
+        .filter(([_, checked]) => checked)
+        .map(([id]) => id);
+
+        console.log(checkedPermissionIds)
+        const token = sessionStorage.getItem('token');
+        const response = await axios.post(
+          `${API_BASE_URL}/role`,
+          {
+            name: formData.name,
+            permissions:checkedPermissionIds,
+          },
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json', // Update Content-Type
+              'Authorization': `Bearer ${token}`,
+            },
+          }
+        );
+        if (response) {
+          console.log(response);
+          const newRole = {
+            id:response.data.data.id,
+            name:response.data.data.name
+          }
+          // const newPermissionName = respon;
+          setRoles((prevRole) => [...prevRole, newRole]);
+          toast.success("Create Permission Successfully");
+          handleModal();
+          setFormData({})
+          setCheckedPermissions({})
+          
+        } else {
+          // Handle create permission failure with an error message
+          toast.error("Create Permission failed");
+        }
+      } catch (error) {
+        // Handle other errors (e.g., network issues)
+        console.error("An error occurred during create permission:", error);
+        toast.error("An error occurred during create permission");
+      }
+    };
+
+    const getAllPermission = async () => {
+      handleModal()
+      try {
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(
+          `${API_BASE_URL}/permission`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response.status === 200) {
+          console.log('roles',response.data.data);
+          setPermission(response.data.data);
+        } else {
+          const errorData = response.data;
+          console.error("Fetching permissions failed:", errorData.error);
+        }
+      } catch (error) {
+        console.error("Error during fetching permissions:", error);
+      }
+    };
   return (
     <div className="users">
       <div className="container-fluid py-3 ">
@@ -49,36 +149,31 @@ function Roles() {
             <div>
               <button
                 type="button"
-                class="btn modal-btn"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
+                class="btn modal-btn"     
+                onClick={getAllPermission}         
               >
                 Create Role
               </button>
             </div>
           </div>
         </div>
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
+        {isModalOpen && (
+          <div
+          className="modal-overlay"
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">
                   Create New Role
                 </h5>
                 <button
                   type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
+                  className="btn-close"
+                  onClick={handleModal}
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <Form>
                   <Row>
                     <Col md={12}>
@@ -87,12 +182,28 @@ function Roles() {
                         label="Name"
                         className="mb-3 title-label"
                       >
-                        <Form.Control type="text" placeholder="First Name" />
+                        <Form.Control type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="First Name" />
                       </FloatingLabel>
                     </Col>
                     <h6>Permissions :</h6>
                     <Col md={12}>
-                      <Form.Group className="mb-3" id="formGridCheckbox">
+                    <Form.Group className="mb-3" id="formGridCheckbox">
+                    {Object.values(permission).map((per) => (
+  <Form.Check
+  key={per.id}
+  className="d-inline-flex w-25"
+  type="checkbox"
+  label={per.name}
+  name="permissions"
+  value={per.id}
+  checked={checkedPermissions[per.id] || false}
+  onChange={handleInputChange}
+/>
+
+))}
+
+              </Form.Group>
+                      {/* <Form.Group className="mb-3" id="formGridCheckbox">
                         <Form.Check type="checkbox" label="role-list" />
                         <Form.Check type="checkbox" label="role-create" />
                         <Form.Check type="checkbox" label="role-edit" />
@@ -102,22 +213,23 @@ function Roles() {
                         <Form.Check type="checkbox" label="list-project" />
                         <Form.Check type="checkbox" label="delete-project" />
                         <Form.Check type="checkbox" label="update-project" />
-                      </Form.Group>
+                      </Form.Group> */}
                     </Col>
                   </Row>
                 </Form>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary" onClick={handleRolesSubmit}>
                   Save
                 </button>
               </div>
             </div>
           </div>
         </div>
+        )}
         <div className="row py-3">
           <div className="col-md-12">
-            <Userstable tableId="salesTable" tableData={roles} initialMaxRow={10} />
+            <Userstable tableId="role" tableData={roles} initialMaxRow={10} myUserFunction={getAllRoles} tableHeader={['#','Role','Permission','Action']}/>
           </div>
         </div>
       </div>

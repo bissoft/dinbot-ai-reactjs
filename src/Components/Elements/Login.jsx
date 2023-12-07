@@ -40,8 +40,7 @@ const handleLoginSubmit = async (event) => {
       console.log(response.data.token)
       console.log(response.data.token)
       // Assuming the JWT is provided in the response as "jwt"
-      const token = response.data.jwt;
-
+      const token = response.data.token;
       // Save the token to sessionStorage or localStorage
       sessionStorage.setItem('token', token);
       onLogin()
