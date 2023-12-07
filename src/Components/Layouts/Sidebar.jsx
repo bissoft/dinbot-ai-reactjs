@@ -12,7 +12,13 @@ import { Dropdown } from "react-bootstrap";
 import { on } from "events";
 import { toast } from "react-toastify";
 
-function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthenticated}) {
+function Sidebar({
+  isSidebarOpen,
+  toggleSidebar,
+  onLogin,
+  onLogout,
+  isAuthenticated,
+}) {
   const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
@@ -21,11 +27,10 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
     setSubNavVisible(!isSubNavVisible);
   };
 
-  
   const logoutUser = async () => {
-    localStorage.removeItem('isSignedIn')
-   sessionStorage.clear()
-   window.location.reload(true)
+    localStorage.removeItem("isSignedIn");
+    sessionStorage.clear();
+    window.location.reload(true);
   };
   return (
     <div
@@ -364,15 +369,14 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to="/settings"
+              to="/subscription-packages"
               activeStyle={{ color: "#069AF3" }}
-              style={{ marginTop: "8rem" }}
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
               >
                 <img
-                  src="/Assets/setting-icon.svg"
+                  src="/Assets/analytic-icon.svg"
                   alt="dashboard"
                   width={isSidebarOpen ? "22px" : "25px"}
                 />
@@ -383,7 +387,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
                     marginLeft: "10px",
                   }}
                 >
-                  Settings
+                  Subscription Packages
                 </span>
               </button>
             </NavLink>
@@ -391,16 +395,15 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
           {
             <NavLink
               className="nav-link"
-              to=''
               activeClassName="active"
+              to="/subscription-services"
               activeStyle={{ color: "#069AF3" }}
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                onClick={logoutUser}
               >
                 <img
-                  src="/Assets/logout-icon.svg"
+                  src="/Assets/analytic-icon.svg"
                   alt="dashboard"
                   width={isSidebarOpen ? "22px" : "25px"}
                 />
@@ -411,11 +414,68 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
                     marginLeft: "10px",
                   }}
                 >
-                  Logout
+                  Subscription Services
                 </span>
               </button>
             </NavLink>
           }
+          <div style={{ position: "absolute", bottom: "0" }}>
+            {
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/settings"
+                activeStyle={{ color: "#069AF3" }}
+              >
+                <button
+                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                >
+                  <img
+                    src="/Assets/setting-icon.svg"
+                    alt="dashboard"
+                    width={isSidebarOpen ? "22px" : "25px"}
+                  />
+
+                  <span
+                    style={{
+                      display: isSidebarOpen ? "block" : "none",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Settings
+                  </span>
+                </button>
+              </NavLink>
+            }
+            {
+              <NavLink
+                className="nav-link"
+                to=""
+                activeClassName="active"
+                activeStyle={{ color: "#069AF3" }}
+              >
+                <button
+                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                  // onClick={logoutUser}
+                >
+                  <img
+                    src="/Assets/logout-icon.svg"
+                    alt="dashboard"
+                    width={isSidebarOpen ? "22px" : "25px"}
+                  />
+
+                  <span
+                    style={{
+                      display: isSidebarOpen ? "block" : "none",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Logout
+                  </span>
+                </button>
+              </NavLink>
+            }
+          </div>
         </div>
       </div>
     </div>
