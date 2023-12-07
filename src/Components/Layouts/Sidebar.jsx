@@ -9,48 +9,29 @@ import { MdInsertChartOutlined } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
-import { API_BASE_URL } from "../../Apicongfig";
-import axios from "axios";
-function Sidebar({ isSidebarOpen, toggleSidebar }) {
+import { on } from "events";
+import { toast } from "react-toastify";
+
+function Sidebar({
+  isSidebarOpen,
+  toggleSidebar,
+  onLogin,
+  onLogout,
+  isAuthenticated,
+}) {
   const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
-
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!isSidebarOpen);
-  // };
 
   const toggleSubNav = () => {
     setSubNavVisible(!isSubNavVisible);
   };
 
-  // const logoutUser = async () => {
-  //   try {
-  //     const token = sessionStorage.getItem("token");
-  //     const response = await axios.post(
-  //       `${API_BASE_URL}/logout`,
-
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     if (response) {
-  //       console.log(response);
-  //       // sessionStorage.clear();
-  //       // navigate("/");
-  //     } else {
-  //       const errorData = response.data;
-  //       console.error("Logout failed:", errorData.error);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during logout:", error);
-  //   }
-  // };
-
+  const logoutUser = async () => {
+    localStorage.removeItem("isSignedIn");
+    sessionStorage.clear();
+    window.location.reload(true);
+  };
   return (
     <div
       className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}
@@ -384,6 +365,60 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
             </Dropdown.Menu>
           </Dropdown>
 
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-packages"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Packages
+                </span>
+              </button>
+            </NavLink>
+          }
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-services"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Services
+                </span>
+              </button>
+            </NavLink>
+          }
           <div style={{ position: "absolute", bottom: "0" }}>
             {
               <NavLink
@@ -391,7 +426,6 @@ function Sidebar({ isSidebarOpen, toggleSidebar }) {
                 activeClassName="active"
                 to="/settings"
                 activeStyle={{ color: "#069AF3" }}
-                // style={{ marginTop: "8rem" }}
               >
                 <button
                   style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}

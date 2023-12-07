@@ -19,13 +19,13 @@ function Header() {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
-    <div className={` ${scrolled ? 'scrolled' : 'header'}`}>
+    <div className={` ${scrolled ? "scrolled" : "header"}`}>
       <div className="container-fluid py-2 ">
         <div className=" d-flex justify-content-between">
           <div className=" d-flex search">
@@ -50,23 +50,24 @@ function Header() {
                 <span className="administrator">Administrator</span>
               </div>
             </div>
-            <div className="dropdown">
+            <div>
+              &nbsp;
+              <img
+                src="/Assets/profile.png"
+                alt="not found"
+                width={40}
+                onClick={handleImg}
+              />{" "}
+              &nbsp;
+            </div>
+            <div className="dropdown pt-2">
               <button
                 className="drop-btn dropdown-toggle "
                 type="button"
                 id="dropdownMenuButton1"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-              >
-                &nbsp;
-                <img
-                  src="/Assets/profile.png"
-                  alt="not found"
-                  width={40}
-                  onClick={handleImg}
-                />{" "}
-                &nbsp;
-              </button>
+              ></button>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton1"
