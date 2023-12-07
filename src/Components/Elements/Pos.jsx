@@ -28,14 +28,14 @@ function Pos() {
                 eventKey="Most Selling"
                 title="Most Selling"
               >
-                <FoodTable tableId="most" initialMaxRow={10} />
+                <FoodTable tableId="most" initialMaxRow={7} />
               </Tab>
               <Tab
                 className="tabs"
                 eventKey="Less Selling"
                 title="Less Selling"
               >
-                <FoodTable tableId="less" initialMaxRow={10} />
+                <FoodTable tableId="less" initialMaxRow={5} />
               </Tab>
             </Tabs>
           </div>

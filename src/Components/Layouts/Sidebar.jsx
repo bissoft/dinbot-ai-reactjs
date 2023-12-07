@@ -17,43 +17,15 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
-  // const toggleSidebar = () => {
-  //   setSidebarOpen(!isSidebarOpen);
-  // };
-
   const toggleSubNav = () => {
     setSubNavVisible(!isSubNavVisible);
   };
 
-  const logoutUser = async (userId) => {
-    // try {
-    //   const response = await fetch('http://localhost:5000/logout', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ userId }),
-    //   });
-    //   if (response.ok) {
-    //     console.log('User logged out successfully');
-    //   } else {
-    //     const errorData = await response.json();
-    //     console.error('Logout failed:', errorData.error);
-    //   }
-    // } catch (error) {
-    //   console.error('Error during logout:', error);
-    // }
-  };
-
-  //Logout API
-  const handleLogout = async () => {
-    try {
-    // const response
-
-    if (Response.ok) navigate("/");
-    } catch (error) {
-    console.error("Logout failed: ", error);
-    }
+  
+  const logoutUser = async () => {
+    localStorage.removeItem('isSignedIn')
+   sessionStorage.clear()
+   window.location.reload(true)
   };
   return (
     <div
@@ -425,7 +397,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
             >
               <button
                 style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                // onClick={logoutUser}
+                onClick={logoutUser}
               >
                 <img
                   src="/Assets/logout-icon.svg"

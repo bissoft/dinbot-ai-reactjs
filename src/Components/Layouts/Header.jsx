@@ -50,15 +50,8 @@ function Header() {
                 <span className="administrator">Administrator</span>
               </div>
             </div>
-            <div className="dropdown">
-              <button
-                className="drop-btn dropdown-toggle "
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                &nbsp;
+            <div>
+            &nbsp;
                 <img
                   src="/Assets/profile.png"
                   alt="not found"
@@ -66,6 +59,16 @@ function Header() {
                   onClick={handleImg}
                 />{" "}
                 &nbsp;
+            </div>
+            <div className="dropdown pt-2">
+              <button
+                className="drop-btn dropdown-toggle "
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                
               </button>
               <ul
                 className="dropdown-menu"
