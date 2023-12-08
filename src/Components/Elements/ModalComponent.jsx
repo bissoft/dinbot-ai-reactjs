@@ -66,7 +66,7 @@ const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
                   </FloatingLabel>
                 </Form>
               </div>
-              <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
+              <div className="col-md-5 justify-content-center d-flex align-items-center img-upload m-0 p-0">
                 <input
                   type="file"
                   className="form-control"

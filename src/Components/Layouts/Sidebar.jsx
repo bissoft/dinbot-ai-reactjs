@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { BsCardChecklist } from "react-icons/bs";
-import { BsBoxSeam } from "react-icons/bs";
-import { LuCalendarDays } from "react-icons/lu";
 import { MdInsertChartOutlined } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
-import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
-import { on } from "events";
-import { toast } from "react-toastify";
 
 function Sidebar({
   isSidebarOpen,
@@ -19,7 +11,6 @@ function Sidebar({
   onLogout,
   isAuthenticated,
 }) {
-  const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
@@ -406,6 +397,7 @@ function Sidebar({
                   src="/Assets/analytic-icon.svg"
                   alt="dashboard"
                   width={isSidebarOpen ? "22px" : "25px"}
+                  className="nav-img"
                 />
 
                 <span
@@ -456,7 +448,7 @@ function Sidebar({
               >
                 <button
                   style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                  // onClick={logoutUser}
+                  onClick={logoutUser}
                 >
                   <img
                     src="/Assets/logout-icon.svg"
