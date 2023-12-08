@@ -20,7 +20,6 @@ const SubscriptionPackages = () => {
     description: "",
     subscriptionServices: "",
   });
-  //   console.log("formData-->",formData)
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
 
@@ -149,9 +148,10 @@ const SubscriptionPackages = () => {
       price: data?.price,
       duration: data?.duration,
       stripe_product: data?.stripe_product,
-      description: data?.description,
+      description: data?.description, 
     });
   };
+
 
   useEffect(() => {
     getAllSubscriptionPackages();

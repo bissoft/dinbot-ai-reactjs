@@ -9,17 +9,22 @@ import Stats from "./Stats";
 import Scheduled from "./Scheduled";
 import ModalComponent from "./ModalComponent";
 import SuggestiosMenu from "./SuggestiosMenu";
+import BoostModal from "./BoostModal";
 
 function Socialmedia() {
   const [showModal, setShowModal] = useState(false);
+  const [showBoostModal, setShowBoostModal] = useState(false);
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
 
-  const handleSaveChanges = () => {
-    handleCloseModal(); // Close the modal after saving changes
-  };
+  const handleBoostModal = () => setShowBoostModal(true) ;console.log('open');
+  const handleCloseBoostModal = () => setShowBoostModal(false);
 
+  const handleSaveChanges = () => {
+    handleCloseModal();
+    handleCloseBoostModal();
+  };
   return (
     <>
       <div className="social-media">
@@ -59,7 +64,26 @@ function Socialmedia() {
               </div>
             </div>
             <div className="col-md-4 pt-4">
-              <SuggestiosMenu />
+              <SuggestiosMenu
+                heading="Suggestions"
+                subHeading="Add these post to gain Engagement"
+                btnText="Post"
+                onClick={handleShowModal}
+              />
+              <SuggestiosMenu
+                onClick={handleBoostModal}
+                className="pt-4"
+                heading="Boost"
+                subHeading="Boost these for better reach"
+                btnText="Boost"
+              />
+              {/* {showBoostModal && ( */}
+                <BoostModal
+                  showBoostModal={showBoostModal}
+                  handleClose={handleCloseBoostModal}
+                  handleSaveChanges={handleSaveChanges}
+                />
+              {/* )} */}
             </div>
           </div>
         </div>

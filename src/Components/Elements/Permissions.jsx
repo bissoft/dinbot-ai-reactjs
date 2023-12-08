@@ -35,6 +35,7 @@ function Permissions() {
       console.error("Error during fetching permissions:", error);
     }
   };
+  
   useEffect(() => {
     getAllPermission();
   }, []);

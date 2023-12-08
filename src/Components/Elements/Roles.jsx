@@ -124,7 +124,7 @@ function Roles() {
           Authorization: `Bearer ${token}`,
         },
       });
-      if (response.status === 200) {
+      if (response) {
         console.log("roles", response.data.data);
         setPermission(response.data.data);
       } else {
@@ -137,9 +137,10 @@ function Roles() {
   };
    
    const handleEditData = (data) => {
-    setPermission(data)
+    // setPermission(data)
     setFormData({ name: data.name });
   };
+
 
   return (
     <div className="users">
@@ -193,20 +194,7 @@ function Roles() {
                       <h6>Permissions :</h6>
                       <Col md={12}>
                         <Form.Group className="mb-3" id="formGridCheckbox">
-                          {Object.values(permission).map((per) => (
-                            <Form.Check
-                              key={per.id}
-                              className="d-inline-flex w-25"
-                              type="checkbox"
-                              label={per.name}
-                              name="permissions"
-                              value={per.id}
-                              checked={checkedPermissions[per.id] || false}
-                              onChange={handleInputChange}
-                              
-                            />
-                          ))}
-                           {/* {permission?.permissions?.map((per) => (
+                          {/* {Object.values(permission).map((per) => (
                             <Form.Check
                               key={per.id}
                               className="d-inline-flex w-25"
@@ -219,6 +207,19 @@ function Roles() {
                               
                             />
                           ))} */}
+                           {permission?.map((per) => (
+                            <Form.Check
+                              key={per.id}
+                              className="d-inline-flex w-25"
+                              type="checkbox"
+                              label={per.name}
+                              name="permissions"
+                              value={per.id}
+                              checked={checkedPermissions[per.id] || false}
+                              onChange={handleInputChange}
+                              
+                            />
+                          ))}
                         </Form.Group>
                         {/* <Form.Group className="mb-3" id="formGridCheckbox">
                         <Form.Check type="checkbox" label="role-list" />

@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { IoMdStar } from "react-icons/io";
 import cardData from "../Utils/Stats.json";
 import postData from "../Utils/Post.json";
+import SuggestiosMenu from "./SuggestiosMenu";
 
 const Stats = () => {
   return (

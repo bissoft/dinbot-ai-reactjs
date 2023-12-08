@@ -238,6 +238,61 @@ function Sidebar({
               </button>
             </NavLink>
           }
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-packages"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Packages
+                </span>
+              </button>
+            </NavLink>
+          }
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-services"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                  className="nav-img"
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Services
+                </span>
+              </button>
+            </NavLink>
+          }
           <Dropdown show={isSubNavVisible}>
             <Dropdown.Toggle
               activeClassName="active"
@@ -356,61 +411,7 @@ function Sidebar({
             </Dropdown.Menu>
           </Dropdown>
 
-          {
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/subscription-packages"
-              activeStyle={{ color: "#069AF3" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-              >
-                <img
-                  src="/Assets/analytic-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                />
-
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
-                >
-                  Subscription Packages
-                </span>
-              </button>
-            </NavLink>
-          }
-          {
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/subscription-services"
-              activeStyle={{ color: "#069AF3" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-              >
-                <img
-                  src="/Assets/analytic-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                  className="nav-img"
-                />
-
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
-                >
-                  Subscription Services
-                </span>
-              </button>
-            </NavLink>
-          }
+          
           <div style={{ position: "absolute", bottom: "0" }}>
             {
               <NavLink
