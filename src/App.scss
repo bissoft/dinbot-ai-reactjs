@@ -230,6 +230,15 @@ html {
       // z-index: 1000;
     }
   }
+  // .nav-img {
+  //   filter: grayscale(100%);
+  // }
+  
+  // .nav-link.active .nav-img,
+  // .nav-link:focus .nav-img {
+  //   filter: grayscale(0%) brightness(100%) hue-rotate(200deg) saturate(100%) brightness(150%);
+  // }
+  
 }
 
 // Header
@@ -1581,17 +1590,26 @@ html {
   }
 
   .upload-cta {
-    /* display: inline-table; */
-    height: 265px;
+    // /* display: inline-table; */
+    // height: 265px;
+    // width: 100%;
+    // cursor: pointer;
+    // /* padding-top: 70px; */
+    // line-height: 17px;
+    // margin-left: 15px;
+    // margin-top: 10px;
+    // background: white;
+    // font-size: 0.9em;
+    // border-radius: 10px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 324px;
+    height: 100% !important;
     width: 100%;
     cursor: pointer;
-    /* padding-top: 70px; */
-    line-height: 17px;
-    margin-left: 15px;
-    margin-top: 10px;
     background: white;
     font-size: 0.9em;
-    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1599,6 +1617,7 @@ html {
     // line-height: ;
     &.upload-preview {
       background-size: cover !important;
+      background-repeat: no-repeat !important;
       text-indent: -9000px;
       // border-style: solid;
     }
@@ -1630,6 +1649,9 @@ html {
     text-align: right;
     box-shadow: 6px 6px 54px 0px #0000000d;
     border: 1px solid #0d062d1f;
+    input{
+      font-size: 11px;
+    }
   }
   .checkbox-label {
     .form-check-input {

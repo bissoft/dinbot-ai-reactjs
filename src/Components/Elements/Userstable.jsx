@@ -130,7 +130,62 @@ function Userstable({
       } catch (error) {
         toast.error(error.response.data.message);
       }
-    } else {
+    }
+    else if (tableId === "subscription-package") {
+      editModal();
+      try {
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(
+          `${API_BASE_URL}/${tableId}/${id}`,
+
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response) {
+          console.log("get role by id", response.data.data);
+          handleEditData(response.data.data);
+          // toast.success(`${tableId} get Successfully`);
+        } else {
+          // Handle create permission failure with an error message
+          toast.error("get Role failed");
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    } 
+    else if (tableId === "subscription-service") {
+      editModal();
+      try {
+        const token = sessionStorage.getItem("token");
+        const response = await axios.get(
+          `${API_BASE_URL}/${tableId}/${id}`,
+
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (response) {
+          console.log("get role by id", response.data.data);
+          handleEditData(response.data.data);
+          // toast.success(`${tableId} get Successfully`);
+        } else {
+          // Handle create permission failure with an error message
+          toast.error("get Role failed");
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    } 
+    else {
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -195,7 +250,7 @@ function Userstable({
                     </div>
                   </td>
                 )}
-                {tableId === "subscriptionPackage" && (
+                {tableId === "subscription-package" && (
                   <>
                     <td>
                       <div className="food-title">{table.price}</div>
@@ -203,19 +258,19 @@ function Userstable({
                     <td>
                       <div className="food-title">{table.duration}</div>
                     </td>
-                    <td>
+                    {/* <td>
                       <div className="food-title">{table.status}</div>
-                    </td>
+                    </td> */}
                   </>
                 )}
-                {tableId === "subscriptionServices" && (
+                {tableId === "subscription-service" && (
                   <>
                     <td>
                       <div className="food-title">{table.description}</div>
                     </td>
-                    <td>
+                    {/* <td>
                       <div className="food-title">{table.status}</div>
-                    </td>
+                    </td> */}
                   </>
                 )}
                 <td>

@@ -8,7 +8,6 @@ import Userstable from "./Userstable";
 
 const SubscriptionPackages = () => {
   const [packages, setPackages] = useState([]);
-  console.log("MY PACKAGES", packages);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [subscription, setSubscription] = useState({});
   const [checkedSubscriptions, setCheckedSubscriptions] = useState({});
@@ -19,14 +18,14 @@ const SubscriptionPackages = () => {
     duration: "",
     stripe_product: "",
     description: "",
-    subScriptionServices: "",
+    subscriptionServices: "",
   });
   //   console.log("formData-->",formData)
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
 
     if (type === "checkbox") {
-      checkedSubscriptions((prevSubscription) => ({
+      setCheckedSubscriptions((prevSubscription) => ({
         ...prevSubscription,
         [value]: checked,
       }));
@@ -52,14 +51,14 @@ const SubscriptionPackages = () => {
       console.log(checkedSubscriptionsIds);
       const token = sessionStorage.getItem("token");
       const response = await axios.post(
-        `${API_BASE_URL}/role`,
+        `${API_BASE_URL}/subscription-package`,
         {
           name: formData.name,
           price: formData.price,
           stripe_product: formData.stripe_product,
           duration: formData.duration,
           description: formData.description,
-          subscription: checkedSubscriptionsIds,
+          subscriptionServices: checkedSubscriptionsIds,
         },
         {
           headers: {
@@ -102,7 +101,7 @@ const SubscriptionPackages = () => {
     handleModal();
     try {
       const token = sessionStorage.getItem("token");
-      const response = await axios.get(`${API_BASE_URL}/subsription-services`, {
+      const response = await axios.get(`${API_BASE_URL}/subscription-service`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -142,6 +141,16 @@ const SubscriptionPackages = () => {
     } catch (error) {
       console.error("Error during fetching Subscription Packages:", error);
     }
+  };
+
+  const handleEditData = (data) => {
+    setFormData({
+      name: data?.name,
+      price: data?.price,
+      duration: data?.duration,
+      stripe_product: data?.stripe_product,
+      description: data?.description,
+    });
   };
 
   useEffect(() => {
@@ -314,7 +323,7 @@ const SubscriptionPackages = () => {
                         >
                           <Form.Control
                             type="text"
-                            name="text"
+                            name="stripe_product"
                             value={formData.stripe_product}
                             onChange={handleChange}
                             placeholder="Stripe Product ID"
@@ -350,7 +359,7 @@ const SubscriptionPackages = () => {
                               className="d-inline-flex w-25"
                               type="checkbox"
                               label={sub.name}
-                              name="subScriptionServices"
+                              name="subscriptionServices"
                               value={sub.id}
                               checked={checkedSubscriptions[sub.id] || false}
                               onChange={handleChange}
@@ -378,7 +387,7 @@ const SubscriptionPackages = () => {
           <div className="col-md-12">
             {packages && (
               <Userstable
-                tableId="subscriptionPackage"
+                tableId="subscription-package"
                 initialMaxRow={myRows}
                 myUserFunction={getAllSubscriptionPackages}
                 tableData={packages}
@@ -387,11 +396,10 @@ const SubscriptionPackages = () => {
                   "Name",
                   "Price",
                   "Duration (months)",
-                  "Status",
                   "Actions",
                 ]}
                 editModal={handleModal}
-                // handleEditData={handleEditData}
+                handleEditData={handleEditData}
               />
             )}
           </div>

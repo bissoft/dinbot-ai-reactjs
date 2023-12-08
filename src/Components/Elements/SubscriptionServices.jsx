@@ -37,44 +37,46 @@ const SubscriptionServices = () => {
         {
           name: formData.name,
           description: formData.description,
-          //   status: formData.status,
+          // status: formData.status, // Consider if 'status' should be included
         },
         {
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json", // Update Content-Type
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      if (response) {
-        console.log("i am from new user creater", response);
+  
+      if (response.status === 201) {
+        console.log("response", response);
         const newService = {
           id: response.data.data.id,
           name: response.data.data.name,
           description: response.data.data.description,
-          //   status: response.data.data.status,
+          // status: response.data.data.status, 
         };
-        services((prevService) => [...prevService, newService]);
+  
+        setServices((prevServices) => [...prevServices, newService]);
+  
         toast.success("Create Service Successfully");
         setFormData({});
         handleModal();
       } else {
         toast.error("Create Services failed");
-        // console.log(error.response.data)
-        //   toast.error(error.response.data.message);
       }
     } catch (error) {
-      console.log(error.response);
-      toast.error(error.response.data.message);
+      console.error(error);
+      toast.error("An error occurred while creating the service");
     }
   };
+  
 
   const getAllServices = async () => {
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(
-        `${API_BASE_URL}/subscription-services`,
+        `${API_BASE_URL}/subscription-service`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -95,6 +97,10 @@ const SubscriptionServices = () => {
     } catch (error) {
       console.error("Error during fetching Subscription Services:", error);
     }
+  };
+
+  const handleEditData = (data) => {
+    setFormData({ name: data.name, });
   };
 
   useEffect(() => {
@@ -186,13 +192,13 @@ const SubscriptionServices = () => {
           <div className="col-md-12">
             {services && (
               <Userstable
-                tableId="subscriptionServices"
+                tableId="subscription-service"
                 initialMaxRow={myRows}
                 myUserFunction={getAllServices}
                 tableData={services}
-                tableHeader={["#", "Name", "Description", "Status", "Actions"]}
+                tableHeader={["#", "Name", "Description", "Actions"]}
                 editModal={handleModal}
-                // handleEditData={handleEditData}
+                handleEditData={handleEditData}
               />
             )}
           </div>
