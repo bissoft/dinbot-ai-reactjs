@@ -286,7 +286,7 @@ function Users() {
                 <div className="row py-3">
                     <div className="col-md-12">
                         {users && (
-                        <Userstable tableId='user' initialMaxRow={myRows} myUserFunction={getAllUsers} tableData={users} tableHeader={['#', 'Users', 'Action']} />
+                        <Userstable tableId='user' initialMaxRow={myRows} myModal={handleModal} myUserFunction={getAllUsers} tableData={users} tableHeader={['#', 'Users', 'Action']} />
                         )}
                     </div>
                 </div>

@@ -123,7 +123,7 @@ function Permissions() {
         ):""}
                 <div className="row py-3">
                     <div className="col-md-12">
-                        <Userstable tableId='permission' tableData={permission} myUserFunction={getAllPermission} initialMaxRow={myRow} tableHeader={['#','Role','Action']} />
+                        <Userstable tableId='permission' tableData={permission} myModal={handleModal} myUserFunction={getAllPermission} initialMaxRow={myRow} tableHeader={['#','Role','Action']} />
                     </div>
                 </div>
             </div>

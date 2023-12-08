@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { API_BASE_URL } from '../../Apicongfig';
 import axios from 'axios';
-function Userstable({ tableId, tableData, tableHeader ,myUserFunction }) {
+function Userstable({ tableId, tableData, tableHeader ,myUserFunction ,myModal}) {
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalRows, setTotalRows] = useState(0);
@@ -13,7 +13,7 @@ function Userstable({ tableId, tableData, tableHeader ,myUserFunction }) {
   const updateTableRows = () => {
     const table = document.getElementById(tableId || 'maintable-id');
     const rows = table.tBodies[0].rows;
-    const totalPages = Math.ceil(rows.length / maxRows);
+    // const totalPages = Math.ceil(rows.length / maxRows);
     setTotalRows(rows.length);
     let startIdx = (currentPage - 1) * maxRows;
     let endIdx = startIdx + maxRows;
@@ -74,6 +74,19 @@ function Userstable({ tableId, tableData, tableHeader ,myUserFunction }) {
     }
 
   }
+  const handleEdit = (tableId , id) =>{
+    console.log(`my tableId ${tableId} and my id ${id}`)
+    if(tableId==='user'){
+      myModal()
+    }
+    else if(tableId === 'role'){
+      myModal()
+    }
+    else{
+      myModal()
+    }
+
+  }
   return (
     <div className='food-table'>
       <div className="card px-2">
@@ -117,7 +130,7 @@ function Userstable({ tableId, tableData, tableHeader ,myUserFunction }) {
                   )}
                   <td>
                     <div className=' d-flex'>
-                      <button className='btn btn-secondary mx-1'>Edit</button>
+                      <button className='btn btn-secondary mx-1' onClick={() => handleEdit(tableId, table.id)}>Edit</button>
                       <button className='btn btn-danger mx-1' onClick={() => handleDelete(tableId, table.id)}>Delete</button></div>
                   </td>
                 </tr>

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { BsCardChecklist } from "react-icons/bs";
-import { BsBoxSeam } from "react-icons/bs";
-import { LuCalendarDays } from "react-icons/lu";
+// import { AiOutlineCalendar } from "react-icons/ai";
+// import { BsCardChecklist } from "react-icons/bs";
+// import { BsBoxSeam } from "react-icons/bs";
+// import { LuCalendarDays } from "react-icons/lu";
 import { MdInsertChartOutlined } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
-import { CiLogout } from "react-icons/ci";
+// import { CiSettings } from "react-icons/ci";
+// import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
-import { on } from "events";
-import { toast } from "react-toastify";
+// import { on } from "events";
+// import { toast } from "react-toastify";
 
 function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthenticated}) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
@@ -359,6 +359,9 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
               {/* Add more NavLink items as needed */}
             </Dropdown.Menu>
           </Dropdown>
+          <div style={{ position: "absolute", bottom: "0" }}>
+
+         
 
           {
             <NavLink
@@ -416,6 +419,7 @@ function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthent
               </button>
             </NavLink>
           }
+           </div>
         </div>
       </div>
     </div>
