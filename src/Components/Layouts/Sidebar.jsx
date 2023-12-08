@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { MdInsertChartOutlined } from "react-icons/md";
 import { Dropdown } from "react-bootstrap";
@@ -11,6 +11,7 @@ function Sidebar({
   onLogout,
   isAuthenticated,
 }) {
+  const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
@@ -410,69 +411,72 @@ function Sidebar({
               {/* Add more NavLink items as needed */}
             </Dropdown.Menu>
           </Dropdown>
-
-          
           <div style={{ position: "absolute", bottom: "0" }}>
-            {
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/settings"
-                activeStyle={{ color: "#069AF3" }}
-              >
-                <button
-                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+            <div style={{ position: "absolute", bottom: "0" }}>
+              {
+                <NavLink
+                  className="nav-link"
+                  activeClassName="active"
+                  to="/settings"
+                  activeStyle={{ color: "#069AF3" }}
                 >
-                  <img
-                    src="/Assets/setting-icon.svg"
-                    alt="dashboard"
-                    width={isSidebarOpen ? "22px" : "25px"}
-                  />
-
-                  <span
+                  <button
                     style={{
-                      display: isSidebarOpen ? "block" : "none",
-                      marginLeft: "10px",
+                      padding: isSidebarOpen ? "15px 30px" : "15px 20px",
                     }}
                   >
-                    Settings
-                  </span>
-                </button>
-              </NavLink>
-            }
-            {
-              <NavLink
-                className="nav-link"
-                to=""
-                activeClassName="active"
-                activeStyle={{ color: "#069AF3" }}
-              >
-                <button
-                  style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-                  onClick={logoutUser}
-                >
-                  <img
-                    src="/Assets/logout-icon.svg"
-                    alt="dashboard"
-                    width={isSidebarOpen ? "22px" : "25px"}
-                  />
+                    <img
+                      src="/Assets/setting-icon.svg"
+                      alt="dashboard"
+                      width={isSidebarOpen ? "22px" : "25px"}
+                    />
 
-                  <span
+                    <span
+                      style={{
+                        display: isSidebarOpen ? "block" : "none",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      Settings
+                    </span>
+                  </button>
+                </NavLink>
+              }
+              {
+                <NavLink
+                  className="nav-link"
+                  to=""
+                  activeClassName="active"
+                  activeStyle={{ color: "#069AF3" }}
+                >
+                  <button
                     style={{
-                      display: isSidebarOpen ? "block" : "none",
-                      marginLeft: "10px",
+                      padding: isSidebarOpen ? "15px 30px" : "15px 20px",
                     }}
+                    onClick={logoutUser}
                   >
-                    Logout
-                  </span>
-                </button>
-              </NavLink>
-            }
+                    <img
+                      src="/Assets/logout-icon.svg"
+                      alt="dashboard"
+                      width={isSidebarOpen ? "22px" : "25px"}
+                    />
+
+                    <span
+                      style={{
+                        display: isSidebarOpen ? "block" : "none",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      Logout
+                    </span>
+                  </button>
+                </NavLink>
+              }
+            </div>
           </div>
         </div>
-      </div>
+      </div>{" "}
     </div>
   );
 }
-
 export default Sidebar;
