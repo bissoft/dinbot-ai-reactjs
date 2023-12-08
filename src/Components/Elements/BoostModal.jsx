@@ -3,7 +3,23 @@ import { Button, Form, Modal } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FiUpload } from "react-icons/fi";
 
-const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
+const BoostModal = ({ showBoostModal, handleClose, handleSaveChanges }) => {
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+
+  const handleTagsChange = (event) => {
+    if (event.key === "Enter" && tagInput.trim() !== "") {
+      const newTag = tagInput.trim();
+      setTags([...tags, newTag]);
+      setTagInput(""); // Clear the input field after adding the tag
+    }
+  };
+
+  const removeTag = (indexToRemove) => {
+    const updatedTags = tags.filter((_, index) => index !== indexToRemove);
+    setTags(updatedTags);
+  };
+
   const [previewStyle, setPreviewStyle] = useState({});
   const loadFile = (event) => {
     setPreviewStyle({
@@ -16,12 +32,12 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
   return (
     <>
       <Modal
-        show={show}
+        show={showBoostModal}
         onHide={handleClose}
         className="modal-component modal-md"
       >
         <Modal.Header closeButton>
-          <Modal.Title className="modal-heading">Add Post</Modal.Title>
+          <Modal.Title className="modal-heading">Boost Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="container-fluid">
@@ -30,29 +46,29 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
                 <Form>
                   <FloatingLabel
                     controlId="floatingInput"
-                    label="Title"
+                    label="Enter Keywords"
                     className="mb-2 title-label"
                   >
                     <Form.Control
                       type="text"
-                      placeholder="American Caesar Salad"
+                      value={tagInput}
+                      onChange={(e) => setTagInput(e.target.value)}
+                      onKeyDown={handleTagsChange}
                     />
+                    <div>
+                      {tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="badge bg-primary me-2 mt-2"
+                          onClick={() => removeTag(index)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          {tag} &#x2715;
+                        </span>
+                      ))}
+                    </div>
                   </FloatingLabel>
-                
-                  <Form.Check
-                    className="mb-2 checkbox-label"
-                    type={"checkbox"}
-                    id={`default-checkbox`}
-                    label={`Schedule`}
-                  ></Form.Check>
-                  <FloatingLabel
-                    controlId="floatingTextarea2"
-                    label="Date"
-                    className="date-label mb-2"
-                    style={{fontSize:'12px'}}
-                  >
-                    <Form.Control type="date" />
-                  </FloatingLabel>
+                 
                   <FloatingLabel
                     controlId="floatingTextarea2"
                     label="Description"
@@ -66,7 +82,7 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
                   </FloatingLabel>
                 </Form>
               </div>
-              <div className="col-md-5 justify-content-center d-flex align-items-center img-upload m-0 p-0">
+              {/* <div className="col-md-5 justify-content-center d-flex align-items-center img-upload m-0 p-0">
                 <input
                   type="file"
                   className="form-control"
@@ -90,7 +106,7 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
                     </span>
                   )}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </Modal.Body>
@@ -107,4 +123,4 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
   );
 };
 
-export default ModalComponent;
+export default BoostModal;

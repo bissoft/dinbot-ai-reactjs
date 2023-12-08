@@ -26,6 +26,9 @@ const SubscriptionServices = () => {
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  const handleEditModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   //Add new Services API
   const handleServiceSubmit = async (event) => {
@@ -38,6 +41,49 @@ const SubscriptionServices = () => {
           name: formData.name,
           description: formData.description,
           // status: formData.status, // Consider if 'status' should be included
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+  
+      if (response.status === 201) {
+        console.log("response", response);
+        const newService = {
+          id: response.data.data.id,
+          name: response.data.data.name,
+          description: response.data.data.description,
+          // status: response.data.data.status, 
+        };
+  
+        setServices((prevServices) => [...prevServices, newService]);
+  
+        toast.success("Create Service Successfully");
+        setFormData({});
+        handleModal();
+      } else {
+        toast.error("Create Services failed");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while creating the service");
+    }
+  };
+
+  const handleUpdateService = async (event) => {
+    event.preventDefault();
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.put(
+        `${API_BASE_URL}/subscription-service`,
+        {
+          name: formData.name,
+          description: formData.description,
+          
         },
         {
           headers: {
@@ -100,7 +146,7 @@ const SubscriptionServices = () => {
   };
 
   const handleEditData = (data) => {
-    setFormData({ name: data.name, });
+    setFormData({ name: data?.name,description:data?.description});
   };
 
   useEffect(() => {
@@ -178,7 +224,7 @@ const SubscriptionServices = () => {
                 <div class="modal-footer">
                   <button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     onClick={handleServiceSubmit}
                   >
                     Save
@@ -197,8 +243,9 @@ const SubscriptionServices = () => {
                 myUserFunction={getAllServices}
                 tableData={services}
                 tableHeader={["#", "Name", "Description", "Actions"]}
-                editModal={handleModal}
+                editModal={handleEditModal}
                 handleEditData={handleEditData}
+                handleUpdateData={handleUpdateService}
               />
             )}
           </div>
