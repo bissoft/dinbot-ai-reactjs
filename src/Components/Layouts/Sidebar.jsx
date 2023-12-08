@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { MdInsertChartOutlined } from "react-icons/md";
+import { CiSettings } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 import { Dropdown } from "react-bootstrap";
+import { on } from "events";
+import { toast } from "react-toastify";
 
-function Sidebar({
-  isSidebarOpen,
-  toggleSidebar,
-  onLogin,
-  onLogout,
-  isAuthenticated,
-}) {
+function Sidebar({ isSidebarOpen, toggleSidebar , onLogin , onLogout , isAuthenticated}) {
+  const navigate = useNavigate();
   // const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [isSubNavVisible, setSubNavVisible] = useState(false);
 
@@ -238,6 +237,61 @@ function Sidebar({
               </button>
             </NavLink>
           }
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-packages"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Packages
+                </span>
+              </button>
+            </NavLink>
+          }
+          {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/subscription-services"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="dashboard"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                  className="nav-img"
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Subscription Services
+                </span>
+              </button>
+            </NavLink>
+          }
           <Dropdown show={isSubNavVisible}>
             <Dropdown.Toggle
               activeClassName="active"
@@ -355,62 +409,11 @@ function Sidebar({
               {/* Add more NavLink items as needed */}
             </Dropdown.Menu>
           </Dropdown>
+          <div style={{ position: "absolute", bottom: "0" }}>
 
-          {
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/subscription-packages"
-              activeStyle={{ color: "#069AF3" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-              >
-                <img
-                  src="/Assets/analytic-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                />
+         
 
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
-                >
-                  Subscription Packages
-                </span>
-              </button>
-            </NavLink>
-          }
-          {
-            <NavLink
-              className="nav-link"
-              activeClassName="active"
-              to="/subscription-services"
-              activeStyle={{ color: "#069AF3" }}
-            >
-              <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
-              >
-                <img
-                  src="/Assets/analytic-icon.svg"
-                  alt="dashboard"
-                  width={isSidebarOpen ? "22px" : "25px"}
-                  className="nav-img"
-                />
-
-                <span
-                  style={{
-                    display: isSidebarOpen ? "block" : "none",
-                    marginLeft: "10px",
-                  }}
-                >
-                  Subscription Services
-                </span>
-              </button>
-            </NavLink>
-          }
+          
           <div style={{ position: "absolute", bottom: "0" }}>
             {
               <NavLink
@@ -470,8 +473,7 @@ function Sidebar({
           </div>
         </div>
       </div>
-    </div>
+      </div> </div>
   );
 }
-
 export default Sidebar;
