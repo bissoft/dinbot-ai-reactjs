@@ -10,7 +10,8 @@ function Userstable({
   editModal,
   handleEditDataUser,
   handleEditData,
-  updateModalData
+  updateModalData,
+  handleEditCloseModal,
 }) {
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);

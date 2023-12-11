@@ -39,8 +39,6 @@ function Users() {
   // console.log("formData from user ", formData);
 
   const handleOpenModal = () => {
-    // console.log("i am clicked");
-    // setUpdateId('')
     setIsModalOpen(true);
   };
   const handleCloseModal = () => {
@@ -161,18 +159,16 @@ function Users() {
     }
   };
 
-  const handleEditData = (data ,id) => {
-    console.log('myUserData',data)
-    if (id ){
-      setFormData({ firstName: data.name,email:data.email,role_id:data.role_id});
-    }
+  const handleEditData = (data,updateId) => {
+    // if (updateId ){
+    //   setFormData({ firstName: data.name,email:data.email,role_id:data.role_id});
+    // }
   };
 
-console.log(formData)
+// console.log(formData)
   const myUpdateFunction=(myUserid)=>{
-    // console.log('id  from userTable in user',myUserid)
     setUpdateId(myUserid)
-    
+    // setFormData({ firstName: data.name,email:data.email,role_id:data.role_id});
   }
 
   const handleUserUpdate = async ()=>{
@@ -194,10 +190,10 @@ console.log(formData)
         // setUsers(response.data.data);
       } else {
         const errorData = response.data;
-        console.error("Logout failed:", errorData.error);
+        console.error("updated failed:", errorData.error);
       }
     } catch (error) {
-      console.error("Error during logout:", error);
+      console.error("Error during updating:", error);
     }
 
   }
@@ -391,6 +387,7 @@ console.log(formData)
                 tableData={users}
                 tableHeader={["#", "Users", "Action"]}
                 editModal={handleOpenModal}
+                handleEditCloseModal={handleCloseModal}
                 handleEditDataUser={handleEditData}
                 updateModalData={myUpdateFunction}
               />
