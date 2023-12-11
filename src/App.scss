@@ -233,12 +233,11 @@ html {
   // .nav-img {
   //   filter: grayscale(100%);
   // }
-  
+
   // .nav-link.active .nav-img,
   // .nav-link:focus .nav-img {
   //   filter: grayscale(0%) brightness(100%) hue-rotate(200deg) saturate(100%) brightness(150%);
   // }
-  
 }
 
 // Header
@@ -865,7 +864,6 @@ html {
     letter-spacing: 0em;
     text-align: left;
   }
-  
 }
 
 .social-media-cards {
@@ -1254,13 +1252,12 @@ html {
       // z-index: 500;
       .modal-nav {
         padding: 20px;
-      } 
+      }
       .cross-btn {
         border: none;
         background-color: white;
       }
 
-  
       .modal-body {
         border-radius: 10px;
         max-height: calc(100% - 70px);
@@ -1270,15 +1267,12 @@ html {
           border: none;
         }
       }
-      
-      
     }
   }
   .d-inline-flex {
     display: inline-flex;
     /* Add any other styles as needed */
   }
-
 }
 
 .subscription-package {
@@ -1373,13 +1367,12 @@ html {
       // z-index: 500;
       .modal-nav {
         padding: 20px;
-      } 
+      }
       .cross-btn {
         border: none;
         background-color: white;
       }
 
-  
       .modal-body {
         border-radius: 10px;
         max-height: calc(100% - 70px);
@@ -1389,15 +1382,12 @@ html {
           border: none;
         }
       }
-      
-      
     }
   }
   .d-inline-flex {
     display: inline-flex;
     /* Add any other styles as needed */
   }
-
 }
 .subscription-service {
   .modal-btn {
@@ -1491,13 +1481,12 @@ html {
       // z-index: 500;
       .modal-nav {
         padding: 20px;
-      } 
+      }
       .cross-btn {
         border: none;
         background-color: white;
       }
 
-  
       .modal-body {
         border-radius: 10px;
         max-height: calc(100% - 70px);
@@ -1507,15 +1496,12 @@ html {
           border: none;
         }
       }
-      
-      
     }
   }
   .d-inline-flex {
     display: inline-flex;
     /* Add any other styles as needed */
   }
-
 }
 
 @media (max-width: 600px) {
@@ -1649,7 +1635,7 @@ html {
     text-align: right;
     box-shadow: 6px 6px 54px 0px #0000000d;
     border: 1px solid #0d062d1f;
-    input{
+    input {
       font-size: 11px;
     }
   }
@@ -1701,6 +1687,41 @@ html {
   .form-floating > .form-control.description-text {
     height: 200px !important;
   }
+  .tag-input-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    // gap: 5px;
+    /* Additional styling for the container */
+    margin-bottom: 10px;
+  }
+  
+  .tag-field-container {
+    flex-grow: 1;
+    /* Adjust this padding as needed to create space between the tag and input field */
+    // padding-left: 10px;
+  }
+  
+  .tag-field {
+    width: 100%;
+    /* Additional styling for the input field */
+    border: 1px solid #ccc;
+    // padding: 8px;
+  }
+  
+  /* Other styles for tags and their removal */
+  
+  /* Ensure proper cursor style */
+  .tag-container .badge {
+    cursor: pointer;
+  }
+  
+
 }
 
 .menu-modal-component {
@@ -1817,8 +1838,7 @@ html {
   }
 }
 
-
-.analysis{
+.analysis {
   .nav-tabs {
     margin-left: 0rem !important;
     margin-right: 0rem !important;

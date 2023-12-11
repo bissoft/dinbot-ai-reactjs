@@ -10,6 +10,7 @@ const SubscriptionServices = () => {
   const [services, setServices] = useState([]);
   console.log("MY SERVICES", services);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const myRows = 7;
   const [formData, setFormData] = useState({
     name: "",
@@ -24,10 +25,11 @@ const SubscriptionServices = () => {
     }));
   };
   const handleModal = () => {
+    setFormData({});
     setIsModalOpen(!isModalOpen);
   };
   const handleEditModal = () => {
-    setIsModalOpen(!isModalOpen);
+    setIsEditModalOpen(!isEditModalOpen);
   };
 
   //Add new Services API
@@ -50,18 +52,18 @@ const SubscriptionServices = () => {
           },
         }
       );
-  
+
       if (response.status === 201) {
         console.log("response", response);
         const newService = {
           id: response.data.data.id,
           name: response.data.data.name,
           description: response.data.data.description,
-          // status: response.data.data.status, 
+          // status: response.data.data.status,
         };
-  
+
         setServices((prevServices) => [...prevServices, newService]);
-  
+
         toast.success("Create Service Successfully");
         setFormData({});
         handleModal();
@@ -74,16 +76,15 @@ const SubscriptionServices = () => {
     }
   };
 
-  const handleUpdateService = async (event) => {
-    event.preventDefault();
+  const handleUpdateService = async (id) => {
+    // event.preventDefault();
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.put(
-        `${API_BASE_URL}/subscription-service`,
+        `${API_BASE_URL}/subscription-service/${formData.id}`,
         {
           name: formData.name,
           description: formData.description,
-          
         },
         {
           headers: {
@@ -93,46 +94,40 @@ const SubscriptionServices = () => {
           },
         }
       );
-  
-      if (response.status === 201) {
+
+      if (response.status === 200) {
         console.log("response", response);
         const newService = {
-          id: response.data.data.id,
           name: response.data.data.name,
           description: response.data.data.description,
-          // status: response.data.data.status, 
+          // status: response.data.data.status,
         };
-  
-        setServices((prevServices) => [...prevServices, newService]);
-  
-        toast.success("Create Service Successfully");
+        // setServices((prevServices) => [...prevServices, newService]);
+        getAllServices();
+        toast.success("Update Service Successfully");
+        handleEditModal();
         setFormData({});
-        handleModal();
       } else {
-        toast.error("Create Services failed");
+        toast.error("Update Services failed");
       }
     } catch (error) {
       console.error(error);
-      toast.error("An error occurred while creating the service");
+      toast.error("An error occurred while Updating the service");
     }
   };
-  
 
   const getAllServices = async () => {
     try {
       const token = sessionStorage.getItem("token");
-      const response = await axios.get(
-        `${API_BASE_URL}/subscription-service`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_BASE_URL}/subscription-service`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (response) {
         console.log("response-->", response);
-        setServices(response.data.data);
+        setServices(response?.data?.data);
       } else {
         const errorData = response.data;
         console.error(
@@ -145,8 +140,12 @@ const SubscriptionServices = () => {
     }
   };
 
-  const handleEditData = (data) => {
-    setFormData({ name: data?.name,description:data?.description});
+  const handleUpdateData = (data) => {
+    setFormData({
+      id: data?.id,
+      name: data?.name,
+      description: data?.description,
+    });
   };
 
   useEffect(() => {
@@ -234,6 +233,72 @@ const SubscriptionServices = () => {
             </div>
           </div>
         )}
+        {isEditModalOpen && (
+          <div class="modal-overlay">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Services
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    onClick={handleEditModal}
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <Form>
+                    <Row>
+                      <Col md={12}>
+                        <FloatingLabel
+                          controlId="name"
+                          label="Name"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Name"
+                          />
+                        </FloatingLabel>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <Form.Group
+                          controlId="description"
+                          label="Description"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            as="textarea"
+                            value={formData.description}
+                            name="description"
+                            onChange={handleChange}
+                            placeholder="Description..."
+                            rows={5}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </Form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleUpdateService}
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="row py-3">
           <div className="col-md-12">
             {services && (
@@ -244,8 +309,8 @@ const SubscriptionServices = () => {
                 tableData={services}
                 tableHeader={["#", "Name", "Description", "Actions"]}
                 editModal={handleEditModal}
-                handleEditData={handleEditData}
-                handleUpdateData={handleUpdateService}
+                handleUpdateData={handleUpdateData}
+                
               />
             )}
           </div>

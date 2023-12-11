@@ -7,9 +7,11 @@ import { toast } from "react-toastify";
 import Userstable from "./Userstable";
 
 const SubscriptionPackages = () => {
+  const [editId, setEditId] = useState("");
   const [packages, setPackages] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [subscription, setSubscription] = useState({});
+  const [isPackageModalOpen, setIsPackageModalOpen] = useState(false);
+  const [subscription, setSubscription] = useState([]);
   const [checkedSubscriptions, setCheckedSubscriptions] = useState({});
   const myRows = 7;
   const [formData, setFormData] = useState({
@@ -35,8 +37,18 @@ const SubscriptionPackages = () => {
       }));
     }
   };
+
+  const getEditId = (id) => {
+    setEditId(id);
+  };
+
   const handleModal = () => {
+    setFormData({});
     setIsModalOpen(!isModalOpen);
+  };
+
+  const handleEditModal = () => {
+    setIsPackageModalOpen(!isPackageModalOpen);
   };
 
   //Add new Subscirption Package API
@@ -47,7 +59,7 @@ const SubscriptionPackages = () => {
         .filter(([_, checked]) => checked)
         .map(([id]) => id);
 
-      console.log(checkedSubscriptionsIds);
+      //console.log(checkedSubscriptionsIds);
       const token = sessionStorage.getItem("token");
       const response = await axios.post(
         `${API_BASE_URL}/subscription-package`,
@@ -68,7 +80,7 @@ const SubscriptionPackages = () => {
         }
       );
       if (response) {
-        console.log("response", response);
+        //console.log("response", response);
         const newPackage = {
           id: response.data.data.id,
           name: response.data.data.name,
@@ -89,15 +101,71 @@ const SubscriptionPackages = () => {
     } catch (error) {
       // Handle other errors (e.g., network issues)
       console.error(
-        "An error occurred during create Subscription Package:",
+        "An error occurred during Creating Subscription Package:",
         error
       );
-      toast.error("An error occurred during create Subscription Package");
+      toast.error("An error occurred during Creating Subscription Package");
+    }
+  };
+  //Update Package
+  const handleUpdatePackage = async () => {
+    // event.preventDefault();
+    try {
+      const checkedSubscriptionsIds = Object.entries(checkedSubscriptions)
+        .filter(([_, checked]) => checked)
+        .map(([id]) => id);
+
+      //console.log(checkedSubscriptionsIds);
+      const token = sessionStorage.getItem("token");
+      const response = await axios.put(
+        `${API_BASE_URL}/subscription-package/${editId}`,
+        {
+          name: formData.name,
+          price: formData.price,
+          stripe_product: formData.stripe_product,
+          duration: formData.duration,
+          description: formData.description,
+          subscriptionServices: checkedSubscriptionsIds,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", // Update Content-Type
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response) {
+        //console.log("response", response);
+        const newPackage = {
+          id: response.data.data.id,
+          name: response.data.data.name,
+          price: response.data.data.price,
+          stripe_product: response.data.data.stripe_product,
+          duration: response.data.data.duration,
+          description: response.data.data.description,
+        };
+        // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
+        getAllSubscriptionPackages();
+        toast.success("Subscription Package Updated Successfully");
+        handleEditModal();
+        setFormData({});
+        setCheckedSubscriptions({});
+      } else {
+        // Handle create permission failure with an error message
+        toast.error("Update Subscription Package failed");
+      }
+    } catch (error) {
+      // Handle other errors (e.g., network issues)
+      console.error(
+        "An error occurred during upating Subscription Package:",
+        error
+      );
+      toast.error("An error occurred during Updating Subscription Package");
     }
   };
 
   const getAllServices = async () => {
-    handleModal();
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(`${API_BASE_URL}/subscription-service`, {
@@ -107,7 +175,7 @@ const SubscriptionPackages = () => {
         },
       });
       if (response) {
-        console.log("roles", response);
+        console.log("services", response);
         setSubscription(response.data.data);
       } else {
         const errorData = response.data;
@@ -142,95 +210,28 @@ const SubscriptionPackages = () => {
     }
   };
 
-  const handleEditData = (data) => {
+  const handleUpdateData = (data) => {
+
     setFormData({
+      id: data?.id,
       name: data?.name,
       price: data?.price,
       duration: data?.duration,
       stripe_product: data?.stripe_product,
-      description: data?.description, 
+      description: data?.description,
     });
+    const checkedServices = {};
+    data.subscription_services.forEach((serviceId) => {
+      checkedServices[serviceId.id] = true;
+    });
+    setCheckedSubscriptions(checkedServices);
   };
-
 
   useEffect(() => {
     getAllSubscriptionPackages();
+    getAllServices();
   }, []);
 
-  //   const addSubscription = async (e) => {
-  //     e.preventDefault();
-  //     handleModal();
-  //     // try {
-  //     //   const token = sessionStorage.getItem("token");
-  //     //   const response = await axios.get(`${API_BASE_URL}/role`, {
-  //     //     headers: {
-  //     //       "Content-Type": "application/json",
-  //     //       Authorization: `Bearer ${token}`,
-  //     //     },
-  //     //   });
-  //     //   if (response.status === 200) {
-  //     //     console.log("roles from user", response.data.data);
-  //     //     setSelecteRole(response.data.data);
-  //     //   } else {
-  //     //     const errorData = response.data;
-  //     //     console.error("Fetching permissions failed:", errorData.error);
-  //     //   }
-  //     // } catch (error) {
-  //     //   console.error("Error during fetching permissions:", error);
-  //     // }
-  //   };
-
-  //   const handleUserSubmit = async (event) => {
-  //     event.preventDefault();
-  //     if (formData.password !== formData.password_confirmation) {
-  //       toast.error("Password does not matched");
-  //       return;
-  //     }
-  //     try {
-  //       const token = sessionStorage.getItem("token");
-  //       const response = await axios.post(
-  //         `${API_BASE_URL}/user`,
-  //         {
-  //           name: formData.firstName,
-  //           email: formData.email,
-  //           password: formData.password,
-  //           password_confirmation: formData.password_confirmation,
-  //           role_id: formData.role_id,
-  //         },
-  //         {
-  //           headers: {
-  //             Accept: "application/json",
-  //             "Content-Type": "application/json", // Update Content-Type
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-  //       if (response) {
-  //         console.log("i am from new user creater", response);
-  //         const newUser = {
-  //           id: response.data.data.id,
-  //           name: response.data.data.name,
-  //         };
-  //         setUsers((perUser) => [...perUser, newUser]);
-  //         // const newPermissionName = response.data.data.name;
-  //         // setPermission((prevPermission) => [...prevPermission, newPermissionName]);
-  //         toast.success("Create Permission Successfully");
-  //         setFormData({});
-  //         handleModal();
-  //       } else {
-  //         // Handle create permission failure with an error message
-  //         toast.error("Create Permission failed");
-  //         // console.log(error.response.data)
-  //         //   toast.error(error.response.data.message);
-  //       }
-  //     } catch (error) {
-  //       // Handle other errors (e.g., network issues)
-  //       // console.error("An error occurred during create permission:", error);
-  //       // toast.error("An error occurred d/uring create permission");
-  //       console.log(error.response);
-  //       toast.error(error.response.data.message);
-  //     }
-  //   };
   return (
     <div className="subscription-package">
       <div className="container-fluid py-3 ">
@@ -243,7 +244,7 @@ const SubscriptionPackages = () => {
               <button
                 type="button"
                 class="btn modal-btn"
-                onClick={getAllServices}
+                onClick={handleModal}
               >
                 Add Subscription
               </button>
@@ -383,6 +384,139 @@ const SubscriptionPackages = () => {
             </div>
           </div>
         )}
+        {isPackageModalOpen && (
+          <div class="modal-overlay">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Subscription Package
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    onClick={handleEditModal}
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <Form>
+                    <Row>
+                      <Col md={6}>
+                        <FloatingLabel
+                          controlId="name"
+                          label="Name"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Name"
+                          />
+                        </FloatingLabel>
+                      </Col>
+                      <Col md={6}>
+                        <FloatingLabel
+                          controlId="price"
+                          label="Price"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            name="price"
+                            value={formData.price}
+                            onChange={handleChange}
+                            placeholder="price"
+                          />
+                        </FloatingLabel>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col md={6}>
+                        <FloatingLabel
+                          controlId="duration"
+                          label="Duration (in months)"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            name="duration"
+                            value={formData.duration}
+                            onChange={handleChange}
+                            placeholder="Duration (in months)"
+                          />
+                        </FloatingLabel>
+                      </Col>
+                      <Col md={6}>
+                        <FloatingLabel
+                          controlId="stripeproductid"
+                          label="Stripe Product ID"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            name="stripe_product"
+                            value={formData.stripe_product}
+                            onChange={handleChange}
+                            placeholder="Stripe Product ID"
+                          />
+                        </FloatingLabel>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12}>
+                        <Form.Group
+                          controlId="description"
+                          label="Description"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            as="textarea"
+                            placeholder="Description..."
+                            rows={5}
+                            value={formData.description}
+                            name="description"
+                            onChange={handleChange}
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <h6>Subscription Services :</h6>
+                      <Col md={12}>
+                        <Form.Group className="mb-3" id="formGridCheckbox">
+                          {subscription?.map((ser) => (
+                            <Form.Check
+                              key={ser.id}
+                              className="d-inline-flex w-25"
+                              type="checkbox"
+                              label={ser.name}
+                              name="permissions"
+                              value={ser.id}
+                              checked={!!checkedSubscriptions[ser.id]}
+                              onChange={handleChange}
+                            />
+                          ))}
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                  </Form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={handleUpdatePackage}
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="row py-3">
           <div className="col-md-12">
             {packages && (
@@ -398,8 +532,9 @@ const SubscriptionPackages = () => {
                   "Duration (months)",
                   "Actions",
                 ]}
-                editModal={handleModal}
-                handleEditData={handleEditData}
+                editModal={handleEditModal}
+                handleUpdateData={handleUpdateData}
+                getEditIdFromTable={getEditId}
               />
             )}
           </div>
