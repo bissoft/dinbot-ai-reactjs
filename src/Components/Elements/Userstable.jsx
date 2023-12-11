@@ -8,7 +8,9 @@ function Userstable({
   tableHeader,
   myUserFunction,
   editModal,
+  handleEditDataUser,
   handleEditData,
+  updateModalData
 }) {
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -79,6 +81,7 @@ function Userstable({
   const handleEdit = async (tableId, id) => {
     console.log("table id ", tableId, id);
     if (tableId === "user") {
+      updateModalData(id)
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -95,7 +98,7 @@ function Userstable({
         );
         if (response) {
           console.log("get user by id", response.data.data);
-          handleEditData(response.data.data);
+          handleEditDataUser(response.data.data ,id);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -187,6 +190,7 @@ function Userstable({
     } 
     else {
       editModal();
+      
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -213,8 +217,8 @@ function Userstable({
       }
     }
   };
+  
 
-  console.log("tableData", tableData);
   return (
     <div className="food-table">
       <div className="card px-2">

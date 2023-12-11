@@ -14,7 +14,7 @@ function Permissions() {
     console.log("i am clicked");
     setIsModalOpen(!isModalOpen);
   };
-
+  
   const getAllPermission = async () => {
     try {
       const token = sessionStorage.getItem("token");

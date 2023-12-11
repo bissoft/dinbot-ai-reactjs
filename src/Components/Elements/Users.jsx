@@ -11,6 +11,7 @@ function Users() {
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [selecteRole, setSelecteRole] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updateId,setUpdateId] = useState('')
   const myRows = 7;
   const [formData, setFormData] = useState({
     firstName: "",
@@ -20,6 +21,7 @@ function Users() {
     password_confirmation: "",
     role_id: "",
   });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "role_id") {
@@ -34,11 +36,17 @@ function Users() {
       });
     }
   };
-  console.log("formData from user ", formData);
+  // console.log("formData from user ", formData);
 
-  const handleModal = () => {
-    console.log("i am clicked");
-    setIsModalOpen(!isModalOpen);
+  const handleOpenModal = () => {
+    // console.log("i am clicked");
+    // setUpdateId('')
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    // console.log("i am clicked");
+    setUpdateId('')
+    setIsModalOpen(false);
   };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -49,6 +57,7 @@ function Users() {
 
   const [users, setUsers] = useState([]);
 
+  
   const getAllUsers = async () => {
     try {
       const token = sessionStorage.getItem("token");
@@ -66,8 +75,6 @@ function Users() {
       if (response) {
         console.log(response.data.data);
         setUsers(response.data.data);
-        // sessionStorage.clear();
-        // navigate("/");
       } else {
         const errorData = response.data;
         console.error("Logout failed:", errorData.error);
@@ -116,7 +123,7 @@ function Users() {
         // setPermission((prevPermission) => [...prevPermission, newPermissionName]);
         toast.success("Create Permission Successfully");
         setFormData({});
-        handleModal();
+        handleCloseModal();
       } else {
         // Handle create permission failure with an error message
         toast.error("Create Permission failed");
@@ -133,7 +140,7 @@ function Users() {
   };
   const handleRole = async (e) => {
     e.preventDefault();
-    handleModal();
+    handleOpenModal();
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.get(`${API_BASE_URL}/role`, {
@@ -154,9 +161,46 @@ function Users() {
     }
   };
 
-  const handleEditData = (data) => {
-    setFormData({ name: data.name, });
+  const handleEditData = (data ,id) => {
+    console.log('myUserData',data)
+    if (id ){
+      setFormData({ firstName: data.name,email:data.email,role_id:data.role_id});
+    }
   };
+
+console.log(formData)
+  const myUpdateFunction=(myUserid)=>{
+    // console.log('id  from userTable in user',myUserid)
+    setUpdateId(myUserid)
+    
+  }
+
+  const handleUserUpdate = async ()=>{
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.put(
+        `${API_BASE_URL}/user/${updateId}`,
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response) {
+        console.log(response.data.data);
+        // setUsers(response.data.data);
+      } else {
+        const errorData = response.data;
+        console.error("Logout failed:", errorData.error);
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+
+  }
 
   return (
     <div className="users">
@@ -179,12 +223,15 @@ function Users() {
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Create New User
+                  {
+                      updateId?'Update User':"Create New User"
+                    }
+                   
                   </h5>
                   <button
                     type="button"
                     class="btn-close"
-                    onClick={handleModal}
+                    onClick={handleCloseModal}
                   ></button>
                 </div>
                 <div class="modal-body">
@@ -199,7 +246,7 @@ function Users() {
                           <Form.Control
                             type="text"
                             name="firstName"
-                            value={formData.firstName}
+                            value={updateId?formData.firstName:formData.firstName}
                             onChange={handleChange}
                             placeholder="First Name"
                           />
@@ -322,9 +369,12 @@ function Users() {
                   <button
                     type="button"
                     class="btn btn-primary"
-                    onClick={handleUserSubmit}
+                    onClick={updateId?handleUserUpdate:handleUserSubmit}
                   >
-                    Save
+                    {
+                      updateId?'Update':"Save"
+                    }
+                    
                   </button>
                 </div>
               </div>
@@ -340,8 +390,9 @@ function Users() {
                 myUserFunction={getAllUsers}
                 tableData={users}
                 tableHeader={["#", "Users", "Action"]}
-                editModal={handleModal}
-                handleEditData={handleEditData}
+                editModal={handleOpenModal}
+                handleEditDataUser={handleEditData}
+                updateModalData={myUpdateFunction}
               />
             )}
           </div>
