@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { API_BASE_URL } from "../../Apicongfig";
 import axios from "axios";
+import { FiEdit2 } from "react-icons/fi";
+import { MdOutlineDelete } from "react-icons/md";
 function Userstable({
   tableId,
   tableData,
@@ -9,7 +11,7 @@ function Userstable({
   myUserFunction,
   editModal,
   handleUpdateData,
-  getEditIdFromTable
+  getEditIdFromTable,
 }) {
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -102,7 +104,7 @@ function Userstable({
   const handleEdit = async (tableId, id) => {
     console.log("table id ", tableId, id);
     if (tableId === "user") {
-      getEditIdFromTable(id)
+      getEditIdFromTable(id);
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -130,7 +132,7 @@ function Userstable({
       }
     } else if (tableId === "role") {
       editModal();
-      getEditIdFromTable(id)
+      getEditIdFromTable(id);
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -157,7 +159,7 @@ function Userstable({
       }
     } else if (tableId === "subscription-package") {
       editModal();
-      getEditIdFromTable(id)
+      getEditIdFromTable(id);
 
       try {
         const token = sessionStorage.getItem("token");
@@ -213,7 +215,7 @@ function Userstable({
       }
     } else {
       editModal();
-      getEditIdFromTable(id)
+      getEditIdFromTable(id);
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -241,7 +243,6 @@ function Userstable({
     }
   };
 
- 
   return (
     <div className="food-table">
       <div className="card px-2">
@@ -302,18 +303,31 @@ function Userstable({
                 )}
                 <td>
                   <div className=" d-flex">
-                    <button
+                    {/* <button
                       className="btn btn-secondary mx-1"
                       onClick={() => handleEdit(tableId, table.id)}
                     >
                       Edit
-                    </button>
-                    <button
+                    </button> */}
+                    <FiEdit2
+                      size={20}
+                      className="mx-1"
+                      style={{cursor:'pointer'}}
+                      onClick={() => handleEdit(tableId, table.id)}
+                    />
+
+                    {/* <button
                       className="btn btn-danger mx-1"
                       onClick={() => handleDelete(tableId, table.id)}
                     >
                       Delete
-                    </button>
+                    </button> */}
+                    <MdOutlineDelete
+                      size={20}
+                      className="mx-1"
+                      style={{cursor:'pointer'}}
+                      onClick={() => handleDelete(tableId, table.id)}
+                    />
                   </div>
                 </td>
               </tr>
