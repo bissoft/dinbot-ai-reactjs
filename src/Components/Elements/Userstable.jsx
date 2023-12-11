@@ -15,6 +15,28 @@ function Userstable({
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalRows, setTotalRows] = useState(0);
+
+  const getAllPermission = async () => {
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.get(`${API_BASE_URL}/permission`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.status === 200) {
+        console.log(response.data.data);
+        // setPermission(response.data.data);
+      } else {
+        const errorData = response.data;
+        console.error("Fetching permissions failed:", errorData.error);
+      }
+    } catch (error) {
+      console.error("Error during fetching permissions:", error);
+    }
+  };
+
   const handleMaxRowsChange = (e) => {
     setMaxRows(parseInt(e.target.value));
     setCurrentPage(1);
@@ -133,8 +155,7 @@ function Userstable({
       } catch (error) {
         toast.error(error.response.data.message);
       }
-    }
-    else if (tableId === "subscription-package") {
+    } else if (tableId === "subscription-package") {
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -160,8 +181,7 @@ function Userstable({
       } catch (error) {
         toast.error(error.response.data.message);
       }
-    } 
-    else if (tableId === "subscription-service") {
+    } else if (tableId === "subscription-service") {
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -187,8 +207,7 @@ function Userstable({
       } catch (error) {
         toast.error(error.response.data.message);
       }
-    } 
-    else {
+    } else {
       editModal();
       
       try {

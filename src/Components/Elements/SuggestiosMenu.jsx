@@ -5,13 +5,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-const SuggestiosMenu = () => {
+const SuggestiosMenu = ({className,heading,subHeading,btnText,onClick}) => {
   return (
-    <div>
+    <div className={className}>
       <Card>
         <Card.Body>
-          <Card.Title className="card-heading">Suggestions</Card.Title>
-          <Card.Text className="card-text">Add these post to gain Engagement</Card.Text>
+          <Card.Title className="card-heading">{heading}</Card.Title>
+          <Card.Text className="card-text">{subHeading}</Card.Text>
           <div className="lists">
             <ListGroup>
               {listData.map((item) => (
@@ -31,8 +31,8 @@ const SuggestiosMenu = () => {
                     </div>
                   </div>
                   <div>
-                    <Button variant="primary" className="suggest-btn">
-                      Post
+                    <Button variant="primary" className="suggest-btn" onClick={onClick}>
+                      {btnText}
                     </Button>
                   </div>
                 </ListGroup.Item>
