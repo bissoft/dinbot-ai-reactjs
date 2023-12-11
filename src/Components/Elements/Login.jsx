@@ -74,7 +74,7 @@ const handleLoginSubmit = async (event) => {
                 }}>
                 <div>
                   <div className="text-center">
-                    <img src="/Assets/Vector (2).svg" alt="none" className="img-fluid"  width={150} />
+                    <img src="/Assets/dinebot-logo.png" alt="none" className="img-fluid"  width={150} />
                   </div> <br />
                   <Form>
                     <FloatingLabel

@@ -6,12 +6,14 @@ import { API_BASE_URL } from "../../Apicongfig";
 import { toast } from "react-toastify";
 
 function Permissions() {
+  const [editId, setEditId] = useState("");
   const [permission, setPermission] = useState([]);
   const [permissionName, setPermissionName] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const myRow = 9;
+
   const handleModal = () => {
-    console.log("i am clicked");
     setIsModalOpen(!isModalOpen);
   };
   
@@ -35,10 +37,10 @@ function Permissions() {
       console.error("Error during fetching permissions:", error);
     }
   };
-  
-  useEffect(() => {
-    getAllPermission();
-  }, []);
+
+  const getEditId = (id) => {
+    setEditId(id);
+  };
 
   const handlePermissionNameSubmit = async (event) => {
     event.preventDefault();
@@ -60,15 +62,54 @@ function Permissions() {
       if (response.status === 201) {
         console.log(response.data.data.name);
         const newPermissionName = response.data.data.name;
-        setPermission((prevPermission) => [
-          ...prevPermission,
-          newPermissionName,
-        ]);
+        getAllPermission();
+        // setPermission((prevPermission) => [
+        //   ...prevPermission,
+        //   newPermissionName,
+        // ]);
         toast.success("Create Permission Successfully");
+        setPermissionName("");
         handleModal();
       } else {
         // Handle create permission failure with an error message
         toast.error("Create Permission failed");
+      }
+    } catch (error) {
+      console.error("An error occurred during create permission:", error);
+      toast.error("An error occurred during create permission");
+    }
+  };
+  const handleUpdatePermission = async (event) => {
+    // event.preventDefault();
+    try {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.put(
+        `${API_BASE_URL}/permission/${editId}`,
+        {
+          name: permissionName,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", // Update Content-Type
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (response.status === 200) {
+        console.log(response.data.data.name);
+        const newPermissionName = response.data.data.name;
+        // setPermission((prevPermission) => [
+        //   ...prevPermission,
+        //   newPermissionName,
+        // ]);
+        getAllPermission();
+        toast.success("Permission Updated Successfully");
+        setPermissionName("");
+        handleEditModal();
+      } else {
+        // Handle create permission failure with an error message
+        toast.error("Permission Updated failed");
       }
     } catch (error) {
       // Handle other errors (e.g., network issues)
@@ -77,9 +118,17 @@ function Permissions() {
     }
   };
 
-  const handleEditData = (data) => {
-    setPermissionName(data?.name)
+  const handleEditModal = () => {
+    setIsEditModalOpen(!isEditModalOpen);
   };
+
+  const handleUpdateData = (data) => {
+    setPermissionName(data?.name);
+  };
+
+  useEffect(() => {
+    getAllPermission();
+  }, []);
 
   return (
     <div className="users">
@@ -100,7 +149,7 @@ function Permissions() {
             </div>
           </div>
         </div>
-        {isModalOpen ? (
+        {isModalOpen && (
           <div className="modal-overlay ">
             <div className="modal-dialog">
               <div className="modal-content">
@@ -143,19 +192,64 @@ function Permissions() {
               </div>
             </div>
           </div>
-        ) : (
-          ""
+        )}
+        {isEditModalOpen && (
+          <div className="modal-overlay ">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Update Permission</h5>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    onClick={handleEditModal}
+                  ></button>
+                </div>
+                <div className="modal-body">
+                  <Form>
+                    <Row>
+                      <Col md={12}>
+                        <FloatingLabel
+                          controlId="firstName1"
+                          label="Name"
+                          className="mb-3 title-label"
+                        >
+                          <Form.Control
+                            type="text"
+                            placeholder="First Name"
+                            name="permission"
+                            value={permissionName}
+                            onChange={(e) => setPermissionName(e.target.value)}
+                          />
+                        </FloatingLabel>
+                      </Col>
+                    </Row>
+                  </Form>
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleUpdatePermission}
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
         <div className="row py-3">
           <div className="col-md-12">
             <Userstable
               tableId="permission"
               tableData={permission}
-              editModal={handleModal}
               myUserFunction={getAllPermission}
               initialMaxRow={myRow}
               tableHeader={["#", "Role", "Action"]}
-              handleEditData={handleEditData}
+              editModal={handleEditModal}
+              handleUpdateData={handleUpdateData}
+              getEditIdFromTable={getEditId}
             />
           </div>
         </div>

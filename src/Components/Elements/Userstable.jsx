@@ -8,10 +8,8 @@ function Userstable({
   tableHeader,
   myUserFunction,
   editModal,
-  handleEditDataUser,
-  handleEditData,
-  updateModalData,
-  handleEditCloseModal,
+  handleUpdateData,
+  getEditIdFromTable
 }) {
   const [maxRows, setMaxRows] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -104,7 +102,7 @@ function Userstable({
   const handleEdit = async (tableId, id) => {
     console.log("table id ", tableId, id);
     if (tableId === "user") {
-      updateModalData(id)
+      getEditIdFromTable(id)
       editModal();
       try {
         const token = sessionStorage.getItem("token");
@@ -121,7 +119,7 @@ function Userstable({
         );
         if (response) {
           console.log("get user by id", response.data.data);
-          handleEditDataUser(response.data.data ,id);
+          handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -132,6 +130,7 @@ function Userstable({
       }
     } else if (tableId === "role") {
       editModal();
+      getEditIdFromTable(id)
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -147,7 +146,7 @@ function Userstable({
         );
         if (response) {
           console.log("get role by id", response.data.data);
-          handleEditData(response.data.data);
+          handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -158,6 +157,8 @@ function Userstable({
       }
     } else if (tableId === "subscription-package") {
       editModal();
+      getEditIdFromTable(id)
+
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -172,8 +173,8 @@ function Userstable({
           }
         );
         if (response) {
-          console.log("get role by id", response.data.data);
-          handleEditData(response.data.data);
+          // console.log("get role by id", response.data.data);
+          handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -184,6 +185,8 @@ function Userstable({
       }
     } else if (tableId === "subscription-service") {
       editModal();
+      // getEditIdFromTable(id)
+
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -198,8 +201,8 @@ function Userstable({
           }
         );
         if (response) {
-          console.log("get role by id", response.data.data);
-          handleEditData(response.data.data);
+          // console.log("get role by id", response?.data?.data);
+          handleUpdateData(response?.data?.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -210,7 +213,7 @@ function Userstable({
       }
     } else {
       editModal();
-      
+      getEditIdFromTable(id)
       try {
         const token = sessionStorage.getItem("token");
         const response = await axios.get(
@@ -226,7 +229,7 @@ function Userstable({
         );
         if (response) {
           console.log("get permission by id", response.data.data);
-          handleEditData(response.data.data);
+          handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
           // Handle create permission failure with an error message
@@ -237,8 +240,8 @@ function Userstable({
       }
     }
   };
-  
 
+ 
   return (
     <div className="food-table">
       <div className="card px-2">
@@ -290,7 +293,7 @@ function Userstable({
                 {tableId === "subscription-service" && (
                   <>
                     <td>
-                      <div className="food-title">{table.description}</div>
+                      <div className="food-title">{table?.description}</div>
                     </td>
                     {/* <td>
                       <div className="food-title">{table.status}</div>
