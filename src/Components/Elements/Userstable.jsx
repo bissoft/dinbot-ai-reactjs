@@ -69,7 +69,6 @@ function Userstable({
   const entriesEnd = Math.min(entriesStart + maxRows - 1, totalRows);
 
   const handleDelete = async (tableId, id) => {
-    console.log("this is my table and their row ", tableId, id);
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.delete(
@@ -84,8 +83,7 @@ function Userstable({
         }
       );
       if (response) {
-        console.log("i am from new user creater", response);
-        toast.success(`${tableId} Deleted Successfully`);
+        toast.success(response?.data?.message);
         if (tableId === "user") {
           myUserFunction();
         } else if (tableId === "role") {
@@ -102,7 +100,6 @@ function Userstable({
     }
   };
   const handleEdit = async (tableId, id) => {
-    console.log("table id ", tableId, id);
     if (tableId === "user") {
       getEditIdFromTable(id);
       editModal();
@@ -120,7 +117,6 @@ function Userstable({
           }
         );
         if (response) {
-          console.log("get user by id", response.data.data);
           handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
@@ -147,7 +143,6 @@ function Userstable({
           }
         );
         if (response) {
-          console.log("get role by id", response.data.data);
           handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
@@ -175,7 +170,6 @@ function Userstable({
           }
         );
         if (response) {
-          // console.log("get role by id", response.data.data);
           handleUpdateData(response.data.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
@@ -203,7 +197,6 @@ function Userstable({
           }
         );
         if (response) {
-          // console.log("get role by id", response?.data?.data);
           handleUpdateData(response?.data?.data);
           // toast.success(`${tableId} get Successfully`);
         } else {
@@ -312,7 +305,7 @@ function Userstable({
                     <FiEdit2
                       size={20}
                       className="mx-1"
-                      style={{cursor:'pointer'}}
+                      style={{ cursor: "pointer" }}
                       onClick={() => handleEdit(tableId, table.id)}
                     />
 
@@ -325,7 +318,7 @@ function Userstable({
                     <MdOutlineDelete
                       size={20}
                       className="mx-1"
-                      style={{cursor:'pointer'}}
+                      style={{ cursor: "pointer" }}
                       onClick={() => handleDelete(tableId, table.id)}
                     />
                   </div>

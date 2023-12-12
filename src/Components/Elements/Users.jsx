@@ -90,6 +90,10 @@ function Users() {
       toast.error("Password does not matched");
       return;
     }
+    if(formData.password.length <=7 ){
+      toast.error("The password field must be at least 8 characters.")
+      return
+    }
     try {
       const token = sessionStorage.getItem("token");
       const response = await axios.post(
@@ -119,7 +123,7 @@ function Users() {
         getAllUsers()
         // const newPermissionName = response.data.data.name;
         // setPermission((prevPermission) => [...prevPermission, newPermissionName]);
-        toast.success("Create Permission Successfully");
+        toast.success(response?.data?.message);
         setFormData({});
         handleModal();
       } else {
@@ -168,7 +172,7 @@ function Users() {
         };
         // setServices((prevServices) => [...prevServices, newService]);
         getAllUsers();
-        toast.success("Update Service Successfully");
+        toast.success(response?.data?.message);
         handleEditModal();
         setFormData({});
       } else {
