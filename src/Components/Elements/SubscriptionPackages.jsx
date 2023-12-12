@@ -90,8 +90,9 @@ const SubscriptionPackages = () => {
           description: response.data.data.description,
           subscriptionServices:response.data.data.subscriptionServices
         };
-        setPackages((prevSubscription) => [...prevSubscription, newPackage]);
-        toast.success("Create Subscription Package Successfully");
+        // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
+        toast.success(response?.data?.message);
+        getAllSubscriptionPackages();
         handleModal();
         setFormData({});
         setCheckedSubscriptions({});
@@ -198,7 +199,6 @@ const SubscriptionPackages = () => {
         },
       });
       if (response) {
-        console.log("response-->", response);
         setPackages(response.data.data);
       } else {
         const errorData = response.data;
@@ -213,7 +213,6 @@ const SubscriptionPackages = () => {
   };
 
   const handleUpdateData = (data) => {
-
     setFormData({
       id: data?.id,
       name: data?.name,
@@ -243,11 +242,7 @@ const SubscriptionPackages = () => {
               <h6>Subscription Packages</h6>
             </div>
             <div>
-              <button
-                type="button"
-                class="btn modal-btn"
-                onClick={handleModal}
-              >
+              <button type="button" class="btn modal-btn" onClick={handleModal}>
                 Add Subscription
               </button>
             </div>

@@ -60,14 +60,13 @@ function Permissions() {
         }
       );
       if (response.status === 201) {
-        console.log(response.data.data.name);
         const newPermissionName = response.data.data.name;
         getAllPermission();
         // setPermission((prevPermission) => [
         //   ...prevPermission,
         //   newPermissionName,
         // ]);
-        toast.success("Create Permission Successfully");
+        toast.success(response?.data?.message);
         setPermissionName("");
         handleModal();
       } else {
@@ -104,7 +103,7 @@ function Permissions() {
         //   newPermissionName,
         // ]);
         getAllPermission();
-        toast.success("Permission Updated Successfully");
+        toast.success(response?.data?.message);
         setPermissionName("");
         handleEditModal();
       } else {

@@ -5,7 +5,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-const SuggestiosMenu = ({className,heading,subHeading,btnText,onClick}) => {
+const SuggestiosMenu = ({
+  className,
+  heading,
+  subHeading,
+  btnText,
+  onClick,
+}) => {
   return (
     <div className={className}>
       <Card>
@@ -31,7 +37,11 @@ const SuggestiosMenu = ({className,heading,subHeading,btnText,onClick}) => {
                     </div>
                   </div>
                   <div>
-                    <Button variant="primary" className="suggest-btn" onClick={onClick}>
+                    <Button
+                      variant="primary"
+                      className="suggest-btn"
+                      onClick={onClick}
+                    >
                       {btnText}
                     </Button>
                   </div>

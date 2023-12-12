@@ -27,27 +27,27 @@ function Feedback() {
           >
             <div className="row">
               {/* <div className="col-md-12"> */}
-                <Tabs
-                  // defaultActiveKey="Reviews"
-                  defaultActiveKey="Reviews"
-                  id="uncontrolled-tab-example"
-                  className="mb-3 mt-4"
-                  activeKey={activeTab}
-                  onSelect={handleTabChange}
-                >
-                  <Tab eventKey="Reviews" title="Reviews">
-                    <Reviews />
-                  </Tab>
-                  <Tab eventKey="GoodReviews" title="GoodReviews">
-                    <GoodReviews />
-                  </Tab>
-                  <Tab eventKey="BadReviews" title="BadReviews">
-                    <BadReviews />
-                  </Tab>
-                  <Tab eventKey="Suggestions" title="Suggestions">
-                    <Suggestions activeTab={activeTab} />
-                  </Tab>
-                </Tabs>
+              <Tabs
+                // defaultActiveKey="Reviews"
+                defaultActiveKey="Reviews"
+                id="uncontrolled-tab-example"
+                className="mb-3 mt-4"
+                activeKey={activeTab}
+                onSelect={handleTabChange}
+              >
+                <Tab eventKey="Reviews" title="Reviews">
+                  <Reviews />
+                </Tab>
+                <Tab eventKey="GoodReviews" title="GoodReviews">
+                  <GoodReviews />
+                </Tab>
+                <Tab eventKey="BadReviews" title="BadReviews">
+                  <BadReviews />
+                </Tab>
+                <Tab eventKey="Suggestions" title="Suggestions">
+                  <Suggestions activeTab={activeTab} />
+                </Tab>
+              </Tabs>
               {/* </div> */}
             </div>
           </div>

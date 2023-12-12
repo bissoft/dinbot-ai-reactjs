@@ -18,7 +18,8 @@ function Socialmedia() {
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
 
-  const handleBoostModal = () => setShowBoostModal(true) ;console.log('open');
+  const handleBoostModal = () => setShowBoostModal(true);
+  console.log("open");
   const handleCloseBoostModal = () => setShowBoostModal(false);
 
   const handleSaveChanges = () => {
@@ -78,11 +79,11 @@ function Socialmedia() {
                 btnText="Boost"
               />
               {/* {showBoostModal && ( */}
-                <BoostModal
-                  showBoostModal={showBoostModal}
-                  handleClose={handleCloseBoostModal}
-                  handleSaveChanges={handleSaveChanges}
-                />
+              <BoostModal
+                showBoostModal={showBoostModal}
+                handleClose={handleCloseBoostModal}
+                handleSaveChanges={handleSaveChanges}
+              />
               {/* )} */}
             </div>
           </div>

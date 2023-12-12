@@ -37,6 +37,8 @@ function Roles() {
   };
 
   const handleModal = () => {
+    setFormData({});
+    setCheckedPermissions([]);
     setIsModalOpen(!isModalOpen);
   };
   const handleEditModal = () => {
@@ -70,7 +72,6 @@ function Roles() {
       );
 
       if (response) {
-        console.log(response.data.data);
         setRoles(response.data.data);
         // sessionStorage.clear();
         // navigate("/");
@@ -82,9 +83,6 @@ function Roles() {
       console.error("Error during logout:", error);
     }
   };
-  useEffect(() => {
-    getAllRoles();
-  }, []);
 
   const handleRolesSubmit = async (event) => {
     event.preventDefault();
@@ -117,8 +115,8 @@ function Roles() {
         };
         // const newPermissionName = respon;
         // setRoles((prevRole) => [...prevRole, newRole]);
+        toast.success(response?.data?.message);
         getAllRoles();
-        toast.success("Create Permission Successfully");
         handleModal();
         setFormData({});
         setCheckedPermissions({});
@@ -154,17 +152,16 @@ function Roles() {
         }
       );
       if (response.status === 200) {
-        console.log(response.data.data.name);
         // const newPermissionName = response.data.data.name;
         // setPermission((prevPermission) => [
         //   ...prevPermission,
         //   newPermissionName,
         // ]);
+        toast.success(response?.data?.message);
         getAllRoles();
-        toast.success("Role Updated Successfully");
         setFormData({});
         handleEditModal();
-        setCheckedPermissions({})
+        setCheckedPermissions({});
       } else {
         // Handle create permission failure with an error message
         toast.error("Role Updated failed");
@@ -199,6 +196,7 @@ function Roles() {
 
   useEffect(() => {
     getAllPermission();
+    getAllRoles();
   }, []);
 
   return (
@@ -210,11 +208,7 @@ function Roles() {
               <h6>Role Management</h6>
             </div>
             <div>
-              <button
-                type="button"
-                class="btn modal-btn"
-                onClick={getAllPermission}
-              >
+              <button type="button" class="btn modal-btn" onClick={handleModal}>
                 Create Role
               </button>
             </div>

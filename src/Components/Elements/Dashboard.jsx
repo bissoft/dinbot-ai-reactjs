@@ -103,7 +103,7 @@ function Dashboard() {
 
     let currentDate = new Date(startDate);
     while (currentDate <= endDate) {
-      const randomOrders = Math.floor(Math.random() * 500); 
+      const randomOrders = Math.floor(Math.random() * 500);
       const randomRevenue = Math.floor(Math.random() * 1000);
 
       ordersData.push(randomOrders);

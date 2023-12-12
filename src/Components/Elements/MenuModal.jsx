@@ -24,8 +24,8 @@ const MenuModal = ({
     reader.onload = function (event) {
       setPreviewStyle({
         background: `url(${event.target.result})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       });
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -36,7 +36,6 @@ const MenuModal = ({
   };
 
   const [ingredientFields, setIngredientFields] = useState(["Pepper"]);
-
 
   const addField = () => {
     const newIngredientFields = [...ingredientFields, ""];
@@ -57,7 +56,7 @@ const MenuModal = ({
 
   //Post API for Handle Menu
   const handleMenu = () => {
-    alert('Menu Added Successfully')
+    alert("Menu Added Successfully");
     handleCloseSecondModal();
   };
 
@@ -71,9 +70,7 @@ const MenuModal = ({
       >
         <Modal.Header closeButton>
           <Modal.Title className="modal-heading">
-            Add Menu List <span className="text-small">
-            {modalStep}/2
-                </span>
+            Add Menu List <span className="text-small">{modalStep}/2</span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -143,8 +140,8 @@ const MenuModal = ({
                     <Form.Control type="text" placeholder="$30" />
                   </FloatingLabel>
                 </Form>
-              {/* </div> */}
-            </div>
+                {/* </div> */}
+              </div>
               <div className="col-md-5 justify-content-center d-flex align-items-center img-upload">
                 <input
                   type="file"
@@ -155,9 +152,9 @@ const MenuModal = ({
                   style={{ display: "none" }}
                 />
                 <div
-                 className={`upload-cta pic ${
-                  previewStyle.background ? 'upload-preview' : ''
-                } text-center`}
+                  className={`upload-cta pic ${
+                    previewStyle.background ? "upload-preview" : ""
+                  } text-center`}
                   onClick={uploadFile}
                   style={previewStyle}
                 >
@@ -170,7 +167,7 @@ const MenuModal = ({
                   )}
                 </div>
               </div>
-              </div>
+            </div>
             <div className="row">
               <div className="col-md-12 mt-2 px-0">
                 <FloatingLabel
@@ -182,12 +179,11 @@ const MenuModal = ({
                     as="textarea"
                     rows={5}
                     placeholder="Leave a comment here"
-                   className="description-text"
+                    className="description-text"
                   />
                 </FloatingLabel>
               </div>
             </div>
-         
           </div>
         </Modal.Body>
         <Modal.Footer className="justify-content-start">
@@ -239,7 +235,10 @@ const MenuModal = ({
                       {index === 0 ? (
                         <FiPlusCircle onClick={addField} />
                       ) : (
-                        <RiDeleteBin6Line onClick={() => deleteField(index)} className="bin-icon" />
+                        <RiDeleteBin6Line
+                          onClick={() => deleteField(index)}
+                          className="bin-icon"
+                        />
                       )}
                     </span>
                   ) : null}
