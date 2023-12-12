@@ -1,44 +1,44 @@
 [
-    {
-        "id":"1",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Client" 
-    },
-    {
-        "id":"2",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Admin" 
-    },
-    {
-        "id":"3",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Client" 
-    },
-    {
-        "id":"4",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Client" 
-    },
-    {
-        "id":"5",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Admin" 
-    },
-    {
-        "id":"6",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Client" 
-    },
-    {
-        "id":"7",
-        "Name":"John Doe",
-        "Email":"abc@gmail.com",
-        "Roles":"Admin" 
-    }
+  {
+    "id": "1",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Client"
+  },
+  {
+    "id": "2",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Admin"
+  },
+  {
+    "id": "3",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Client"
+  },
+  {
+    "id": "4",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Client"
+  },
+  {
+    "id": "5",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Admin"
+  },
+  {
+    "id": "6",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Client"
+  },
+  {
+    "id": "7",
+    "Name": "John Doe",
+    "Email": "abc@gmail.com",
+    "Roles": "Admin"
+  }
 ]

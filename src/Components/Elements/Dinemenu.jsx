@@ -50,7 +50,7 @@ function Dinemenu() {
               className="add_menu-btn"
               onClick={handleShowModal}
             >
-              Add Menu <FaPlus size={20} className="pb-1"/>
+              Add Menu <FaPlus size={20} className="pb-1" />
             </Button>
             <MenuModal
               showFirstModal={showFirstModal}
@@ -67,35 +67,35 @@ function Dinemenu() {
           <div className="py-2">
             <h3>Meny List</h3>
           </div>
-        <div className="col-md-8">
-        <Tabs
-        defaultActiveKey="Appetizer"
-        id="uncontrolled-tab-example"
-        className="mb-3 mx-4"
-      >
-        <Tab className="tabs" eventKey="Appetizer" title="Appetizer">
-          <Foodmenucard/>
-        </Tab>
-        <Tab className="tabs" eventKey="Snack" title="Snack">
-        <Foodmenucard/>
-        </Tab>
-        <Tab className="tabs" eventKey="Grill" title="Grill">
-        <Foodmenucard/>
-        </Tab>
-        <Tab className="tabs" eventKey="Coffee" title="Coffee">
-        <Foodmenucard/>
-        </Tab>
-        <Tab className="tabs" eventKey="Cold Drinks" title="Cold Drinks">
-        <Foodmenucard/>
-        </Tab>
-        <Tab className="tabs" eventKey="Dessert" title="Dessert">
-        <Foodmenucard/>
-        </Tab>
-      </Tabs>
-        </div>
-        <div className="col-md-4">
-          <Favouritemenu/>
-        </div>
+          <div className="col-md-8">
+            <Tabs
+              defaultActiveKey="Appetizer"
+              id="uncontrolled-tab-example"
+              className="mb-3 mx-4"
+            >
+              <Tab className="tabs" eventKey="Appetizer" title="Appetizer">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Snack" title="Snack">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Grill" title="Grill">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Coffee" title="Coffee">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Cold Drinks" title="Cold Drinks">
+                <Foodmenucard />
+              </Tab>
+              <Tab className="tabs" eventKey="Dessert" title="Dessert">
+                <Foodmenucard />
+              </Tab>
+            </Tabs>
+          </div>
+          <div className="col-md-4">
+            <Favouritemenu />
+          </div>
         </div>
       </div>
     </div>

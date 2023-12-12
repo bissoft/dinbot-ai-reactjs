@@ -308,7 +308,6 @@ const SubscriptionServices = () => {
                 tableHeader={["#", "Name", "Description", "Actions"]}
                 editModal={handleEditModal}
                 handleUpdateData={handleUpdateData}
-                
               />
             )}
           </div>

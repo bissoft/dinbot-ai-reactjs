@@ -7,7 +7,7 @@ import { API_BASE_URL } from "../../Apicongfig";
 import { toast } from "react-toastify";
 
 function Users() {
-  const [editId,setEditId] = useState('')
+  const [editId, setEditId] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible1, setPasswordVisible1] = useState(false);
   const [selecteRole, setSelecteRole] = useState("");
@@ -38,7 +38,7 @@ function Users() {
   };
 
   const handleModal = () => {
-    setFormData({})
+    setFormData({});
     setIsModalOpen(!isModalOpen);
   };
   const handleEditModal = () => {
@@ -90,9 +90,9 @@ function Users() {
       toast.error("Password does not matched");
       return;
     }
-    if(formData.password.length <=7 ){
-      toast.error("The password field must be at least 8 characters.")
-      return
+    if (formData.password.length <= 7) {
+      toast.error("The password field must be at least 8 characters.");
+      return;
     }
     try {
       const token = sessionStorage.getItem("token");
@@ -120,7 +120,7 @@ function Users() {
           name: response.data.data.name,
         };
         // setUsers((perUser) => [...perUser, newUser]);
-        getAllUsers()
+        getAllUsers();
         // const newPermissionName = response.data.data.name;
         // setPermission((prevPermission) => [...prevPermission, newPermissionName]);
         toast.success(response?.data?.message);
@@ -216,13 +216,13 @@ function Users() {
     });
   };
 
-  useEffect(()=>{
-    handleRole()
-  },[])
+  useEffect(() => {
+    handleRole();
+  }, []);
 
-  const getEditId = (id) =>{
-    setEditId(id)
-  }
+  const getEditId = (id) => {
+    setEditId(id);
+  };
 
   return (
     <div className="users">

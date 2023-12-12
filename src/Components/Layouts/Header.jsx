@@ -57,7 +57,7 @@ function Header() {
                 alt="not found"
                 width={40}
                 onClick={handleImg}
-                style={{cursor:'pointer'}}
+                style={{ cursor: "pointer" }}
                 title="Profile"
               />{" "}
               &nbsp;

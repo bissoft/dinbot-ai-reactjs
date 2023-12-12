@@ -1,65 +1,65 @@
 [
-    {
-        "id": 1,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"30 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 2,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"30 servings",
-        "imageUrl": "/Assets/listIcon.png"
-      },
-    {
-        "id": 3,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 4,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 5,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 6,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 7,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 8,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    },
-    {
-        "id": 9,
-        "title": "American",
-        "subTitle": "Caesar Salad",
-        "sold":"10 servings",
-        "imageUrl": "/Assets/listIcon.png"
-    }
+  {
+    "id": 1,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "30 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 2,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "30 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 3,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 4,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 5,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 6,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 7,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 8,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  },
+  {
+    "id": 9,
+    "title": "American",
+    "subTitle": "Caesar Salad",
+    "sold": "10 servings",
+    "imageUrl": "/Assets/listIcon.png"
+  }
 ]

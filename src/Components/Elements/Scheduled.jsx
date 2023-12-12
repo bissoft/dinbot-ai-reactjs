@@ -9,7 +9,7 @@ const Scheduled = () => {
     <>
       <div className="social-media-cards ">
         <div className="container-fluid">
-        <div className="row">
+          <div className="row">
             <div className="col-md-4">
               <div className="card p-3 dashboard-card">
                 <div className="mb-2">
