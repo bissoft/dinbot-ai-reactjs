@@ -8,7 +8,6 @@ import Userstable from "./Userstable";
 
 const SubscriptionServices = () => {
   const [services, setServices] = useState([]);
-  console.log("MY SERVICES", services);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const myRows = 7;
@@ -64,7 +63,7 @@ const SubscriptionServices = () => {
 
         setServices((prevServices) => [...prevServices, newService]);
 
-        toast.success("Create Service Successfully");
+        toast.success(response?.data?.message);
         setFormData({});
         handleModal();
       } else {
@@ -96,7 +95,6 @@ const SubscriptionServices = () => {
       );
 
       if (response.status === 200) {
-        console.log("response", response);
         const newService = {
           name: response.data.data.name,
           description: response.data.data.description,
@@ -104,7 +102,7 @@ const SubscriptionServices = () => {
         };
         // setServices((prevServices) => [...prevServices, newService]);
         getAllServices();
-        toast.success("Update Service Successfully");
+        toast.success(response?.data?.message);
         handleEditModal();
         setFormData({});
       } else {
