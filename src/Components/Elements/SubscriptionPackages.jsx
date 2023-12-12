@@ -91,7 +91,7 @@ const SubscriptionPackages = () => {
         };
         // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
         toast.success(response?.data?.message);
-        getAllSubscriptionPackages()
+        getAllSubscriptionPackages();
         handleModal();
         setFormData({});
         setCheckedSubscriptions({});
@@ -211,7 +211,6 @@ const SubscriptionPackages = () => {
   };
 
   const handleUpdateData = (data) => {
-
     setFormData({
       id: data?.id,
       name: data?.name,
@@ -241,11 +240,7 @@ const SubscriptionPackages = () => {
               <h6>Subscription Packages</h6>
             </div>
             <div>
-              <button
-                type="button"
-                class="btn modal-btn"
-                onClick={handleModal}
-              >
+              <button type="button" class="btn modal-btn" onClick={handleModal}>
                 Add Subscription
               </button>
             </div>

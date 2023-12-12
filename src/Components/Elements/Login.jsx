@@ -66,7 +66,7 @@ function Login({ onLogin }) {
     <div className="login">
       <div className="container-fluid">
         <div className="row justify-content-center">
-          <div className="col-md-4">
+          <div className="col-md-5">
             <div className="card px-5 py-4">
               <form
                 onSubmit={handleLoginSubmit}
@@ -98,7 +98,9 @@ function Login({ onLogin }) {
                     >
                       Sign in to your account
                     </span>
-                    <br />
+                  </div>
+                  {/* <br /> */}
+                  <div className="text-center py-3">
                     <span
                       style={{
                         fontFamily: "Inter",
@@ -111,6 +113,7 @@ function Login({ onLogin }) {
                       Enter your Credentials to access your account
                     </span>
                   </div>
+
                   <Form>
                     <FloatingLabel
                       controlId="floatingInput"
@@ -125,11 +128,11 @@ function Login({ onLogin }) {
                         placeholder=""
                       />
                     </FloatingLabel>
-                    <div>
+                    <div className="position-relative">
                       <FloatingLabel
                         controlId="floatingInput"
                         label="Password"
-                        className="mb-3 title-label position-relative"
+                        className="mb-3 title-label "
                       >
                         <Form.Control
                           type={passwordVisible ? "text" : "password"}
@@ -140,10 +143,17 @@ function Login({ onLogin }) {
                         />
                       </FloatingLabel>
                       <Button
-                        variant="outline-secondary"
+                        // variant="outline-secondary"
                         onClick={togglePasswordVisibility}
-                        className="password-toggle-btn position-absolute eye"
-                        style={{ right: 50, top: 336, border: "none" }}
+                        className="password-toggle-btn eye"
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          position: "absolute",
+                          zIndex: 10000,
+                          top: "18%",
+                          right: 0,
+                        }}
                       >
                         {passwordVisible ? (
                           <FaEyeSlash color="#069AF3" />
@@ -151,6 +161,24 @@ function Login({ onLogin }) {
                           <FaEye color="#069AF3" />
                         )}
                       </Button>
+                    </div>
+                    <div className="text-end pb-3 d-flex justify-content-between">
+                      <Form.Group id="formGridCheckbox">
+                        <Form.Check type="checkbox" label="Remember me" />
+                      </Form.Group>
+                      <Link
+                        to="/forgotpassword"
+                        style={{
+                          fontFamily: "Inter",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                          lineHeight: "28px",
+                          textAlign: "center",
+                        }}
+                        className="forgot-password"
+                      >
+                        Forgot your password?
+                      </Link>
                     </div>
                   </Form>
                   <Button
@@ -162,9 +190,28 @@ function Login({ onLogin }) {
                   >
                     Sign In
                   </Button>
+                  <Button
+                    type="submit"
+                    className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3"
+                    // onKeyDown={(e)=>handleKeyDown(e)}
+                    // onClick={handleLoginSubmit}
+                  >
+                    <img
+                      src="/Assets/googlebtn-icon.svg"
+                      alt="google"
+                      className="img-fluid px-2"
+                    />
+                    Sign in with Google
+                  </Button>
                   <div className="mt-3 text-center">
                     <span>
-                      Don't have an account? <Link to="/signup">Sign Up</Link>{" "}
+                      Don't have an account?{" "}
+                      <Link
+                        to="/signup"
+                        style={{ textDecoration: "none", color: "#069af3" }}
+                      >
+                        Sign Up
+                      </Link>{" "}
                     </span>
                   </div>
                 </div>

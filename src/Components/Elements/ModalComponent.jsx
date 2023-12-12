@@ -3,7 +3,7 @@ import { Button, Form, Modal } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FiUpload } from "react-icons/fi";
 
-const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
+const ModalComponent = ({ show, handleClose, handleSaveChanges }) => {
   const [previewStyle, setPreviewStyle] = useState({});
   const loadFile = (event) => {
     setPreviewStyle({
@@ -38,7 +38,7 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
                       placeholder="American Caesar Salad"
                     />
                   </FloatingLabel>
-                
+
                   <Form.Check
                     className="mb-2 checkbox-label"
                     type={"checkbox"}
@@ -49,7 +49,7 @@ const ModalComponent = ({show, handleClose, handleSaveChanges }) => {
                     controlId="floatingTextarea2"
                     label="Date"
                     className="date-label mb-2"
-                    style={{fontSize:'12px'}}
+                    style={{ fontSize: "12px" }}
                   >
                     <Form.Control type="date" />
                   </FloatingLabel>

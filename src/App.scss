@@ -25,10 +25,22 @@ html {
     font-family: Inter;
     font-size: 16px;
   }
+  .googlebtn{
+    background-color: transparent;
+    color: black;
+    font-weight: 500;
+    font-family: Inter;
+    font-size: 16px;
+    border: 1px solid #EEF0F3
+  }
+  .forgot-password{
+    text-decoration: none;
+   color: #069af3; 
+  }
   .card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: none !important;
-    margin-top: 25vh;
+    margin-top: 8vh;
   }
   .eye {
     &:hover {
@@ -44,10 +56,18 @@ html {
     font-family: Inter;
     font-size: 16px;
   }
+  .googlebtn{
+    background-color: transparent;
+    color: black;
+    font-weight: 500;
+    font-family: Inter;
+    font-size: 16px;
+    border: 1px solid #EEF0F3
+  }
   .card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: none !important;
-    margin-top: 15vh;
+    margin-top: 2vh;
   }
   .eye {
     &:hover {
@@ -71,15 +91,16 @@ html {
   background-color: #fff; /* Change the background color if needed */
   z-index: 1000; /* Ensure it's above other content */
   transition: width 0.3s ease;
+  // overflow-x: hidden;
 
   /* Add any other necessary styles */
   &.closed {
     width: 70px;
     // position: fixed;
   }
-.active{
-  filter: sepia(10) saturate(144.5) hue-rotate(203deg) brightness(1.5) ;
-}
+  .active {
+    filter: sepia(10) saturate(144.5) hue-rotate(203deg) brightness(1.5);
+  }
   .container-fluid {
     --bs-gutter-x: 0rem;
     --bs-gutter-y: 0;
@@ -209,7 +230,7 @@ html {
     margin-left: 25px;
     margin-top: -13px;
     border: none !important;
-    padding-left: 20px;
+    // padding-left: 20px;
   }
   .dropdown-item.active,
   .dropdown-item:active {
@@ -1694,7 +1715,7 @@ html {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
   .tag-container {
     display: flex;
     flex-wrap: wrap;
@@ -1702,28 +1723,26 @@ html {
     /* Additional styling for the container */
     margin-bottom: 10px;
   }
-  
+
   .tag-field-container {
     flex-grow: 1;
     /* Adjust this padding as needed to create space between the tag and input field */
     // padding-left: 10px;
   }
-  
+
   .tag-field {
     width: 100%;
     /* Additional styling for the input field */
     border: 1px solid #ccc;
     // padding: 8px;
   }
-  
+
   /* Other styles for tags and their removal */
-  
+
   /* Ensure proper cursor style */
   .tag-container .badge {
     cursor: pointer;
   }
-  
-
 }
 
 .menu-modal-component {
