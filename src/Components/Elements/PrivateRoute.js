@@ -4,6 +4,7 @@ function PrivateRoute({ isSignedIn, children }) {
   if (!isSignedIn) {
     return <Navigate to="/" replace />;
   }
+
   return (
     <>
       <Outlet />
