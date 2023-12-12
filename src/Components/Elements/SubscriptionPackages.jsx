@@ -89,8 +89,9 @@ const SubscriptionPackages = () => {
           duration: response.data.data.duration,
           description: response.data.data.description,
         };
-        setPackages((prevSubscription) => [...prevSubscription, newPackage]);
-        toast.success("Create Subscription Package Successfully");
+        // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
+        toast.success(response?.data?.message);
+        getAllSubscriptionPackages()
         handleModal();
         setFormData({});
         setCheckedSubscriptions({});
@@ -196,7 +197,6 @@ const SubscriptionPackages = () => {
         },
       });
       if (response) {
-        console.log("response-->", response);
         setPackages(response.data.data);
       } else {
         const errorData = response.data;
