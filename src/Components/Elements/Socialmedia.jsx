@@ -3,13 +3,18 @@ import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import Card from "react-bootstrap/Card";
 import { FaPlus } from "react-icons/fa6";
-
+// import FacebookLogin from 'react-facebook-login'
 import Button from "react-bootstrap/Button";
 import Stats from "./Stats";
 import Scheduled from "./Scheduled";
 import ModalComponent from "./ModalComponent";
 import SuggestiosMenu from "./SuggestiosMenu";
 import BoostModal from "./BoostModal";
+import FacebookLogin from 'react-facebook-login';
+import { LoginSocialFacebook } from 'reactjs-social-login'
+
+import { FacebookProvider, LoginButton  } from 'react-facebook';
+
 
 function Socialmedia() {
   const [showModal, setShowModal] = useState(false);
@@ -26,12 +31,41 @@ function Socialmedia() {
     handleCloseModal();
     handleCloseBoostModal();
   };
+  const componentClicked = (res) => {
+    console.log(res)
+
+  }
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
   return (
     <>
       <div className="social-media">
         <div className="container-fluid">
           <div className="d-flex justify-content-between mt-3">
             <h2>Social Media</h2>
+            <FacebookProvider appId="1403340220259743">
+            <LoginButton
+        scope="email"
+        onSuccess={responseFacebook}
+        
+      >
+        <span>Login via Facebook</span>
+      </LoginButton>
+    </FacebookProvider>
+            {/* <LoginSocialFacebook
+     appId="1403340220259743"
+     autoLoad={false}
+     fields="name,email,picture"
+    onResolve={responseFacebook}
+    onReject={componentClicked}
+    >
+
+            <Button
+            >
+              Login to Facebook <FaPlus size={20} className="pb-1" />
+            </Button>
+            </LoginSocialFacebook> */}
             <Button
               variant="outline-light"
               className="add_post-btn"

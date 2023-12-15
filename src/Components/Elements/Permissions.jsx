@@ -11,8 +11,8 @@ function Permissions() {
   const [permissionName, setPermissionName] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const permissions = sessionStorage.getItem("permission");
   const myRow = 9;
-
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -138,13 +138,13 @@ function Permissions() {
               <h6>Permission Management</h6>
             </div>
             <div>
-              <button
+             {permissions?.includes('permission-create') &&( <button
                 type="button"
                 className="btn modal-btn"
                 onClick={handleModal}
               >
                 Create Permission
-              </button>
+              </button>)}
             </div>
           </div>
         </div>

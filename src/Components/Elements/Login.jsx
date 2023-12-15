@@ -7,8 +7,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { API_BASE_URL } from "../../Apicongfig";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { GoogleLogin } from '@react-oauth/google';
+
 
 function Login({ onLogin }) {
+  // const { loginWithRedirect  , isAuthenticated } = useAuth0();
+
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -41,27 +45,48 @@ function Login({ onLogin }) {
         }
       );
       if (response) {
-        console.log(response.data.token);
-        console.log(response.data.token);
+        // console.log('permission response during login',response)
+        // console.log(response.data.token);
+        // console.log(response.data.token);
         // Assuming the JWT is provided in the response as "jwt"
         const token = response.data.token;
-        // Save the token to sessionStorage or localStorage
         sessionStorage.setItem("token", token);
+        sessionStorage.setItem('permission', response.data.user.permissions)
         onLogin();
-        toast.success("Login Successfully");
+        toast.success(response.data.message);
         navigate("/dashboard");
       } else {
         // Handle login failure with an error message
-        toast.error("Login failed");
+        toast.error(response.data.message);
       }
     } catch (error) {
       // Handle other errors (e.g., network issues)
-      toast.error("An error occurred during login");
+      toast.error(error.response.data.message)
+      // toast.error();
     }
   };
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
+  const handleGoogleLogin = () => {
+    // loginWithRedirect();
+
+  };
+
+  const responseGoogle = (credentialResponse) => {
+    console.log(credentialResponse);
+    // if(credentialResponse.profileObj ){
+    //   navigate('/dashboard')
+    // }
+    // Add your logic here
+  };
+  const handleLoginError = (error) => {
+    console.error('Login Failed:', error);
+    // Handle the error, you can log it or show a message to the user
+  };
+
+  
   return (
     <div className="login">
       <div className="container-fluid">
@@ -69,13 +94,13 @@ function Login({ onLogin }) {
           <div className="col-md-5">
             <div className="card px-5 py-4">
               <form
-                onSubmit={handleLoginSubmit}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault(); // Prevent form submission
-                    handleLoginSubmit(e); // Pass the event object to the function
-                  }
-                }}
+              // onSubmit={handleLoginSubmit}
+              // onKeyDown={(e) => {
+              //   if (e.key === "Enter") {
+              //     e.preventDefault(); // Prevent form submission
+              //     handleLoginSubmit(e); // Pass the event object to the function
+              //   }
+              // }}
               >
                 <div>
                   <div className="text-center">
@@ -185,16 +210,22 @@ function Login({ onLogin }) {
                     type="submit"
                     className="btn loginbtn w-100 py-3"
                     style={{ border: "none" }}
-                    // onKeyDown={(e)=>handleKeyDown(e)}
-                    // onClick={handleLoginSubmit}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault(); // Prevent form submission
+                        handleLoginSubmit(e); // Pass the event object to the function
+                      }
+                    }}
+                    onClick={handleLoginSubmit}
                   >
                     Sign In
-                  </Button>
-                  <Button
+                  </Button> <br />
+                 <Button
                     type="submit"
                     className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3"
-                    // onKeyDown={(e)=>handleKeyDown(e)}
-                    // onClick={handleLoginSubmit}
+                  // onKeyDown={(e)=>handleKeyDown(e)}
+                  // onClick={handleLoginSubmit}
+                  onClick={handleGoogleLogin}
                   >
                     <img
                       src="/Assets/googlebtn-icon.svg"
@@ -202,7 +233,7 @@ function Login({ onLogin }) {
                       className="img-fluid px-2"
                     />
                     Sign in with Google
-                  </Button>
+                  </Button> 
                   <div className="mt-3 text-center">
                     <span>
                       Don't have an account?{" "}
