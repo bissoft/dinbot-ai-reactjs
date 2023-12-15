@@ -13,6 +13,7 @@ function Users() {
   const [selecteRole, setSelecteRole] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const permissions = sessionStorage.getItem("permission");
   const myRows = 7;
   const [formData, setFormData] = useState({
     name: "",
@@ -233,9 +234,9 @@ function Users() {
               <h6>Users Management</h6>
             </div>
             <div>
-              <button type="button" class="btn modal-btn" onClick={handleModal}>
+              {permissions?.includes('user-create') &&(<button type="button" class="btn modal-btn" onClick={handleModal}>
                 Create Users
-              </button>
+              </button>)}
             </div>
           </div>
         </div>

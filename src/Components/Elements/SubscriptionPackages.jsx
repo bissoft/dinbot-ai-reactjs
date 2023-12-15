@@ -88,6 +88,7 @@ const SubscriptionPackages = () => {
           stripe_product: response.data.data.stripe_product,
           duration: response.data.data.duration,
           description: response.data.data.description,
+          subscriptionServices:response.data.data.subscriptionServices
         };
         // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
         toast.success(response?.data?.message);
@@ -145,9 +146,10 @@ const SubscriptionPackages = () => {
           stripe_product: response.data.data.stripe_product,
           duration: response.data.data.duration,
           description: response.data.data.description,
+          subscriptionServices: response.data.data.subscriptionServices
         };
         // setPackages((prevSubscription) => [...prevSubscription, newPackage]);
-        getAllSubscriptionPackages();
+        getAllSubscriptionPackages((prevSubscription) => [...prevSubscription, newPackage]);
         toast.success("Subscription Package Updated Successfully");
         handleEditModal();
         setFormData({});
@@ -220,7 +222,7 @@ const SubscriptionPackages = () => {
       description: data?.description,
     });
     const checkedServices = {};
-    data.subscription_services.forEach((serviceId) => {
+    data.subscriptionServices.forEach((serviceId) => {
       checkedServices[serviceId.id] = true;
     });
     setCheckedSubscriptions(checkedServices);

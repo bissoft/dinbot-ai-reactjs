@@ -9,10 +9,10 @@ function Roles() {
   const [editId, setEditId] = useState("");
   const [roles, setRoles] = useState([]);
   const [permission, setPermission] = useState([]);
-  console.log("my permissions-->", permission);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [checkedPermissions, setCheckedPermissions] = useState({});
+  const permissions = sessionStorage.getItem("permission");
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -208,9 +208,9 @@ function Roles() {
               <h6>Role Management</h6>
             </div>
             <div>
-              <button type="button" class="btn modal-btn" onClick={handleModal}>
+              {permissions?.includes('role-create') &&(<button type="button" class="btn modal-btn" onClick={handleModal}>
                 Create Role
-              </button>
+              </button>)}
             </div>
           </div>
         </div>

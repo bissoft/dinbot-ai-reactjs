@@ -296,25 +296,13 @@ function Userstable({
                 )}
                 <td>
                   <div className=" d-flex">
-                    {/* <button
-                      className="btn btn-secondary mx-1"
-                      onClick={() => handleEdit(tableId, table.id)}
-                    >
-                      Edit
-                    </button> */}
+ 
                     <FiEdit2
                       size={20}
                       className="mx-1"
                       style={{ cursor: "pointer" }}
                       onClick={() => handleEdit(tableId, table.id)}
                     />
-
-                    {/* <button
-                      className="btn btn-danger mx-1"
-                      onClick={() => handleDelete(tableId, table.id)}
-                    >
-                      Delete
-                    </button> */}
                     <MdOutlineDelete
                       size={20}
                       className="mx-1"
