@@ -45,15 +45,18 @@ function Login({ onLogin }) {
         }
       );
       if (response) {
-        // console.log('permission response during login',response)
-        // console.log(response.data.token);
-        // console.log(response.data.token);
+
         // Assuming the JWT is provided in the response as "jwt"
         const token = response.data.token;
         sessionStorage.setItem("token", token);
         sessionStorage.setItem('permission', response.data.user.permissions)
         onLogin();
         toast.success(response.data.message);
+
+        onLogin();
+        toast.success("Login Successfully");
+        setEmail("");
+        setPassword("");
         navigate("/dashboard");
       } else {
         // Handle login failure with an error message

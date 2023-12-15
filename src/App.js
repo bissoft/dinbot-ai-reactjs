@@ -34,12 +34,14 @@ function App() {
   const signout = () => {
     setIsSignedIn(false);
     localStorage.removeItem("isSignedIn");
+    localStorage.removeItem("user");
     sessionStorage.clear();
   };
 
   useEffect(() => {
     localStorage.setItem("isSignedIn", isSignedIn.toString());
   }, [isSignedIn]);
+
   return (
     <>
       <ToastContainer />
