@@ -48,6 +48,9 @@ function Socialmedia() {
             <LoginButton
         scope="email"
         onSuccess={responseFacebook}
+        onError={componentClicked}
+        fields="name,email,picture"
+
         
       >
         <span>Login via Facebook</span>
