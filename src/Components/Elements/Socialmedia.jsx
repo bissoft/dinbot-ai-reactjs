@@ -11,9 +11,6 @@ import ModalComponent from "./ModalComponent";
 import SuggestiosMenu from "./SuggestiosMenu";
 import BoostModal from "./BoostModal";
 import FacebookLogin from 'react-facebook-login';
-import {LoginSocialFacebook} from 'reactjs-social-login'
-
-import { FacebookProvider, Login } from 'react-facebook';
 
 
 function Socialmedia() {
@@ -44,20 +41,20 @@ function Socialmedia() {
         <div className="container-fluid">
           <div className="d-flex justify-content-between mt-3">
             <h2>Social Media</h2>
-
-    <LoginSocialFacebook
-     appId="1403340220259743"
-     autoLoad={false}
-     fields="name,email,picture"
-    onResolve={responseFacebook}
-    onReject={componentClicked}
-    >
-
-            <Button
+            <FacebookLogin
+    appId="3590160454634136"
+    autoLoad={true}
+    fields="name,email,picture"
+    onClick={componentClicked}
+    callback={responseFacebook} />
+            {/* <Button
+            appId='871017004501223'
+              variant="outline-light"
+              className="add_post-btn"
+              onClick={facebookLogin}
             >
               Login to Facebook <FaPlus size={20} className="pb-1" />
-            </Button>
-            </LoginSocialFacebook>
+            </Button> */}
             <Button
               variant="outline-light"
               className="add_post-btn"
