@@ -56,19 +56,7 @@ function Socialmedia() {
         <span>Login via Facebook</span>
       </LoginButton>
     </FacebookProvider>
-            {/* <LoginSocialFacebook
-     appId="1403340220259743"
-     autoLoad={false}
-     fields="name,email,picture"
-    onResolve={responseFacebook}
-    onReject={componentClicked}
-    >
-
-            <Button
-            >
-              Login to Facebook <FaPlus size={20} className="pb-1" />
-            </Button>
-            </LoginSocialFacebook> */}
+           
             <Button
               variant="outline-light"
               className="add_post-btn"
