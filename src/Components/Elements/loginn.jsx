@@ -7,12 +7,12 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { API_BASE_URL } from "../../Apicongfig";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 // import { GoogleLogin } from '@react-oauth/google';
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { jwtDecode } from "jwt-decode";
+
 
 function Login({ onLogin }) {
+  // const { loginWithRedirect  , isAuthenticated } = useAuth0();
+
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -45,10 +45,11 @@ function Login({ onLogin }) {
         }
       );
       if (response) {
+
         // Assuming the JWT is provided in the response as "jwt"
         const token = response.data.token;
         sessionStorage.setItem("token", token);
-        sessionStorage.setItem("permission", response.data.user.permissions);
+        sessionStorage.setItem('permission', response.data.user.permissions)
         onLogin();
         toast.success(response.data.message);
 
@@ -63,7 +64,7 @@ function Login({ onLogin }) {
       }
     } catch (error) {
       // Handle other errors (e.g., network issues)
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message)
       // toast.error();
     }
   };
@@ -71,34 +72,24 @@ function Login({ onLogin }) {
     setPasswordVisible(!passwordVisible);
   };
 
+  const handleGoogleLogin = () => {
+    // loginWithRedirect();
+
+  };
+
+  const responseGoogle = (credentialResponse) => {
+    console.log(credentialResponse);
+    // if(credentialResponse.profileObj ){
+    //   navigate('/dashboard')
+    // }
+    // Add your logic here
+  };
   const handleLoginError = (error) => {
-    console.error("Login Failed:", error);
+    console.error('Login Failed:', error);
+    // Handle the error, you can log it or show a message to the user
   };
 
-  const handleLoginSuccess = (credentialResponse) => {
-    var decoded = jwtDecode(credentialResponse.credential);
-    console.log(decoded);
-
-    const isEmailVerified = decoded?.email_verified;
-    sessionStorage.setItem("email_verified", isEmailVerified);
-    localStorage.setItem("email_verified", isEmailVerified);
-    sessionStorage.setItem("user", JSON.stringify(decoded));
-    localStorage.setItem("isSignedIn", true);
-
-    if (sessionStorage?.getItem("email_verified")) {
-      window.location.assign("/dashboard");
-    } else {
-      console.error("Token not found in the decoded object:", decoded);
-    }
-  };
-
-  // useEffect(() => {
-  //   const isEmailVerified = sessionStorage.getItem("email_verified");
-  //   if (isEmailVerified) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [navigate]);
-
+  
   return (
     <div className="login">
       <div className="container-fluid">
@@ -150,6 +141,7 @@ function Login({ onLogin }) {
                       Enter your Credentials to access your account
                     </span>
                   </div>
+
                   <Form>
                     <FloatingLabel
                       controlId="floatingInput"
@@ -230,9 +222,8 @@ function Login({ onLogin }) {
                     onClick={handleLoginSubmit}
                   >
                     Sign In
-                  </Button>{" "}
-                  <br />
-                  {/* <Button
+                  </Button> <br />
+                 <Button
                     type="submit"
                     className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3"
                   // onKeyDown={(e)=>handleKeyDown(e)}
@@ -245,21 +236,7 @@ function Login({ onLogin }) {
                       className="img-fluid px-2"
                     />
                     Sign in with Google
-                  </Button>  */}
-                  <div className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3">
-                    <GoogleLogin
-                      logo_alignment="center"
-                      size="large"
-                      useOneTap={true}
-                      onSuccess={handleLoginSuccess}
-                      onError={() => {
-                        console.log("Login Failed");
-                      }}
-                      auto_select={true}
-                      type="icon"
-                      
-                    />
-                  </div>
+                  </Button> 
                   <div className="mt-3 text-center">
                     <span>
                       Don't have an account?{" "}

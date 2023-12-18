@@ -4,6 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { MdInsertChartOutlined } from "react-icons/md";
 import { Dropdown } from "react-bootstrap";
 // import { FaCaretDown } from "react-icons/fa";
+import { googleLogout } from '@react-oauth/google';
 function Sidebar({
   isSidebarOpen,
   toggleSidebar,
@@ -25,7 +26,10 @@ function Sidebar({
   const logoutUser = async () => {
     localStorage.removeItem("isSignedIn");
     sessionStorage.clear();
+    localStorage.clear();
+  
     window.location.reload(true);
+    googleLogout();
     navigate("/");
   };
 
@@ -257,6 +261,33 @@ function Sidebar({
               </button>
             </NavLink>
           }
+           {/* {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/restaurant-list"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="restaurant list"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Restaurant List
+                </span>
+              </button>
+            </NavLink>
+          } */}
           {permissions?.includes("subscription-package-show") && (
             <NavLink
               className="nav-link"
