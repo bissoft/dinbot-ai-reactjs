@@ -10,8 +10,7 @@ import Scheduled from "./Scheduled";
 import ModalComponent from "./ModalComponent";
 import SuggestiosMenu from "./SuggestiosMenu";
 import BoostModal from "./BoostModal";
-import FacebookLogin from 'react-facebook-login';
-
+import FacebookLogin from "react-facebook-login";
 
 function Socialmedia() {
   const [showModal, setShowModal] = useState(false);
@@ -29,39 +28,51 @@ function Socialmedia() {
     handleCloseBoostModal();
   };
   const componentClicked = (res) => {
-    console.log(res)
-
-  }
+    console.log(res);
+  };
   const responseFacebook = (response) => {
     console.log(response);
-  }
+  };
   return (
     <>
       <div className="social-media">
         <div className="container-fluid">
           <div className="d-flex justify-content-between mt-3">
             <h2>Social Media</h2>
-            <FacebookLogin
-    appId="3590160454634136"
-    autoLoad={true}
-    fields="name,email,picture"
-    onClick={componentClicked}
-    callback={responseFacebook} />
-            {/* <Button
+            <div>
+              <FacebookLogin
+                appId="3590160454634136"
+                autoLoad={true}
+                fields="name,email,picture"
+                onClick={componentClicked}
+                callback={responseFacebook}
+                buttonStyle={{
+                  padding: "10px 24px",
+                  color: "#069af3",
+                  border: "1px solid #069af3",
+                  marginRight: "10px",
+                  fontWeight: 600,
+                  borderRadius: "25px",
+                  background: "white",
+                  fontSize: "14px",
+                }}
+              />
+              {/* <Button
             appId='871017004501223'
-              variant="outline-light"
+            variant="outline-light"
               className="add_post-btn"
               onClick={facebookLogin}
             >
               Login to Facebook <FaPlus size={20} className="pb-1" />
             </Button> */}
-            <Button
-              variant="outline-light"
-              className="add_post-btn"
-              onClick={handleShowModal}
-            >
-              Add Post <FaPlus size={20} className="pb-1" />
-            </Button>
+              <Button
+                variant="outline-light"
+                className="add_post-btn"
+                onClick={handleShowModal}
+              >
+                Add Post <FaPlus size={20} className="pb-1" />
+              </Button>
+            </div>
             <ModalComponent
               show={showModal}
               handleClose={handleCloseModal}

@@ -12,7 +12,6 @@ function Sidebar({
   // isAuthenticated,
 }) {
   const permissions = sessionStorage.getItem("permission");
-  
 
   const navigate = useNavigate();
   const [isSubNavVisible, setIsSubNavVisible] = useState(false);
@@ -27,7 +26,7 @@ function Sidebar({
     localStorage.removeItem("isSignedIn");
     sessionStorage.clear();
     window.location.reload(true);
-    navigate('/')
+    navigate("/");
   };
 
   return (
@@ -258,8 +257,8 @@ function Sidebar({
               </button>
             </NavLink>
           }
-          {permissions?.includes('subscription-package-show') &&
-            (<NavLink
+          {permissions?.includes("subscription-package-show") && (
+            <NavLink
               className="nav-link"
               activeClassName="active"
               to="/subscription-packages"
@@ -283,10 +282,10 @@ function Sidebar({
                   Subscription Packages
                 </span>
               </button>
-            </NavLink>)
-          }
-          {permissions?.includes('subscription-service-show') &&
-            (<NavLink
+            </NavLink>
+          )}
+          {permissions?.includes("subscription-service-show") && (
+            <NavLink
               className="nav-link"
               activeClassName="active"
               to="/subscription-services"
@@ -311,133 +310,11 @@ function Sidebar({
                   Subscription Services
                 </span>
               </button>
-            </NavLink>)
-          }
-         {permissions?.includes('user-show' || 'role-show' || 'permission-show') && (
-           <Dropdown
-           show={isSubNavVisible}
-           onClose={() => setIsSubNavVisible(false)}
-         >
-           <Dropdown.Toggle
-             activeClassName="active"
-             variant="none"
-             style={{
-               padding: isSidebarOpen ? "15px 30px" : "15px 20px",
-               cursor: "pointer",
-               color: "#A3A3A3",
-               fontWeight: "500",
-               fontSize: "14px",
-               fontFamily: "Roboto",
-             }}
-             id="dropdown-user"
-             onClick={toggleSubNav}
-           >
-             <MdInsertChartOutlined
-               // onClick={toggleSubNav}
-               className=" icons"
-               color="#A3A3A3"
-               size={isSidebarOpen ? "22px" : "25px"}
-             />
-             <span
-               style={{
-                 display: isSidebarOpen ? "block" : "none",
-                 marginLeft: "10px",
-               }}
-             >
-               Users Management
-             </span>
-           </Dropdown.Toggle>
-
-           <Dropdown.Menu
-             show={isSubNavVisible}
-             className={`fade ${isSubNavVisible ? "show" : "hide"}`}
-             style={{
-               marginTop: isSidebarOpen ? "" : "-80px",
-               marginLeft: isSidebarOpen ? "" : "83px",
-             }}
-           >
-            { permissions?.includes('user-show') &&  (<Dropdown.Item
-               as={NavLink}
-               to="/usermanagement/users"
-               activeClassName="active"
-               className="d-flex"
-               onClick={handleDropdownItemClick}
-             >
-               <MdInsertChartOutlined
-                 className="icons"
-                 color="#A3A3A3"
-                 size={isSidebarOpen ? "22px" : "25px"}
-               />
-               <span
-                 style={{
-                   // display: isSidebarOpen ? "block" : "none",
-                   marginLeft: "10px",
-                   cursor: "pointer",
-                   color: "#A3A3A3",
-                   fontWeight: "500",
-                   fontSize: "14px",
-                   fontFamily: "Roboto",
-                 }}
-               >
-                 Users
-               </span>
-             </Dropdown.Item>)}
-             {permissions?.includes('role-show') && (<Dropdown.Item
-               as={NavLink}
-               to="/usermanagement/roles"
-               activeClassName="active"
-               className="d-flex"
-               onClick={handleDropdownItemClick}
-             >
-               <MdInsertChartOutlined
-                 className=" icons"
-                 color="#A3A3A3"
-                 size={isSidebarOpen ? "22px" : "25px"}
-               />
-               <span
-                 style={{
-                   // display: isSidebarOpen ? "block" : "none",
-                   marginLeft: "10px",
-                   cursor: "pointer",
-                   color: "#A3A3A3",
-                   fontWeight: "500",
-                   fontSize: "14px",
-                   fontFamily: "Roboto",
-                 }}
-               >
-                 Roles
-               </span>
-             </Dropdown.Item>)}
-             {permissions?.includes('permission-show') && (<Dropdown.Item
-               as={NavLink}
-               to="/usermanagement/permission"
-               activeClassName="active"
-               className="d-flex"
-               onClick={handleDropdownItemClick}
-             >
-               <MdInsertChartOutlined
-                 className=" icons"
-                 color="#A3A3A3"
-                 size={isSidebarOpen ? "22px" : "25px"}
-               />
-               <span
-                 style={{
-                   // display: isSidebarOpen ? "block" : "none",
-                   marginLeft: "10px",
-                   cursor: "pointer",
-                   color: "#A3A3A3",
-                   fontWeight: "500",
-                   fontSize: "14px",
-                   fontFamily: "Roboto",
-                 }}
-               >
-                 Permissions
-               </span>
-             </Dropdown.Item>)}
-           </Dropdown.Menu>
-         </Dropdown>
-         )}
-          {
+            </NavLink>
+          )}
+          {permissions?.includes(
+            "user-show" || "role-show" || "permission-show"
+          ) && (
             <Dropdown
               show={isSubNavVisible}
               onClose={() => setIsSubNavVisible(false)}
@@ -475,92 +352,99 @@ function Sidebar({
               <Dropdown.Menu
                 show={isSubNavVisible}
                 className={`fade ${isSubNavVisible ? "show" : "hide"}`}
-                // style={{
-                //   marginTop: isSidebarOpen ? "" : "-43px",
-                //   marginLeft: isSidebarOpen ? "" : "83px",
-                // }}
+                style={{
+                  marginTop: isSidebarOpen ? "" : "-80px",
+                  marginLeft: isSidebarOpen ? "" : "83px",
+                }}
               >
-                <Dropdown.Item
-                  as={NavLink}
-                  to="/usermanagement/users"
-                  activeClassName="active"
-                  className="d-flex"
-                  onClick={handleDropdownItemClick}
-                >
-                  <MdInsertChartOutlined
-                    className="icons"
-                    color="#A3A3A3"
-                    size={isSidebarOpen ? "22px" : "25px"}
-                  />
-                  <span
-                    style={{
-                      // display: isSidebarOpen ? "block" : "none",
-                      marginLeft: "10px",
-                      cursor: "pointer",
-                      color: "#A3A3A3",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      fontFamily: "Roboto",
-                    }}
+                {permissions?.includes("user-show") && (
+                  <Dropdown.Item
+                    as={NavLink}
+                    to="/usermanagement/users"
+                    activeClassName="active"
+                    className="d-flex"
+                    onClick={handleDropdownItemClick}
                   >
-                    Users
-                  </span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as={NavLink}
-                  to="/usermanagement/roles"
-                  activeClassName="active"
-                  className="d-flex"
-                  onClick={handleDropdownItemClick}
-                >
-                  <MdInsertChartOutlined
-                    className=" icons"
-                    color="#A3A3A3"
-                    size={isSidebarOpen ? "22px" : "25px"}
-                  />
-                  <span
-                    style={{
-                      // display: isSidebarOpen ? "block" : "none",
-                      marginLeft: "10px",
-                      cursor: "pointer",
-                      color: "#A3A3A3",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      fontFamily: "Roboto",
-                    }}
+                    <MdInsertChartOutlined
+                      className="icons"
+                      color="#A3A3A3"
+                      size={isSidebarOpen ? "22px" : "25px"}
+                    />
+                    <span
+                      style={{
+                        // display: isSidebarOpen ? "block" : "none",
+                        marginLeft: "10px",
+                        cursor: "pointer",
+                        color: "#A3A3A3",
+                        fontWeight: "500",
+                        fontSize: "14px",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      Users
+                    </span>
+                  </Dropdown.Item>
+                )}
+                {permissions?.includes("role-show") && (
+                  <Dropdown.Item
+                    as={NavLink}
+                    to="/usermanagement/roles"
+                    activeClassName="active"
+                    className="d-flex"
+                    onClick={handleDropdownItemClick}
                   >
-                    Roles
-                  </span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as={NavLink}
-                  to="/usermanagement/permission"
-                  activeClassName="active"
-                  className="d-flex"
-                  onClick={handleDropdownItemClick}
-                >
-                  <MdInsertChartOutlined
-                    className=" icons"
-                    color="#A3A3A3"
-                    size={isSidebarOpen ? "22px" : "25px"}
-                  />
-                  <span
-                    style={{
-                      // display: isSidebarOpen ? "block" : "none",
-                      marginLeft: "10px",
-                      cursor: "pointer",
-                      color: "#A3A3A3",
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      fontFamily: "Roboto",
-                    }}
+                    <MdInsertChartOutlined
+                      className=" icons"
+                      color="#A3A3A3"
+                      size={isSidebarOpen ? "22px" : "25px"}
+                    />
+                    <span
+                      style={{
+                        // display: isSidebarOpen ? "block" : "none",
+                        marginLeft: "10px",
+                        cursor: "pointer",
+                        color: "#A3A3A3",
+                        fontWeight: "500",
+                        fontSize: "14px",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      Roles
+                    </span>
+                  </Dropdown.Item>
+                )}
+                {permissions?.includes("permission-show") && (
+                  <Dropdown.Item
+                    as={NavLink}
+                    to="/usermanagement/permission"
+                    activeClassName="active"
+                    className="d-flex"
+                    onClick={handleDropdownItemClick}
                   >
-                    Permissions
-                  </span>
-                </Dropdown.Item>
+                    <MdInsertChartOutlined
+                      className=" icons"
+                      color="#A3A3A3"
+                      size={isSidebarOpen ? "22px" : "25px"}
+                    />
+                    <span
+                      style={{
+                        // display: isSidebarOpen ? "block" : "none",
+                        marginLeft: "10px",
+                        cursor: "pointer",
+                        color: "#A3A3A3",
+                        fontWeight: "500",
+                        fontSize: "14px",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      Permissions
+                    </span>
+                  </Dropdown.Item>
+                )}
               </Dropdown.Menu>
             </Dropdown>
-          }
+          )}
+         
 
           <div style={{ position: "absolute", bottom: "0" }}>
             {

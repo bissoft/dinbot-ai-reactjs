@@ -235,7 +235,9 @@ function Userstable({
       }
     }
   };
-
+  const permissions = sessionStorage.getItem("permission");
+  console.log("permissions-->", permissions.includes("user-edit"));
+  console.log("tableid", tableId);
   return (
     <div className="food-table">
       <div className="card px-2">
@@ -294,21 +296,102 @@ function Userstable({
                     </td> */}
                   </>
                 )}
+
                 <td>
-                  <div className=" d-flex">
- 
-                    <FiEdit2
-                      size={20}
-                      className="mx-1"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleEdit(tableId, table.id)}
-                    />
-                    <MdOutlineDelete
-                      size={20}
-                      className="mx-1"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleDelete(tableId, table.id)}
-                    />
+                  <div className="d-flex">
+                    {/* Edit Button */}
+                    {tableId === "subscription-package" &&
+                      permissions?.includes("subscription-package-edit") && (
+                        <FiEdit2
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleEdit(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "subscription-service" &&
+                      permissions?.includes("subscription-service-edit") && (
+                        <FiEdit2
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleEdit(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "user" &&
+                      permissions?.includes("user-edit") && (
+                        <FiEdit2
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleEdit(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "role" &&
+                      permissions?.includes("role-edit") && (
+                        <FiEdit2
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleEdit(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "permission" &&
+                      permissions.includes("permission-edit") && (
+                        <FiEdit2
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleEdit(tableId, table.id)}
+                        />
+                      )}
+
+                    {/* Delete Button */}
+                    {tableId === "subscription-package" &&
+                      permissions.includes("subscription-package-delete") && (
+                        <MdOutlineDelete
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "subscription-service" &&
+                      permissions.includes("subscription-service-delete") && (
+                        <MdOutlineDelete
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "user" &&
+                      permissions.includes("user-delete") && (
+                        <MdOutlineDelete
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "role" &&
+                      permissions.includes("role-delete") && (
+                        <MdOutlineDelete
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(tableId, table.id)}
+                        />
+                      )}
+                    {tableId === "permission" &&
+                      permissions.includes("permission-delete") && (
+                        <MdOutlineDelete
+                          size={20}
+                          className="mx-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDelete(tableId, table.id)}
+                        />
+                      )}
                   </div>
                 </td>
               </tr>
