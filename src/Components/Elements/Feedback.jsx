@@ -10,7 +10,6 @@ import Favouritemenu from "./Favouritemenu";
 function Feedback() {
   const [activeTab, setActiveTab] = useState("Reviews");
 
-  console.log("active-tab->>>>>", activeTab);
   const handleTabChange = (selectedTab) => {
     setActiveTab(selectedTab);
   };
