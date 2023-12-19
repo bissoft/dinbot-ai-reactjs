@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Form, FloatingLabel } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Reviews from "./Reviews";
-import GoodReviews from "./GoodReviews";
-import BadReviews from "./BadReviews";
-import Suggestions from "./Suggestions";
+import Reviews from "../Reviews";
+import GoodReviews from "../GoodReviews";
+import BadReviews from "../BadReviews";
+import Suggestions from "../Suggestions";
 
 function Profile() {
   const [activeTab, setActiveTab] = useState("Profile");

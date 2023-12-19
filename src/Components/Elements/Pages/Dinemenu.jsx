@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Favouritemenu from "./Favouritemenu";
+import Favouritemenu from "../Favouritemenu";
 import Button from "react-bootstrap/Button";
-import MenuModal from "./MenuModal";
+import MenuModal from "../MenuModal";
 import { FaPlus } from "react-icons/fa6";
-import Foodmenucard from "./Foodmenucard";
+import Foodmenucard from "../Foodmenucard";
 
 function Dinemenu() {
   const [showFirstModal, setShowFirstModal] = useState(false);

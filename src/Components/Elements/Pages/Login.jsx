@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { API_BASE_URL } from "../../Apicongfig";
+import { API_BASE_URL } from "../../../Apicongfig";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";

@@ -21,22 +21,15 @@ function Sidebar({
     setIsSubNavVisible(!isSubNavVisible);
   };
   const handleDropdownItemClick = () => {
-    setIsSubNavVisible(false); // Close the dropdown menu when a dropdown item is clicked
+    setIsSubNavVisible(false); 
   };
-  // const logoutUser = async () => {
-  //   localStorage.removeItem("isSignedIn");
-  //   sessionStorage.clear();
-  //   localStorage.clear();
 
-  //   window.location.reload(true);
-  //   navigate("/");
-  // };
   const handleLogout = () => {
-    // Update local storage and state on logout
-    localStorage.setItem("isSignedIn",false);
+    localStorage.setItem("isSignedIn", false);
     localStorage.removeItem("email_verified");
-    sessionStorage.clear()
-    // setIsSignedIn(false);
+    sessionStorage.clear();
+    window.location.reload(true);
+    navigate("/");
   };
 
   return (
@@ -89,7 +82,7 @@ function Sidebar({
           )}
         </div>
         <div className="side-btn ">
-        {
+          {
             <NavLink
               className="nav-link"
               activeClassName="active"
@@ -97,7 +90,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/analytic-icon.svg"
@@ -124,7 +117,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 {/* <AiOutlineCalendar
                   className=" icons"
@@ -156,7 +149,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 {/* <BsCardChecklist
                   className=" icons"
@@ -188,7 +181,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 {/* <BsBoxSeam
                   className=" icons"
@@ -220,7 +213,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/sm-icon.svg"
@@ -247,7 +240,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/feedback-icon.svg"
@@ -274,7 +267,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/analytic-icon.svg"
@@ -301,7 +294,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/analytic-icon.svg"
@@ -328,7 +321,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/analytic-icon.svg"
@@ -355,7 +348,7 @@ function Sidebar({
               activeStyle={{ color: "#069AF3" }}
             >
               <button
-                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+                style={{ padding: isSidebarOpen ? "10px 30px" : "10px 20px" }}
               >
                 <img
                   src="/Assets/analytic-icon.svg"
@@ -386,7 +379,7 @@ function Sidebar({
                 activeClassName="active"
                 variant="none"
                 style={{
-                  padding: isSidebarOpen ? "15px 30px" : "15px 20px",
+                  padding: isSidebarOpen ? "10px 30px" : "10px 20px",
                   cursor: "pointer",
                   color: "#A3A3A3",
                   fontWeight: "500",
@@ -518,7 +511,7 @@ function Sidebar({
               >
                 <button
                   style={{
-                    padding: isSidebarOpen ? "15px 30px" : "15px 20px",
+                    padding: isSidebarOpen ? "10px 30px" : "10px 20px",
                   }}
                 >
                   <svg
@@ -560,7 +553,7 @@ function Sidebar({
               >
                 <button
                   style={{
-                    padding: isSidebarOpen ? "15px 30px" : "15px 20px",
+                    padding: isSidebarOpen ? "10px 30px" : "10px 20px",
                   }}
                   onClick={handleLogout}
                 >

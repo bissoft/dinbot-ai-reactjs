@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { FloatingLabel, Form, Row, Col, Button } from "react-bootstrap";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { API_BASE_URL } from "../../Apicongfig";
+import { API_BASE_URL } from "../../../Apicongfig";
 import { toast } from "react-toastify";
-import Userstable from "./Userstable";
+import Userstable from "../Userstable";
 
 const SubscriptionServices = () => {
   const [services, setServices] = useState([]);

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import Reviews from "./Reviews";
-import GoodReviews from "./GoodReviews";
-import BadReviews from "./BadReviews";
-import Suggestions from "./Suggestions";
-import Favouritemenu from "./Favouritemenu";
+import Reviews from "../Reviews";
+import GoodReviews from "../GoodReviews";
+import BadReviews from "../BadReviews";
+import Suggestions from "../Suggestions";
+import Favouritemenu from "../Favouritemenu";
 
 function Feedback() {
   const [activeTab, setActiveTab] = useState("Reviews");

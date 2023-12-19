@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Userstable from "./Userstable";
+import Userstable from "../Userstable";
 import { FloatingLabel, Form, Row, Col, Button } from "react-bootstrap";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
-import { API_BASE_URL } from "../../Apicongfig";
+import { API_BASE_URL } from "../../../Apicongfig";
 import { toast } from "react-toastify";
 
 function Users() {

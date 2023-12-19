@@ -5,11 +5,11 @@ import { Tab, Tabs } from "react-bootstrap";
 // import FoodTable from "./FoodTable";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { GoArrowRight } from "react-icons/go";
-import AnalysisData from "../Utils/AnalysisData.json";
+import AnalysisData from "../../Utils/AnalysisData.json";
 import { Link } from "react-router-dom";
 import { Form, FloatingLabel } from "react-bootstrap";
-import Reviews from "./Reviews";
-import Suggestions from "./Suggestions";
+import Reviews from "../Reviews";
+import Suggestions from "../Suggestions";
 function Analysis() {
   const [displayedItems, setDisplayedItems] = useState(5);
 

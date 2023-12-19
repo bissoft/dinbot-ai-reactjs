@@ -1,8 +1,8 @@
 import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import FoodTable from "./FoodTable";
-import Favouritemenu from "./Favouritemenu";
+import FoodTable from "../FoodTable";
+import Favouritemenu from "../Favouritemenu";
 function Pos() {
   return (
     <div className="pos">
