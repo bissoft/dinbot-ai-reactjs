@@ -7,9 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { API_BASE_URL } from "../../Apicongfig";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-// import { GoogleLogin } from '@react-oauth/google';
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
 function Login({ onLogin }) {
@@ -49,11 +47,9 @@ function Login({ onLogin }) {
         const token = response.data.token;
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("permission", response.data.user.permissions);
+        sessionStorage.setItem("user",JSON.stringify(response?.data?.user));
         onLogin();
         toast.success(response.data.message);
-
-        onLogin();
-        toast.success("Login Successfully");
         setEmail("");
         setPassword("");
         navigate("/dashboard");
@@ -88,16 +84,16 @@ function Login({ onLogin }) {
     if (sessionStorage?.getItem("email_verified")) {
       window.location.assign("/dashboard");
     } else {
-      console.error("Token not found in the decoded object:", decoded);
+      console.error("email is not verified:", decoded);
     }
   };
 
-  // useEffect(() => {
-  //   const isEmailVerified = sessionStorage.getItem("email_verified");
-  //   if (isEmailVerified) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [navigate]);
+  useEffect(() => {
+    const isEmailVerified = sessionStorage.getItem("email_verified");
+    if (isEmailVerified) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   return (
     <div className="login">
@@ -232,32 +228,22 @@ function Login({ onLogin }) {
                     Sign In
                   </Button>{" "}
                   <br />
-                  {/* <Button
-                    type="submit"
-                    className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3"
-                  // onKeyDown={(e)=>handleKeyDown(e)}
-                  // onClick={handleLoginSubmit}
-                  onClick={handleGoogleLogin}
-                  >
-                    <img
-                      src="/Assets/googlebtn-icon.svg"
-                      alt="google"
-                      className="img-fluid px-2"
-                    />
-                    Sign in with Google
-                  </Button>  */}
                   <div className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3">
                     <GoogleLogin
                       logo_alignment="center"
                       size="large"
                       useOneTap={true}
                       onSuccess={handleLoginSuccess}
-                      onError={() => {
-                        console.log("Login Failed");
+                      onError={handleLoginError}
+                      className="google-login-button"
+                      // auto_select={true}
+                      // type="icon"
+                      containerProps={{
+                        style:{
+                          width:"100% !important",
+                          border:'none !important'
+                        },
                       }}
-                      auto_select={true}
-                      type="icon"
-                      
                     />
                   </div>
                   <div className="mt-3 text-center">

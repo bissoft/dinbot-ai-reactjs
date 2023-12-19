@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Header() {
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const user = JSON.parse(sessionStorage.getItem('user'))
 
   const handleImg = () => {
     navigate("/profile");
@@ -44,10 +45,10 @@ function Header() {
           <div className="d-flex gap-3 ">
             <div>
               <div>
-                <span className="profile-name">Lindsey Korsgaard</span>
+                <span className="profile-name">{user?.name}</span>
               </div>
               <div className="text-end">
-                <span className="administrator">Administrator</span>
+                <span className="administrator">{user?.role?.name}</span>
               </div>
             </div>
             <div>
