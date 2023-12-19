@@ -80,9 +80,11 @@ function Login({ onLogin }) {
     localStorage.setItem("email_verified", isEmailVerified);
     sessionStorage.setItem("user", JSON.stringify(decoded));
     localStorage.setItem("isSignedIn", true);
+    
 
     if (sessionStorage?.getItem("email_verified")) {
       window.location.assign("/dashboard");
+      
     } else {
       console.error("email is not verified:", decoded);
     }
