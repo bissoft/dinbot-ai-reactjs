@@ -3,7 +3,7 @@ import { IoEllipsisVertical } from "react-icons/io5";
 import { GoArrowRight } from "react-icons/go";
 import Dashboarddata from "../Utils/Dashboarddata.json";
 
-function Favouritemenu() {
+function Favouritemenu({title,c1,c2,className}) {
   const [displayedItems, setDisplayedItems] = useState(5);
   const handleSeeAllClick = () => {
     // Toggle between showing 5 items and showing all items
@@ -11,11 +11,11 @@ function Favouritemenu() {
   };
 
   return (
-    <div className="favouritemenu">
+    <div className={`favouritemenu ${className}`}>
       <div className="card p-4">
         <div className="d-flex justify-content-between">
           <div>
-            <h6 className="favourite">Favourite Menu</h6>
+            <h6 className="favourite">{title}</h6>
           </div>
           <div className="btn-group">
             <IoEllipsisVertical
@@ -63,8 +63,8 @@ function Favouritemenu() {
         <table className="table table-striped table-class" id="foodtable-id">
           <thead>
             <tr>
-              <th>Food Name</th>
-              <th>Sold</th>
+              <th>{c1}</th>
+              <th>{c2}</th>
             </tr>
           </thead>
           <tbody>
@@ -87,7 +87,7 @@ function Favouritemenu() {
                 </td>
                 <td>
                   <div className="serving d-flex align-items-center">
-                    {table.serving}
+                  {title === "Above Margin Restaurants" ? table.margins : table.serving}
                   </div>
                 </td>
               </tr>

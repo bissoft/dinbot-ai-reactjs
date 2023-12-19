@@ -52,7 +52,7 @@ function Feedback() {
           </div>
 
           <div className={activeTab === "Suggestions" ? "d-none" : "col-md-4"}>
-            <Favouritemenu />
+            <Favouritemenu title="Top Rated This week" c1="Food Name" c2="Sold" />
           </div>
         </div>
       </div>

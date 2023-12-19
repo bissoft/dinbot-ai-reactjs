@@ -4,7 +4,6 @@ import Tabs from "react-bootstrap/Tabs";
 import FoodTable from "./FoodTable";
 import Favouritemenu from "./Favouritemenu";
 function Pos() {
-  const salesTable = "salesTableId";
   return (
     <div className="pos">
       <div className="container-fluid py-3">
@@ -40,7 +39,7 @@ function Pos() {
             </Tabs>
           </div>
           <div className="col-md-4">
-            <Favouritemenu />
+            <Favouritemenu title="Most Selling" c1="Food Name" c2="Sold" />
           </div>
         </div>
       </div>

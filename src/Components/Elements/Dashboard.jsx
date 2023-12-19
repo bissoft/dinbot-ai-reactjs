@@ -255,7 +255,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="col-md-4">
-            <Favouritemenu />
+            <Favouritemenu title="Favourite Menu" c1="Food Name" c2="Sold"/>
           </div>
         </div>
       </div>

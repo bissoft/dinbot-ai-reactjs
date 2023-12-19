@@ -89,6 +89,33 @@ function Sidebar({
           )}
         </div>
         <div className="side-btn ">
+        {
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/super-admin"
+              activeStyle={{ color: "#069AF3" }}
+            >
+              <button
+                style={{ padding: isSidebarOpen ? "15px 30px" : "15px 20px" }}
+              >
+                <img
+                  src="/Assets/analytic-icon.svg"
+                  alt="superAdmin"
+                  width={isSidebarOpen ? "22px" : "25px"}
+                />
+
+                <span
+                  style={{
+                    display: isSidebarOpen ? "block" : "none",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Super Admin
+                </span>
+              </button>
+            </NavLink>
+          }
           {
             <NavLink
               className="nav-link"
@@ -266,7 +293,7 @@ function Sidebar({
               </button>
             </NavLink>
           }
-          {/* {
+          {
             <NavLink
               className="nav-link"
               activeClassName="active"
@@ -292,7 +319,7 @@ function Sidebar({
                 </span>
               </button>
             </NavLink>
-          } */}
+          }
           {permissions?.includes("subscription-package-show") && (
             <NavLink
               className="nav-link"

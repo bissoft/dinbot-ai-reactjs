@@ -1959,3 +1959,103 @@ html {
     }
   }
 }
+
+.restaurant-list {
+  .nav-tabs {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    --bs-nav-tabs-link-hover-border-color: transparent !important;
+    --bs-nav-link-color: #a3a3a3 !important;
+    --bs-nav-link-hover-color: #a3a3a3 !important;
+    /* Body Text/Inter/Regular/Medium */
+    font-family: Inter !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    border-bottom: 2px solid #e5e5e5 !important;
+
+    .active {
+      color: #3a3f51;
+      border: white;
+      /* Body Text/Inter/Semi Bold/Medium */
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      border-bottom: 4px solid #069af3 !important;
+    }
+  }
+}
+
+.super-admin {
+  .dashboard-card {
+    border-radius: 14px;
+    border: 1px solid #edf2f7;
+    background: #fff;
+    display: flex;
+    // width: 237px;
+    // height: 173px;
+    // gap: 10px;
+  }
+  .order {
+    color: #898989;
+    font-feature-settings: "salt" on, "liga" off;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .num {
+    color: #3a3f51;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .order-main {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .icon {
+    width: fit-content;
+  }
+  .post_card {
+    margin: 0;
+    gap: 16px;
+  }
+  .card-title {
+    //styleName: Body Text/Inter/Semi Bold/Large;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .card-rating {
+    //styleName: Body Text/Inter/Medium/Medium;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .card-comment {
+    //styleName: Body Text/Inter/Regular/Large;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
