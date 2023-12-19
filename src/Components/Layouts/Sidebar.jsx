@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { MdInsertChartOutlined } from "react-icons/md";
 import { Dropdown } from "react-bootstrap";
 // import { FaCaretDown } from "react-icons/fa";
-import { googleLogout } from '@react-oauth/google';
+import { googleLogout } from "@react-oauth/google";
 function Sidebar({
   isSidebarOpen,
   toggleSidebar,
@@ -23,14 +23,20 @@ function Sidebar({
   const handleDropdownItemClick = () => {
     setIsSubNavVisible(false); // Close the dropdown menu when a dropdown item is clicked
   };
-  const logoutUser = async () => {
-    localStorage.removeItem("isSignedIn");
-    sessionStorage.clear();
-    localStorage.clear();
-  
-    window.location.reload(true);
-    googleLogout();
-    navigate("/");
+  // const logoutUser = async () => {
+  //   localStorage.removeItem("isSignedIn");
+  //   sessionStorage.clear();
+  //   localStorage.clear();
+
+  //   window.location.reload(true);
+  //   navigate("/");
+  // };
+  const handleLogout = () => {
+    // Update local storage and state on logout
+    localStorage.setItem("isSignedIn",false);
+    localStorage.removeItem("email_verified");
+    sessionStorage.clear()
+    // setIsSignedIn(false);
   };
 
   return (
@@ -179,7 +185,6 @@ function Sidebar({
               </button>
             </NavLink>
           }
-
           {
             <NavLink
               className="nav-link"
@@ -261,7 +266,7 @@ function Sidebar({
               </button>
             </NavLink>
           }
-           {/* {
+          {/* {
             <NavLink
               className="nav-link"
               activeClassName="active"
@@ -475,7 +480,6 @@ function Sidebar({
               </Dropdown.Menu>
             </Dropdown>
           )}
-         
 
           <div style={{ position: "absolute", bottom: "0" }}>
             {
@@ -523,7 +527,7 @@ function Sidebar({
             {
               <NavLink
                 className="nav-link"
-                to=""
+                to="/"
                 activeClassName="active"
                 activeStyle={{ color: "#069AF3" }}
               >
@@ -531,7 +535,7 @@ function Sidebar({
                   style={{
                     padding: isSidebarOpen ? "15px 30px" : "15px 20px",
                   }}
-                  onClick={logoutUser}
+                  onClick={handleLogout}
                 >
                   <svg
                     width="22"
