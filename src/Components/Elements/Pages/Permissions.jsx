@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FloatingLabel, Form, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import Userstable from "./Userstable";
-import { API_BASE_URL } from "../../Apicongfig";
+import Userstable from "../Userstable";
+import { API_BASE_URL } from "../../../Apicongfig";
 import { toast } from "react-toastify";
 
 function Permissions() {

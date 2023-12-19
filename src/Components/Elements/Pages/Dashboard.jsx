@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import Favouritemenu from "../Elements/Favouritemenu";
-import FoodTable from "./FoodTable";
+import Favouritemenu from "../Favouritemenu";
+import FoodTable from "../FoodTable";
 
 function Dashboard() {
   const [chartData, setChartData] = useState({

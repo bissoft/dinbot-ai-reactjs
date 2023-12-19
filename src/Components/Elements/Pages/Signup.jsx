@@ -6,7 +6,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { API_BASE_URL } from "../../Apicongfig";
+import { API_BASE_URL } from "../../../Apicongfig";
 
 function Signup() {
   const [passwordVisible, setPasswordVisible] = useState(false);

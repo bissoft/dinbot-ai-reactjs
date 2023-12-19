@@ -5,11 +5,11 @@ import Card from "react-bootstrap/Card";
 import { FaPlus } from "react-icons/fa6";
 // import FacebookLogin from 'react-facebook-login'
 import Button from "react-bootstrap/Button";
-import Stats from "./Stats";
-import Scheduled from "./Scheduled";
-import ModalComponent from "./ModalComponent";
-import SuggestiosMenu from "./SuggestiosMenu";
-import BoostModal from "./BoostModal";
+import Stats from "../Stats";
+import Scheduled from "../Scheduled";
+import ModalComponent from "../ModalComponent";
+import SuggestiosMenu from "../SuggestiosMenu";
+import BoostModal from "../BoostModal";
 import FacebookLogin from "react-facebook-login";
 
 function Socialmedia() {

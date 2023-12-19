@@ -1,6 +1,6 @@
 import React from "react";
-import Favouritemenu from "./Favouritemenu";
-import FoodTable from "./FoodTable";
+import Favouritemenu from "../Favouritemenu";
+import FoodTable from "../FoodTable";
 
 const SuperAdmin = () => {
   return (
@@ -103,7 +103,6 @@ const SuperAdmin = () => {
               c1="Name"
               c2="Sales"
               className="mt-3"
-              
             />
           </div>
         </div>
