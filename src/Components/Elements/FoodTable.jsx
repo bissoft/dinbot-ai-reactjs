@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Dashboarddata from "../Utils/Dashboarddata.json";
+import ModalComponent from "./ModalComponent";
 function FoodTable({ initialMaxRows = 5, initialMaxRow, tableId }) {
   const [maxRows, setMaxRows] = useState(initialMaxRow || initialMaxRows);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalRows, setTotalRows] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const handleMaxRowsChange = (e) => {
     setMaxRows(parseInt(e.target.value));
     setCurrentPage(1);
@@ -39,6 +41,12 @@ function FoodTable({ initialMaxRows = 5, initialMaxRow, tableId }) {
   };
   const entriesStart = (currentPage - 1) * maxRows + 1;
   const entriesEnd = Math.min(entriesStart + maxRows - 1, totalRows);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+  const handleSaveChanges = () => {
+    handleCloseModal();
+  };
   return (
     <div className="food-table">
       <div className="card px-2">
@@ -48,10 +56,18 @@ function FoodTable({ initialMaxRows = 5, initialMaxRow, tableId }) {
         >
           <thead>
             <tr className="mainfood-table">
-              <th>Food Name</th>
+              <th>{tableId === "salesTable" ? "Food Name" : "Name"}</th>
               <th>Type</th>
               <th>Status</th>
-              <th>Price</th>
+              {tableId === "worstPerforming" ? (
+                <>
+                  <th>Target</th>
+                </>
+              ) : (
+                <>
+                  <th>Price</th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -78,13 +94,29 @@ function FoodTable({ initialMaxRows = 5, initialMaxRow, tableId }) {
                   <div className="food-title">{table.status}</div>
                 </td>
                 <td>
-                  <div className="food-title">{table.price}</div>
+                  {tableId === "worstPerforming" ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={handleShowModal}
+                      style={{backgroundColor:'#069AF3'}}
+                    >
+                      Assign Target
+                    </button>
+                  ) : (
+                    <div className="food-title">{table?.price}</div>
+                  )}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <ModalComponent
+        tableId={tableId}
+        show={showModal}
+        handleClose={handleCloseModal}
+        handleSaveChanges={handleSaveChanges}
+      />
       <div className="d-flex justify-content-between py-3">
         <div className="rows_count display">
           Showing {entriesStart} to {entriesEnd} of {totalRows} entries

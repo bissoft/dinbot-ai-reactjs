@@ -112,13 +112,11 @@ function Socialmedia() {
                 subHeading="Boost these for better reach"
                 btnText="Boost"
               />
-              {/* {showBoostModal && ( */}
               <BoostModal
                 showBoostModal={showBoostModal}
                 handleClose={handleCloseBoostModal}
                 handleSaveChanges={handleSaveChanges}
               />
-              {/* )} */}
             </div>
           </div>
         </div>

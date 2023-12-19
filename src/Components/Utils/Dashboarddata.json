@@ -6,7 +6,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "45%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -15,7 +16,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "50%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -24,7 +26,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "48%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -33,7 +36,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -42,7 +46,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -51,7 +56,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -60,7 +66,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -69,7 +76,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -78,7 +86,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -87,7 +96,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -96,7 +106,8 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   },
   {
     "food-pic": "/Assets/Profile.png",
@@ -105,6 +116,7 @@
     "serving": "30 servings",
     "foodtype": "Snack",
     "status": "Online",
-    "price": "$150"
+    "price": "$150",
+    "margins": "58%"
   }
 ]

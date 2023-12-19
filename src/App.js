@@ -22,6 +22,8 @@ import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import SubscriptionPackages from "./Components/Elements/SubscriptionPackages";
 import SubscriptionServices from "./Components/Elements/SubscriptionServices";
+import RestaurantList from "./Components/Elements/RestaurantList";
+import SuperAdmin from "./Components/Elements/SuperAdmin";
 function App() {
   const navigate = useNavigate();
   const [isSignedIn, setIsSignedIn] = useState(() => {
@@ -42,8 +44,6 @@ function App() {
     localStorage.setItem("isSignedIn", isSignedIn.toString());
   }, [isSignedIn]);
 
- 
-
   return (
     <>
       <ToastContainer />
@@ -59,6 +59,15 @@ function App() {
             />
           }
         >
+          <Route
+            path="/super-admin"
+            element={
+              <PrivateRoute isSignedIn={isSignedIn}>
+                {" "}
+                <SuperAdmin onLogout={signout} />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/dashboard"
             element={
@@ -92,6 +101,15 @@ function App() {
               <PrivateRoute isSignedIn={isSignedIn}>
                 {" "}
                 <Socialmedia onLogout={signout} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/restaurant-list"
+            element={
+              <PrivateRoute isSignedIn={isSignedIn}>
+                {" "}
+                <RestaurantList onLogout={signout} />
               </PrivateRoute>
             }
           />
