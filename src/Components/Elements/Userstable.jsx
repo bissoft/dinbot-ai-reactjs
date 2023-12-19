@@ -236,7 +236,7 @@ function Userstable({
     }
   };
   const permissions = sessionStorage.getItem("permission");
-  console.log("permissions-->", permissions.includes("user-edit"));
+  console.log("permissions-->", permissions?.includes("user-edit"));
   console.log("tableid", tableId);
   return (
     <div className="food-table">

@@ -69,6 +69,11 @@ html {
     font-size: 16px;
     border: 1px solid #eef0f3;
   }
+  .S9gUrf-YoZ4jf {
+    width: 100% !important;
+    display: flex;
+    justify-content: center !important;
+  }
   .card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border: none !important;
@@ -81,20 +86,13 @@ html {
   }
 }
 .sidebar {
-  // position: fixed;
-  // width: 240px;
-  // height: 150vh;
-  // background-color: white;
-  // transition: width 0.3s ease;
-  // overflow-x: hidden;
-
-  width: 280px; /* Adjust the width as needed */
+  width: 280px;
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  background-color: #fff; /* Change the background color if needed */
-  z-index: 1000; /* Ensure it's above other content */
+  background-color: #fff;
+  z-index: 1000;
   transition: width 0.3s ease;
   // overflow-x: hidden;
 
@@ -105,7 +103,6 @@ html {
   }
   .active {
     filter: sepia(10) saturate(144.5) hue-rotate(203deg) brightness(1.5);
-    
   }
   .container-fluid {
     --bs-gutter-x: 0rem;

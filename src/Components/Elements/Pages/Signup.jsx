@@ -7,6 +7,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { API_BASE_URL } from "../../../Apicongfig";
+import { jwtDecode } from "jwt-decode";
+import { GoogleLogin } from "@react-oauth/google";
 
 function Signup() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -74,6 +76,37 @@ function Signup() {
   const togglePasswordVisibility1 = () => {
     setPasswordVisible1(!passwordVisible1);
   };
+
+  const handleLoginError = (error) => {
+    console.error("Login Failed:", error);
+  };
+
+  const handleLoginSuccess = (credentialResponse) => {
+    var decoded = jwtDecode(credentialResponse.credential);
+    console.log(decoded);
+
+    const isEmailVerified = decoded?.email_verified;
+    sessionStorage.setItem("email_verified", isEmailVerified);
+    localStorage.setItem("email_verified", isEmailVerified);
+    sessionStorage.setItem("user", JSON.stringify(decoded));
+    localStorage.setItem("isSignedIn", true);
+    
+
+    if (sessionStorage?.getItem("email_verified")) {
+      window.location.assign("/dashboard");
+      
+    } else {
+      console.error("email is not verified:", decoded);
+    }
+  };
+
+  useEffect(() => {
+    const isEmailVerified = sessionStorage.getItem("email_verified");
+    if (isEmailVerified) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
+
   return (
     <div className="signup">
       <div className="container-fluid">
@@ -221,11 +254,9 @@ function Signup() {
                   >
                     Sign Up
                   </Button>
-                  <Button
+                  {/* <Button
                     type="submit"
                     className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3"
-                    // onKeyDown={(e)=>handleKeyDown(e)}
-                    // onClick={handleLoginSubmit}
                   >
                     <img
                       src="/Assets/googlebtn-icon.svg"
@@ -233,7 +264,25 @@ function Signup() {
                       className="img-fluid px-2"
                     />
                     Sign up with Google
-                  </Button>
+                  </Button> */}
+                   <div className="btn btn-outline-secondary googlebtn w-100 py-3 mt-3">
+                    <GoogleLogin
+                      logo_alignment="center"
+                      size="large"
+                      useOneTap={true}
+                      onSuccess={handleLoginSuccess}
+                      onError={handleLoginError}
+                      className="google-login-button"
+                      // auto_select={true}
+                      // type="icon"
+                      containerProps={{
+                        style:{
+                          width:"100% !important",
+                          border:'none !important'
+                        },
+                      }}
+                    />
+                  </div>
                   <div className="text-center mt-3">
                     <span>
                       Already have an account? <Link to="/" style={{textDecoration:'none',color:'#069af3'}}>Sign In</Link>{" "}
