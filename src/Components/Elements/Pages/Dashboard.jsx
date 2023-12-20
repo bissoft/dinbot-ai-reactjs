@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import Favouritemenu from "../Favouritemenu";
 import FoodTable from "../FoodTable";
+import SuggestiosMenu from "../SuggestiosMenu";
+import ModalComponent from "../ModalComponent";
 
 function Dashboard() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+  const handleSaveChanges = () => {
+    handleCloseModal();
+  };
   const [chartData, setChartData] = useState({
     series: [
       {
@@ -255,7 +264,19 @@ function Dashboard() {
             </div>
           </div>
           <div className="col-md-4">
-            <Favouritemenu title="Favourite Menu" c1="Food Name" c2="Sold"/>
+            <Favouritemenu title="Favourite Menu" c1="Food Name" c2="Sold" />
+            <SuggestiosMenu
+              heading="Suggestions"
+              subHeading="Add these post to gain Engagement"
+              btnText="Post"
+              onClick={handleShowModal}
+              className="pt-4"
+            />
+            <ModalComponent
+              show={showModal}
+              handleClose={handleCloseModal}
+              handleSaveChanges={handleSaveChanges}
+            />
           </div>
         </div>
       </div>

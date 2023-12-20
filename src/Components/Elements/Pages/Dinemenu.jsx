@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import MenuModal from "../MenuModal";
 import { FaPlus } from "react-icons/fa6";
 import Foodmenucard from "../Foodmenucard";
+// import ReactApexChart from 'react-apexcharts';
 
 function Dinemenu() {
   const [showFirstModal, setShowFirstModal] = useState(false);
@@ -39,6 +40,23 @@ function Dinemenu() {
       setShowSecondModal(false);
     }
   };
+  // const [chartState, setChartState] = useState({
+  //   series: [50],
+  //   options: {
+  //     chart: {
+  //       height: 100,
+  //       type: 'radialBar',
+  //     },
+  //     plotOptions: {
+  //       radialBar: {
+  //         hollow: {
+  //           size: '50%',
+  //         },
+  //       },
+  //     },
+  //     labels: [],
+  //   },
+  // });
   return (
     <div className="dinemenu">
       <div className="container-fluid py-3">
@@ -95,6 +113,15 @@ function Dinemenu() {
           </div>
           <div className="col-md-4">
             <Favouritemenu title="Favourite Menu" c1="Food Name" c2="Sold" />
+
+            {/* <div id="chart">
+              <ReactApexChart
+                options={chartState.options}
+                series={chartState.series}
+                type="radialBar"
+                height={350}
+              />
+            </div> */}
           </div>
         </div>
       </div>

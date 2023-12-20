@@ -33,6 +33,7 @@ function Socialmedia() {
   const responseFacebook = (response) => {
     console.log(response);
   };
+
   return (
     <>
       <div className="social-media">
@@ -57,14 +58,6 @@ function Socialmedia() {
                   fontSize: "14px",
                 }}
               />
-              {/* <Button
-            appId='871017004501223'
-            variant="outline-light"
-              className="add_post-btn"
-              onClick={facebookLogin}
-            >
-              Login to Facebook <FaPlus size={20} className="pb-1" />
-            </Button> */}
               <Button
                 variant="outline-light"
                 className="add_post-btn"
