@@ -4,7 +4,7 @@ import { GoArrowRight } from "react-icons/go";
 import Dashboarddata from "../Utils/Dashboarddata.json";
 
 function Favouritemenu({title,c1,c2,className}) {
-  const [displayedItems, setDisplayedItems] = useState(5);
+  const [displayedItems, setDisplayedItems] = useState(3);
   const handleSeeAllClick = () => {
     // Toggle between showing 5 items and showing all items
     setDisplayedItems((prev) => (prev === 5 ? Dashboarddata.length : 5));

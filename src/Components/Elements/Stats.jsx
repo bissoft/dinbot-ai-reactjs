@@ -1,11 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { IoMdStar } from "react-icons/io";
 import cardData from "../Utils/Stats.json";
 import postData from "../Utils/Post.json";
-import SuggestiosMenu from "./SuggestiosMenu";
+import ReactApexChart from "react-apexcharts";
 
 const Stats = () => {
+  const [series] = useState({
+    monthDataSeries1: {
+      numbers: [
+        30, 40, 35, 50, 49, 60, 70, 91, 125, 100, 85, 95, 110, 120, 105,
+      ], // Sample data
+    },
+  });
+
+  const pageNumberArray = Array.from({ length: 15 }, (_, i) => i); // Generating an array from 0 to 14
+
+  const [options] = useState({
+    chart: {
+      type: "area",
+      height: 350,
+      zoom: {
+        enabled: false,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "straight",
+    },
+    title: {
+      text: "Page Performance",
+      align: "left",
+    },
+    // subtitle: {
+    //   text: 'Price Movements',
+    //   align: 'left'
+    // },
+    xaxis: {
+      type: "category",
+      categories: pageNumberArray,
+      labels: {
+        formatter: function (val) {
+          return val?.toString(); // Convert the value to string
+        },
+      },
+    },
+    yaxis: {
+      // opposite: true
+    },
+    legend: {
+      horizontalAlign: "left",
+    },
+  });
+
+  const chartSeries = [
+    {
+      name: "Performance",
+      data: series.monthDataSeries1.numbers,
+    },
+  ];
+
   return (
     <>
       <div className="social-media-cards">
@@ -69,7 +125,18 @@ const Stats = () => {
               </div>
             </div>
           </div>
-
+          <div className="row py-4">
+            <div className="col-md-12">
+              <div id="chart">
+                <ReactApexChart
+                  options={options}
+                  series={chartSeries}
+                  type="area"
+                  height={350}
+                />
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="my-3">
               <h6>Recent Post</h6>
